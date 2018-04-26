@@ -1,0 +1,50 @@
+﻿@model LabClick.Database.RESULTADO
+@{
+    ViewBag.Title = "GerarPDF";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GerarPDF</h2>
+
+<h3>Tem certeza que deseja Gerar PDF deste?</h3>
+@if (TempData["pdfcriado"] == null){
+
+}
+else { 
+<div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Sucesso!</strong> PDF Gerado!
+</div>}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Nome Exame
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXAME.nome_exame)
+        </dd>
+
+        <dt>
+            Status
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TESTE.status)
+        </dd>
+
+        
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="GerarPDF" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>
+

@@ -1,0 +1,57 @@
+﻿
+@model LabClick.Database.RESULTADO
+
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Laudo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.laudo)
+        </dd>
+
+        <dt>
+            Tabela Referencia:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tabela)
+        </dd>
+
+        <dt>
+            Observação:
+        </dt>
+
+        <dd>
+           @Html.DisplayNameFor(model => model.observacao) 
+        </dd>
+
+        <dt>
+            Nome Exame:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXAME.nome_exame)
+        </dd>
+        <dt>
+            Foto Exame:
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.TESTE.imagem_teste)" />
+        </dd>
+
+
+    </dl>
+</div>
+
+

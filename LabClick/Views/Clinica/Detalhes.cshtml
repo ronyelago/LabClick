@@ -1,0 +1,94 @@
+﻿@model LabClick.Database.CLINICA
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Details</h2>
+
+<div>
+    <h4>LABORATORIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nome Clínica
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_clinica)
+        </dd>
+
+        <dt>
+            CNPJ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNPJ)
+        </dd>
+
+        <dt>
+            Endereço
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endereco)
+        </dd>
+
+        <dt>
+            Cep
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cep)
+        </dd>
+
+        <dt>
+           Cidade
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cidade)
+        </dd>
+
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            E-mail
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+           Data Inserido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_inserido)
+        </dd>
+
+        <dt>
+            Data Modificado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_modificado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.id }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>
+
+

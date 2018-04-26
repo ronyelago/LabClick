@@ -1,0 +1,50 @@
+﻿@model LabClick.Database.LABORATORIO
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_laboratorio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_laboratorio)
+        </dd>
+
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_inserido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_inserido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_modificado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_modificado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.id }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>
+

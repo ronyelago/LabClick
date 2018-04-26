@@ -1,0 +1,36 @@
+﻿
+@{
+    
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+<div class="container" style="margin:5%;z-index: 10000">
+
+
+    <div class="col-md-3" style="float:left; margin-top:10%">
+
+        <img src="/Content/styles/images/titulo.png">
+
+        <img src="/Content/styles/images/logo-labclick.png">
+
+        <form method="post">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <input type="text" name="email" value="" size="40" class="form-control" aria-required="true" aria-invalid="false" placeholder="login" style="background-image: url('/Content/styles/images/ico-mail.png');">
+            <input type="password" name="senha" value="" size="40" class="form-control" aria-required="true" aria-invalid="false" placeholder="senha" style="background-image: url('/Content/styles/images/ico-hold.png');">
+
+
+
+            <input type="submit" id="enviar" value="ACESSAR" class="btn">
+
+        </form>
+
+    </div>
+
+
+
+</div>
+<div class="footer-bg">
+
+
+
+</div>

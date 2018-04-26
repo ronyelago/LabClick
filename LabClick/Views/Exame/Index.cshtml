@@ -1,0 +1,52 @@
+﻿@model IEnumerable<LabClick.Database.EXAME>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Criar")
+</p>
+<table class="table" id="tabela">
+    <thead>
+        <tr>
+            <th>
+                Nome Exame
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Nome Laboratório
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome_exame)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CLINICA.nome_clinica)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new { id = item.id }) |
+                    @Html.ActionLink("Detalhes", "Detalhes", new { id = item.id }) |
+                    @Html.ActionLink("Deletar", "Deletar", new { id = item.id })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

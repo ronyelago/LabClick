@@ -1,0 +1,89 @@
+﻿@model IEnumerable<LabClick.Database.PACIENTE>
+@using LabClick.Models
+@{
+    ViewBag.Title = "Pacientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h1>Pacientes</h1>
+<p>
+    @Html.ActionLink("Novo", "Criar", "Paciente", null, new { @class = "btn btn-success" })
+</p>
+<table id="tabela_pac" class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome Paciente
+            </th>
+            <th>
+                Sexo
+            </th>
+            <th>
+                CPF
+            </th>
+
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome_paciente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sexo)
+                </td>
+                <td class="hidden">
+                    @Html.DisplayFor(modelItem => item.cpf)
+                </td>
+
+
+                <td>
+                    <div class="dropdown pull-right">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Ações
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>
+                                @Html.ActionLink("Editar",
+                             "Editar",
+                              "Paciente",
+                           new { id = item.id },
+                           new { @class = "" })
+                            </li>
+                            <li>
+                                <a href="/Paciente/ListagemTestes/@item.id">
+                                    Lista Testes <span class="badge">@Html.Raw(Util.ContaTesteF(item.id))</span>
+                                </a>
+                            </li>
+                            <li>
+                                @Html.ActionLink("Novo Teste Rápido",
+                                "Criar",
+                              "Teste",
+                                                  new { id = item.id },
+                           new { @class = "" }
+
+                         )
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>

@@ -1,0 +1,45 @@
+﻿@model LabClick.Database.EXAME
+@{
+    ViewBag.Title = "Criar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id_clinica = LabClick.Models.Util.RetornaID_Clinica(System.Web.HttpContext.Current.User.Identity.Name);
+}
+
+<h2>Criar</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Nome Exame:</label>
+            <div class="col-md-10">
+                <input value="@id_clinica" id="id_clinica" name="id_clinica" type="hidden">
+                @Html.EditorFor(model => model.nome_exame, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nome_exame, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Descrição:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+

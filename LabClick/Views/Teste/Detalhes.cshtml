@@ -1,0 +1,65 @@
+﻿@model LabClick.Database.TESTE
+
+@{
+    ViewBag.Title = "Detalhes do Teste Rapido";
+
+}
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Imagem:
+        </dt>
+
+        <dd>
+            <img src="@Model.imagem_teste" class="img-responsive" />
+        </dd>
+        <dt>
+            Nome Paciente:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACIENTE.nome_paciente)
+        </dd>
+        <dt>
+            Nome Clinica:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CLINICA.nome_clinica)
+        </dd>
+
+        <dt>
+            Nome Exame:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXAME.nome_exame)
+        </dd>
+        
+
+        
+        <dt>
+         Status:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            Data Inclusão:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_inserido)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Voltar", "Index", "Paciente")
+</p>
+

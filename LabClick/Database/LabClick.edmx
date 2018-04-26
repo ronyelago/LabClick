@@ -1,0 +1,722 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="sql_labclickModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLINICA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_laboratorio" Type="int" Nullable="false" />
+          <Property Name="nome_clinica" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CNPJ" Type="varchar" MaxLength="20" />
+          <Property Name="endereco" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="cep" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cidade" Type="varchar" MaxLength="255" />
+          <Property Name="estado" Type="varchar" MaxLength="255" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="logotipo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_inserido" Type="datetime" />
+          <Property Name="data_modificado" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EXAME">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_exame" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_clinica" Type="int" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_inserido" Type="datetime" Nullable="false" />
+          <Property Name="data_modificado" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LABORATORIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_laboratorio" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_inserido" Type="datetime" />
+          <Property Name="data_modificado" Type="datetime" />
+          <Property Name="assinatura" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="LOGIN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_clinica" Type="int" />
+          <Property Name="id_laboratorio" Type="int" />
+          <Property Name="perfil" Type="varchar" MaxLength="50" />
+          <Property Name="data_inserido" Type="datetime" />
+          <Property Name="data_modificado" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PACIENTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_clinica" Type="int" Nullable="false" />
+          <Property Name="nome_paciente" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="sexo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="data_nascimento" Type="datetime" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="telefone" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="cpf" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="uf_cidade" Type="varchar" MaxLength="255" />
+          <Property Name="data_inserido" Type="datetime" />
+          <Property Name="data_modificado" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RESULTADO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_exame" Type="int" Nullable="false" />
+          <Property Name="id_teste" Type="int" Nullable="false" />
+          <Property Name="laudo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="tabela" Type="varchar(max)" />
+          <Property Name="observacao" Type="varchar" MaxLength="255" />
+          <Property Name="documento" Type="varchar" MaxLength="255" />
+          <Property Name="data_inserido" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TESTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_exame" Type="int" Nullable="false" />
+          <Property Name="id_clinica" Type="int" Nullable="false" />
+          <Property Name="id_paciente" Type="int" Nullable="false" />
+          <Property Name="imagem_teste" Type="varchar(max)" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="data_inserido" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__CLINICA__id_labo__1BFD2C07">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="1" />
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CLINICA">
+              <PropertyRef Name="id_laboratorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EXAME__id_clinic__1CF15040">
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="1" />
+          <End Role="EXAME" Type="Self.EXAME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLINICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EXAME">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOGIN__id_clinic__1DE57479">
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="0..1" />
+          <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLINICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOGIN">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOGIN__id_labora__1ED998B2">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOGIN">
+              <PropertyRef Name="id_laboratorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PACIENTE__id_cli__20C1E124">
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="1" />
+          <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLINICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PACIENTE">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESULTADO__id_ex__21B6055D">
+          <End Role="EXAME" Type="Self.EXAME" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EXAME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="id_exame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESULTADO__id_te__22AA2996">
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TESTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="id_teste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TESTE__id_clinic__24927208">
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="1" />
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLINICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TESTE">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TESTE__id_exame__267ABA7A">
+          <End Role="EXAME" Type="Self.EXAME" Multiplicity="1" />
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EXAME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TESTE">
+              <PropertyRef Name="id_exame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TESTE__id_pacien__239E4DCF">
+          <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACIENTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TESTE">
+              <PropertyRef Name="id_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TESTE__id_pacien__25869641">
+          <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACIENTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TESTE">
+              <PropertyRef Name="id_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sql_labclickModelStoreContainer">
+          <EntitySet Name="CLINICA" EntityType="Self.CLINICA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EXAME" EntityType="Self.EXAME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LABORATORIO" EntityType="Self.LABORATORIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PACIENTE" EntityType="Self.PACIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESULTADO" EntityType="Self.RESULTADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TESTE" EntityType="Self.TESTE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CLINICA__id_labo__1BFD2C07" Association="Self.FK__CLINICA__id_labo__1BFD2C07">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="CLINICA" EntitySet="CLINICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EXAME__id_clinic__1CF15040" Association="Self.FK__EXAME__id_clinic__1CF15040">
+            <End Role="CLINICA" EntitySet="CLINICA" />
+            <End Role="EXAME" EntitySet="EXAME" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOGIN__id_clinic__1DE57479" Association="Self.FK__LOGIN__id_clinic__1DE57479">
+            <End Role="CLINICA" EntitySet="CLINICA" />
+            <End Role="LOGIN" EntitySet="LOGIN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOGIN__id_labora__1ED998B2" Association="Self.FK__LOGIN__id_labora__1ED998B2">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="LOGIN" EntitySet="LOGIN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PACIENTE__id_cli__20C1E124" Association="Self.FK__PACIENTE__id_cli__20C1E124">
+            <End Role="CLINICA" EntitySet="CLINICA" />
+            <End Role="PACIENTE" EntitySet="PACIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESULTADO__id_ex__21B6055D" Association="Self.FK__RESULTADO__id_ex__21B6055D">
+            <End Role="EXAME" EntitySet="EXAME" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESULTADO__id_te__22AA2996" Association="Self.FK__RESULTADO__id_te__22AA2996">
+            <End Role="TESTE" EntitySet="TESTE" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TESTE__id_clinic__24927208" Association="Self.FK__TESTE__id_clinic__24927208">
+            <End Role="CLINICA" EntitySet="CLINICA" />
+            <End Role="TESTE" EntitySet="TESTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TESTE__id_exame__267ABA7A" Association="Self.FK__TESTE__id_exame__267ABA7A">
+            <End Role="EXAME" EntitySet="EXAME" />
+            <End Role="TESTE" EntitySet="TESTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TESTE__id_pacien__239E4DCF" Association="Self.FK__TESTE__id_pacien__239E4DCF">
+            <End Role="PACIENTE" EntitySet="PACIENTE" />
+            <End Role="TESTE" EntitySet="TESTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TESTE__id_pacien__25869641" Association="Self.FK__TESTE__id_pacien__25869641">
+            <End Role="PACIENTE" EntitySet="PACIENTE" />
+            <End Role="TESTE" EntitySet="TESTE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sql_labclickModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLINICA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_laboratorio" Type="Int32" Nullable="false" />
+          <Property Name="nome_clinica" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CNPJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="endereco" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cidade" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="logotipo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_inserido" Type="DateTime" Precision="3" />
+          <Property Name="data_modificado" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LABORATORIO" Relationship="Self.FK__CLINICA__id_labo__1BFD2C07" FromRole="CLINICA" ToRole="LABORATORIO" />
+          <NavigationProperty Name="EXAME" Relationship="Self.FK__EXAME__id_clinic__1CF15040" FromRole="CLINICA" ToRole="EXAME" />
+          <NavigationProperty Name="LOGIN" Relationship="Self.FK__LOGIN__id_clinic__1DE57479" FromRole="CLINICA" ToRole="LOGIN" />
+          <NavigationProperty Name="PACIENTE" Relationship="Self.FK__PACIENTE__id_cli__20C1E124" FromRole="CLINICA" ToRole="PACIENTE" />
+          <NavigationProperty Name="TESTE" Relationship="Self.FK__TESTE__id_clinic__24927208" FromRole="CLINICA" ToRole="TESTE" />
+        </EntityType>
+        <EntityType Name="EXAME">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_exame" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_clinica" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_inserido" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="data_modificado" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CLINICA" Relationship="Self.FK__EXAME__id_clinic__1CF15040" FromRole="EXAME" ToRole="CLINICA" />
+          <NavigationProperty Name="RESULTADO" Relationship="Self.FK__RESULTADO__id_ex__21B6055D" FromRole="EXAME" ToRole="RESULTADO" />
+          <NavigationProperty Name="TESTE" Relationship="Self.FK__TESTE__id_exame__267ABA7A" FromRole="EXAME" ToRole="TESTE" />
+        </EntityType>
+        <EntityType Name="LABORATORIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_laboratorio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_inserido" Type="DateTime" Precision="3" />
+          <Property Name="data_modificado" Type="DateTime" Precision="3" />
+          <Property Name="assinatura" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLINICA" Relationship="Self.FK__CLINICA__id_labo__1BFD2C07" FromRole="LABORATORIO" ToRole="CLINICA" />
+          <NavigationProperty Name="LOGIN" Relationship="Self.FK__LOGIN__id_labora__1ED998B2" FromRole="LABORATORIO" ToRole="LOGIN" />
+        </EntityType>
+        <EntityType Name="LOGIN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_clinica" Type="Int32" />
+          <Property Name="id_laboratorio" Type="Int32" />
+          <Property Name="perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data_inserido" Type="DateTime" Precision="3" />
+          <Property Name="data_modificado" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CLINICA" Relationship="Self.FK__LOGIN__id_clinic__1DE57479" FromRole="LOGIN" ToRole="CLINICA" />
+          <NavigationProperty Name="LABORATORIO" Relationship="Self.FK__LOGIN__id_labora__1ED998B2" FromRole="LOGIN" ToRole="LABORATORIO" />
+        </EntityType>
+        <EntityType Name="PACIENTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_clinica" Type="Int32" Nullable="false" />
+          <Property Name="nome_paciente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sexo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_nascimento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cpf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uf_cidade" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="data_inserido" Type="DateTime" Precision="3" />
+          <Property Name="data_modificado" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CLINICA" Relationship="Self.FK__PACIENTE__id_cli__20C1E124" FromRole="PACIENTE" ToRole="CLINICA" />
+          <NavigationProperty Name="TESTE" Relationship="Self.FK__TESTE__id_pacien__239E4DCF" FromRole="PACIENTE" ToRole="TESTE" />
+          <NavigationProperty Name="TESTE1" Relationship="Self.FK__TESTE__id_pacien__25869641" FromRole="PACIENTE" ToRole="TESTE" />
+        </EntityType>
+        <EntityType Name="RESULTADO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_exame" Type="Int32" Nullable="false" />
+          <Property Name="id_teste" Type="Int32" Nullable="false" />
+          <Property Name="laudo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tabela" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="observacao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="documento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="data_inserido" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EXAME" Relationship="Self.FK__RESULTADO__id_ex__21B6055D" FromRole="RESULTADO" ToRole="EXAME" />
+          <NavigationProperty Name="TESTE" Relationship="Self.FK__RESULTADO__id_te__22AA2996" FromRole="RESULTADO" ToRole="TESTE" />
+        </EntityType>
+        <EntityType Name="TESTE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_exame" Type="Int32" Nullable="false" />
+          <Property Name="id_clinica" Type="Int32" Nullable="false" />
+          <Property Name="id_paciente" Type="Int32" Nullable="false" />
+          <Property Name="imagem_teste" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="data_inserido" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CLINICA" Relationship="Self.FK__TESTE__id_clinic__24927208" FromRole="TESTE" ToRole="CLINICA" />
+          <NavigationProperty Name="EXAME" Relationship="Self.FK__TESTE__id_exame__267ABA7A" FromRole="TESTE" ToRole="EXAME" />
+          <NavigationProperty Name="PACIENTE" Relationship="Self.FK__TESTE__id_pacien__239E4DCF" FromRole="TESTE" ToRole="PACIENTE" />
+          <NavigationProperty Name="PACIENTE1" Relationship="Self.FK__TESTE__id_pacien__25869641" FromRole="TESTE" ToRole="PACIENTE" />
+          <NavigationProperty Name="RESULTADO" Relationship="Self.FK__RESULTADO__id_te__22AA2996" FromRole="TESTE" ToRole="RESULTADO" />
+        </EntityType>
+        <Association Name="FK__CLINICA__id_labo__1BFD2C07">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="1" />
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CLINICA">
+              <PropertyRef Name="id_laboratorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EXAME__id_clinic__1CF15040">
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="1" />
+          <End Role="EXAME" Type="Self.EXAME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLINICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EXAME">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOGIN__id_clinic__1DE57479">
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="0..1" />
+          <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLINICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOGIN">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PACIENTE__id_cli__20C1E124">
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="1" />
+          <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLINICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PACIENTE">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TESTE__id_clinic__24927208">
+          <End Role="CLINICA" Type="Self.CLINICA" Multiplicity="1" />
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLINICA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TESTE">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESULTADO__id_ex__21B6055D">
+          <End Role="EXAME" Type="Self.EXAME" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EXAME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="id_exame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TESTE__id_exame__267ABA7A">
+          <End Role="EXAME" Type="Self.EXAME" Multiplicity="1" />
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EXAME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TESTE">
+              <PropertyRef Name="id_exame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOGIN__id_labora__1ED998B2">
+          <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="0..1" />
+          <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABORATORIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOGIN">
+              <PropertyRef Name="id_laboratorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TESTE__id_pacien__239E4DCF">
+          <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACIENTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TESTE">
+              <PropertyRef Name="id_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TESTE__id_pacien__25869641">
+          <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACIENTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TESTE">
+              <PropertyRef Name="id_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESULTADO__id_te__22AA2996">
+          <End Role="TESTE" Type="Self.TESTE" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TESTE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="id_teste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sql_LabClickEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLINICA" EntityType="Self.CLINICA" />
+          <EntitySet Name="EXAME" EntityType="Self.EXAME" />
+          <EntitySet Name="LABORATORIO" EntityType="Self.LABORATORIO" />
+          <EntitySet Name="LOGIN" EntityType="Self.LOGIN" />
+          <EntitySet Name="PACIENTE" EntityType="Self.PACIENTE" />
+          <EntitySet Name="RESULTADO" EntityType="Self.RESULTADO" />
+          <EntitySet Name="TESTE" EntityType="Self.TESTE" />
+          <AssociationSet Name="FK__CLINICA__id_labo__1BFD2C07" Association="Self.FK__CLINICA__id_labo__1BFD2C07">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="CLINICA" EntitySet="CLINICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EXAME__id_clinic__1CF15040" Association="Self.FK__EXAME__id_clinic__1CF15040">
+            <End Role="CLINICA" EntitySet="CLINICA" />
+            <End Role="EXAME" EntitySet="EXAME" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOGIN__id_clinic__1DE57479" Association="Self.FK__LOGIN__id_clinic__1DE57479">
+            <End Role="CLINICA" EntitySet="CLINICA" />
+            <End Role="LOGIN" EntitySet="LOGIN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PACIENTE__id_cli__20C1E124" Association="Self.FK__PACIENTE__id_cli__20C1E124">
+            <End Role="CLINICA" EntitySet="CLINICA" />
+            <End Role="PACIENTE" EntitySet="PACIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TESTE__id_clinic__24927208" Association="Self.FK__TESTE__id_clinic__24927208">
+            <End Role="CLINICA" EntitySet="CLINICA" />
+            <End Role="TESTE" EntitySet="TESTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESULTADO__id_ex__21B6055D" Association="Self.FK__RESULTADO__id_ex__21B6055D">
+            <End Role="EXAME" EntitySet="EXAME" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TESTE__id_exame__267ABA7A" Association="Self.FK__TESTE__id_exame__267ABA7A">
+            <End Role="EXAME" EntitySet="EXAME" />
+            <End Role="TESTE" EntitySet="TESTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOGIN__id_labora__1ED998B2" Association="Self.FK__LOGIN__id_labora__1ED998B2">
+            <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+            <End Role="LOGIN" EntitySet="LOGIN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TESTE__id_pacien__239E4DCF" Association="Self.FK__TESTE__id_pacien__239E4DCF">
+            <End Role="PACIENTE" EntitySet="PACIENTE" />
+            <End Role="TESTE" EntitySet="TESTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TESTE__id_pacien__25869641" Association="Self.FK__TESTE__id_pacien__25869641">
+            <End Role="PACIENTE" EntitySet="PACIENTE" />
+            <End Role="TESTE" EntitySet="TESTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESULTADO__id_te__22AA2996" Association="Self.FK__RESULTADO__id_te__22AA2996">
+            <End Role="TESTE" EntitySet="TESTE" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sql_labclickModelStoreContainer" CdmEntityContainer="sql_LabClickEntities">
+          <EntitySetMapping Name="CLINICA">
+            <EntityTypeMapping TypeName="sql_labclickModel.CLINICA">
+              <MappingFragment StoreEntitySet="CLINICA">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_laboratorio" ColumnName="id_laboratorio" />
+                <ScalarProperty Name="nome_clinica" ColumnName="nome_clinica" />
+                <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="logotipo" ColumnName="logotipo" />
+                <ScalarProperty Name="data_inserido" ColumnName="data_inserido" />
+                <ScalarProperty Name="data_modificado" ColumnName="data_modificado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXAME">
+            <EntityTypeMapping TypeName="sql_labclickModel.EXAME">
+              <MappingFragment StoreEntitySet="EXAME">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome_exame" ColumnName="nome_exame" />
+                <ScalarProperty Name="id_clinica" ColumnName="id_clinica" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="data_inserido" ColumnName="data_inserido" />
+                <ScalarProperty Name="data_modificado" ColumnName="data_modificado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LABORATORIO">
+            <EntityTypeMapping TypeName="sql_labclickModel.LABORATORIO">
+              <MappingFragment StoreEntitySet="LABORATORIO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome_laboratorio" ColumnName="nome_laboratorio" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="data_inserido" ColumnName="data_inserido" />
+                <ScalarProperty Name="data_modificado" ColumnName="data_modificado" />
+                <ScalarProperty Name="assinatura" ColumnName="assinatura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGIN">
+            <EntityTypeMapping TypeName="sql_labclickModel.LOGIN">
+              <MappingFragment StoreEntitySet="LOGIN">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id_clinica" ColumnName="id_clinica" />
+                <ScalarProperty Name="id_laboratorio" ColumnName="id_laboratorio" />
+                <ScalarProperty Name="perfil" ColumnName="perfil" />
+                <ScalarProperty Name="data_inserido" ColumnName="data_inserido" />
+                <ScalarProperty Name="data_modificado" ColumnName="data_modificado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PACIENTE">
+            <EntityTypeMapping TypeName="sql_labclickModel.PACIENTE">
+              <MappingFragment StoreEntitySet="PACIENTE">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_clinica" ColumnName="id_clinica" />
+                <ScalarProperty Name="nome_paciente" ColumnName="nome_paciente" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="data_nascimento" ColumnName="data_nascimento" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="uf_cidade" ColumnName="uf_cidade" />
+                <ScalarProperty Name="data_inserido" ColumnName="data_inserido" />
+                <ScalarProperty Name="data_modificado" ColumnName="data_modificado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESULTADO">
+            <EntityTypeMapping TypeName="sql_labclickModel.RESULTADO">
+              <MappingFragment StoreEntitySet="RESULTADO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_exame" ColumnName="id_exame" />
+                <ScalarProperty Name="id_teste" ColumnName="id_teste" />
+                <ScalarProperty Name="laudo" ColumnName="laudo" />
+                <ScalarProperty Name="tabela" ColumnName="tabela" />
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="data_inserido" ColumnName="data_inserido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TESTE">
+            <EntityTypeMapping TypeName="sql_labclickModel.TESTE">
+              <MappingFragment StoreEntitySet="TESTE">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_exame" ColumnName="id_exame" />
+                <ScalarProperty Name="id_clinica" ColumnName="id_clinica" />
+                <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+                <ScalarProperty Name="imagem_teste" ColumnName="imagem_teste" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="data_inserido" ColumnName="data_inserido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

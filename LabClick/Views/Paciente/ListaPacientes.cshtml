@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LabClick.Database.PACIENTE>
+@{
+    ViewBag.Title = "Listagem Pacientes por Clinica";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pacientes por clinica</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            Nome Paciente
+        </th>
+        <th>
+            Sexo
+        </th>
+        <th>
+            Clinica
+        </th>
+
+        <th>Ações</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_paciente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CLINICA.nome_clinica)
+            </td>
+
+            <td>
+               
+                @Html.ActionLink("Lista Testes",
+                          "ListagemTestes",
+                              "Paciente",
+                                                  new { id = item.id },
+                           new { @class = "btn btn-info" }
+
+                )
+
+                
+
+            </td>
+        </tr>
+    }
+
+</table>

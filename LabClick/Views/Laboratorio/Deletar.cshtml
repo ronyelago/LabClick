@@ -1,0 +1,53 @@
+﻿@model LabClick.Database.LABORATORIO
+@{
+    ViewBag.Title = "Deletar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tem certeza que deseja deletar?</h2>
+
+<dl class="dl-horizontal">
+    <dt>
+        Nome Laboratório
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.nome_laboratorio)
+    </dd>
+
+    <dt>
+        E-mail
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.email)
+    </dd>
+
+    <dt>
+        Data Inserido:
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.data_inserido)
+    </dd>
+
+    <dt>
+       Data Modificado:
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.data_modificado)
+    </dd>
+
+   
+</dl>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Deletar" class="btn btn-danger" /> |
+        @Html.ActionLink("Voltar", "Index")
+    </div>
+}

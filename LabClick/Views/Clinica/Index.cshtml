@@ -1,0 +1,84 @@
+﻿@model IEnumerable<LabClick.Database.CLINICA>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutLab.cshtml";
+}
+
+
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Criar")
+</p>
+<table class="table" id="tabela">
+    <thead>
+        <tr>
+            <th>
+                Nome Clinica
+            </th>
+            <th>
+                CNPJ
+            </th>
+            <th>
+                Endereço
+            </th>
+            <th>
+                CEP
+            </th>
+            <th>
+                Cidade
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                E-mail
+            </th>
+
+            <th>Ações</th>
+        </tr>
+    </thead><tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_clinica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.id }) |
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.id }) |
+                @Html.ActionLink("Lista Pacientes",
+                             "ListaPacientes",
+                           "Paciente",
+                                                  new { id = item.id },
+                           new { @class = "btn btn-default" }
+
+                )
+
+            </td>
+        </tr>
+    }
+</tbody>
+</table>
+
+
