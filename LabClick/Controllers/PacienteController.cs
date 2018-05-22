@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LabClick.Database;
+using LabClick.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using LabClick.Models;
-using LabClick.Database;
-using LabClick.Repository;
-using LabClick.ViewModel;
 
 
 namespace LabClick.Controllers

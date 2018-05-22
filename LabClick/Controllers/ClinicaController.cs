@@ -6,8 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using LabClick.Database;
-using LabClick.Repository;
 using System.IO;
 
 namespace LabClick.Controllers

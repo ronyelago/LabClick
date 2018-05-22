@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabClick", "LabClick\LabClick.csproj", "{7E114EE7-D4B2-4E84-8BD8-38CF4CA78188}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabClick.Api", "LabClick.Api\LabClick.Api.csproj", "{F31F401D-DDCA-4CFE-A7FB-48AEBE4E825C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabClick.Domain", "LabClick.Domain\LabClick.Domain.csproj", "{43C6C766-6B21-48DE-AF95-945D46F4F4AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,19 @@ Global
 		{7E114EE7-D4B2-4E84-8BD8-38CF4CA78188}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E114EE7-D4B2-4E84-8BD8-38CF4CA78188}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E114EE7-D4B2-4E84-8BD8-38CF4CA78188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F31F401D-DDCA-4CFE-A7FB-48AEBE4E825C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F31F401D-DDCA-4CFE-A7FB-48AEBE4E825C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F31F401D-DDCA-4CFE-A7FB-48AEBE4E825C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F31F401D-DDCA-4CFE-A7FB-48AEBE4E825C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43C6C766-6B21-48DE-AF95-945D46F4F4AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43C6C766-6B21-48DE-AF95-945D46F4F4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43C6C766-6B21-48DE-AF95-945D46F4F4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43C6C766-6B21-48DE-AF95-945D46F4F4AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98754395-6A02-47D3-99A2-E32E0DC29341}
 	EndGlobalSection
 EndGlobal
