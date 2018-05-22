@@ -17,6 +17,8 @@ namespace LabClick.Domain
         public DbSet<Paciente> Paciente { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Exame> Exame { get; set; }
+        public DbSet<Teste> Teste { get; set; }
+        public DbSet<Resultado> Resultado { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,6 +28,8 @@ namespace LabClick.Domain
             modelBuilder.Configurations.Add(new PacienteMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new ExameMap());
+            modelBuilder.Configurations.Add(new TesteMap());
+            modelBuilder.Configurations.Add(new ResultadoMap());
 
             //Remove a pluralização automática das tabelas
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

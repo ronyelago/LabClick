@@ -54,6 +54,8 @@
     <Compile Include="Entities\Exame.cs" />
     <Compile Include="Entities\Laboratorio.cs" />
     <Compile Include="Entities\Paciente.cs" />
+    <Compile Include="Entities\Resultado.cs" />
+    <Compile Include="Entities\Teste.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="LabClickContext.cs" />
     <Compile Include="Mappings\ClinicaMap.cs" />
@@ -61,6 +63,8 @@
     <Compile Include="Mappings\ExameMap.cs" />
     <Compile Include="Mappings\LaboratorioMap.cs" />
     <Compile Include="Mappings\PacienteMap.cs" />
+    <Compile Include="Mappings\ResultadoMap.cs" />
+    <Compile Include="Mappings\TesteMap.cs" />
     <Compile Include="Mappings\UsuarioMap.cs" />
     <Compile Include="Migrations\201805222024081_primeira.cs" />
     <Compile Include="Migrations\201805222024081_primeira.Designer.cs">
@@ -90,6 +94,14 @@
     <Compile Include="Migrations\201805222254452_tabela_Exames2.Designer.cs">
       <DependentUpon>201805222254452_tabela_Exames2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805222311182_tabela_teste.cs" />
+    <Compile Include="Migrations\201805222311182_tabela_teste.Designer.cs">
+      <DependentUpon>201805222311182_tabela_teste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805222324430_tb_resultado.cs" />
+    <Compile Include="Migrations\201805222324430_tb_resultado.Designer.cs">
+      <DependentUpon>201805222324430_tb_resultado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -118,6 +130,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805222254452_tabela_Exames2.resx">
       <DependentUpon>201805222254452_tabela_Exames2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805222311182_tabela_teste.resx">
+      <DependentUpon>201805222311182_tabela_teste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805222324430_tb_resultado.resx">
+      <DependentUpon>201805222324430_tb_resultado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
