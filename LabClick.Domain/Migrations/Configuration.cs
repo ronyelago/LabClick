@@ -1,23 +1,29 @@
 namespace LabClick.Domain.Migrations
 {
-    using System;
-    using System.Data.Entity;
+    using LabClick.Domain.Entities;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<LabClick.Domain.LabClickContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LabClickContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(LabClick.Domain.LabClickContext context)
+        protected override void Seed(LabClickContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            Endereco endereco = new Endereco
+            {
+                Cep = "04192-289",
+                Cidade = "São Paulo",
+                UF = "SP",
+                Numero = 123,
+                Bairro = "Jardim Alipio",
+                Logradouro = "Rua Carabinani"
+            };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            context.Endereco.Add(endereco);
+            context.SaveChanges();
         }
     }
 }
