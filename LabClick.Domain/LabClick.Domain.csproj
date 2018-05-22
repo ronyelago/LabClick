@@ -51,12 +51,14 @@
   <ItemGroup>
     <Compile Include="Entities\Clinica.cs" />
     <Compile Include="Entities\Endereco.cs" />
+    <Compile Include="Entities\Exame.cs" />
     <Compile Include="Entities\Laboratorio.cs" />
     <Compile Include="Entities\Paciente.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="LabClickContext.cs" />
     <Compile Include="Mappings\ClinicaMap.cs" />
     <Compile Include="Mappings\EnderecoMap.cs" />
+    <Compile Include="Mappings\ExameMap.cs" />
     <Compile Include="Mappings\LaboratorioMap.cs" />
     <Compile Include="Mappings\PacienteMap.cs" />
     <Compile Include="Mappings\UsuarioMap.cs" />
@@ -84,9 +86,9 @@
     <Compile Include="Migrations\201805222118224_tabela_Usuarios.Designer.cs">
       <DependentUpon>201805222118224_tabela_Usuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805222134019_tb_lab.cs" />
-    <Compile Include="Migrations\201805222134019_tb_lab.Designer.cs">
-      <DependentUpon>201805222134019_tb_lab.cs</DependentUpon>
+    <Compile Include="Migrations\201805222254452_tabela_Exames2.cs" />
+    <Compile Include="Migrations\201805222254452_tabela_Exames2.Designer.cs">
+      <DependentUpon>201805222254452_tabela_Exames2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,8 +116,8 @@
     <EmbeddedResource Include="Migrations\201805222118224_tabela_Usuarios.resx">
       <DependentUpon>201805222118224_tabela_Usuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805222134019_tb_lab.resx">
-      <DependentUpon>201805222134019_tb_lab.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805222254452_tabela_Exames2.resx">
+      <DependentUpon>201805222254452_tabela_Exames2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
