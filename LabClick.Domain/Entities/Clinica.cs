@@ -12,8 +12,8 @@ namespace LabClick.Domain.Entities
         public string CNPJ { get; set; }
         public string Email { get; set; }
         public byte[] Logotipo { get; set; }
-        public DateTime? Data_inserido { get; set; }
-        public DateTime? Data_modificado { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataModificado { get; set; }
         public virtual Laboratorio Laboratorio { get; set; }
         public virtual Endereco Endereco { get; set; }
         public IEnumerable<Usuario> Usuarios { get; set;}

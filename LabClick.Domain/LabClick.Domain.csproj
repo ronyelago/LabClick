@@ -102,6 +102,18 @@
     <Compile Include="Migrations\201805222324430_tb_resultado.Designer.cs">
       <DependentUpon>201805222324430_tb_resultado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805231304542_End_IsOptional.cs" />
+    <Compile Include="Migrations\201805231304542_End_IsOptional.Designer.cs">
+      <DependentUpon>201805231304542_End_IsOptional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805231309032_End_optional.cs" />
+    <Compile Include="Migrations\201805231309032_End_optional.Designer.cs">
+      <DependentUpon>201805231309032_End_optional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805231434261_dt_optional.cs" />
+    <Compile Include="Migrations\201805231434261_dt_optional.Designer.cs">
+      <DependentUpon>201805231434261_dt_optional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -136,6 +148,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805222324430_tb_resultado.resx">
       <DependentUpon>201805222324430_tb_resultado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805231304542_End_IsOptional.resx">
+      <DependentUpon>201805231304542_End_IsOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805231309032_End_optional.resx">
+      <DependentUpon>201805231309032_End_optional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805231434261_dt_optional.resx">
+      <DependentUpon>201805231434261_dt_optional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

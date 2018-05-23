@@ -11,6 +11,18 @@ namespace LabClick.Domain.Mappings
 
             HasKey(k => k.Id);
 
+            Property(p => p.EnderecoId).
+                IsOptional();
+
+            Property(p => p.DataNascimento).
+                IsOptional();
+
+            Property(p => p.DataCadastro).
+                IsOptional();
+
+            Property(p => p.DataModificado).
+                IsOptional();
+
             Property(p => p.Nome).
                 IsRequired().
                 HasMaxLength(150);
