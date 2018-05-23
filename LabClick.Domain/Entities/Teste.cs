@@ -9,7 +9,7 @@ namespace LabClick.Domain.Entities
         public int ExameId { get; set; }
         public int ClinicaId { get; set; }
         public int PacienteId { get; set; }
-        public byte[] Imgem { get; set; }
+        public byte[] Imagem { get; set; }
         public string Status { get; set; }
         public DateTime DataCadastro { get; set; }
         public virtual Exame Exame { get; set; }

@@ -1,5 +1,7 @@
 namespace LabClick.Domain.Migrations
 {
+    using LabClick.Domain.Entities;
+    using System;
     using System.Data.Entity.Migrations;
 
     internal sealed class Configuration : DbMigrationsConfiguration<LabClickContext>
@@ -89,9 +91,55 @@ namespace LabClick.Domain.Migrations
             //    DataCadastro = DateTime.Now,
             //    DataModificado = DateTime.Now
             //};
-            
+
             //context.Paciente.Add(p1);
             //context.Paciente.Add(p2);
+            //context.SaveChanges();
+
+            //Exame exame1 = new Exame
+            //{
+            //    Nome = "Glicose",
+            //    ClinicaId = 3,
+            //    Descricao = "O exame de glicose, também conhecido como teste da glicose, é feito com objetivo de verificar a quantidade de açúcar no sangue, sendo o principal exame realizado para diagnosticar a diabetes.",
+            //    DataCadastro = DateTime.Now,
+            //    DataModificado = DateTime.Now
+            //};
+
+            //Exame exame2 = new Exame
+            //{
+            //    Nome = "Urina",
+            //    ClinicaId = 3,
+            //    Descricao = "O exame de urina serve para diagnosticar problemas que afetam o sistema renal e urinário, existindo três tipos principais: o exame de urina tipo 1, o exame de urina de 24 horas e o exame de urocultura, que geralmente são realizados num laboratório de análises clínicas e nenhum deles necessita de jejum.",
+            //    DataCadastro = DateTime.Now,
+            //    DataModificado = DateTime.Now
+            //};
+
+            //context.Exame.Add(exame1);
+            //context.Exame.Add(exame2);
+            //context.SaveChanges();
+
+            //Teste t1 = new Teste
+            //{
+            //    ExameId = 1,
+            //    ClinicaId = 3,
+            //    PacienteId = 2,
+            //    Imagem = null,
+            //    Status = "Finalizado",
+            //    DataCadastro = DateTime.Now
+            //};
+
+            //Teste t2 = new Teste
+            //{
+            //    ExameId = 2,
+            //    ClinicaId = 4,
+            //    PacienteId = 3,
+            //    Imagem = null,
+            //    Status = "Finalizado",
+            //    DataCadastro = DateTime.Now
+            //};
+
+            //context.Teste.Add(t1);
+            //context.Teste.Add(t2);
             //context.SaveChanges();
         }
     }

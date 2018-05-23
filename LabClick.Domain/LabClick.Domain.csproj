@@ -58,7 +58,15 @@
     <Compile Include="Data\Interfaces\IResultadoRepository.cs" />
     <Compile Include="Data\Interfaces\ITesteRepository.cs" />
     <Compile Include="Data\Interfaces\IUsuarioRepository.cs" />
+    <Compile Include="Data\Repositories\ClinicaRepository.cs" />
+    <Compile Include="Data\Repositories\EnderecoRepository.cs" />
+    <Compile Include="Data\Repositories\ExameRepository.cs" />
+    <Compile Include="Data\Repositories\LaboratorioRepository.cs" />
+    <Compile Include="Data\Repositories\PacienteRepository.cs" />
     <Compile Include="Data\Repositories\RepositoryBase.cs" />
+    <Compile Include="Data\Repositories\ResultadoRepository.cs" />
+    <Compile Include="Data\Repositories\TesteRepository.cs" />
+    <Compile Include="Data\Repositories\UsuarioRepository.cs" />
     <Compile Include="Entities\Clinica.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Exame.cs" />
@@ -124,6 +132,18 @@
     <Compile Include="Migrations\201805231434261_dt_optional.Designer.cs">
       <DependentUpon>201805231434261_dt_optional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805231650110_tbExame.cs" />
+    <Compile Include="Migrations\201805231650110_tbExame.Designer.cs">
+      <DependentUpon>201805231650110_tbExame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805231652591_tbExame_maxLength.cs" />
+    <Compile Include="Migrations\201805231652591_tbExame_maxLength.Designer.cs">
+      <DependentUpon>201805231652591_tbExame_maxLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805231702524_seed.cs" />
+    <Compile Include="Migrations\201805231702524_seed.Designer.cs">
+      <DependentUpon>201805231702524_seed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -167,6 +187,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805231434261_dt_optional.resx">
       <DependentUpon>201805231434261_dt_optional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805231650110_tbExame.resx">
+      <DependentUpon>201805231650110_tbExame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805231652591_tbExame_maxLength.resx">
+      <DependentUpon>201805231652591_tbExame_maxLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805231702524_seed.resx">
+      <DependentUpon>201805231702524_seed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
