@@ -49,6 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Interfaces\IClinicaRepository.cs" />
+    <Compile Include="Data\Interfaces\IEnderecoRepository.cs" />
+    <Compile Include="Data\Interfaces\IExameRepository.cs" />
+    <Compile Include="Data\Interfaces\ILaboratorioRepository.cs" />
+    <Compile Include="Data\Interfaces\IPacienteRepository.cs" />
+    <Compile Include="Data\Interfaces\IRepositoryBase.cs" />
+    <Compile Include="Data\Interfaces\IResultadoRepository.cs" />
+    <Compile Include="Data\Interfaces\ITesteRepository.cs" />
+    <Compile Include="Data\Interfaces\IUsuarioRepository.cs" />
+    <Compile Include="Data\Repositories\RepositoryBase.cs" />
     <Compile Include="Entities\Clinica.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Exame.cs" />
@@ -159,5 +169,6 @@
       <DependentUpon>201805231434261_dt_optional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
