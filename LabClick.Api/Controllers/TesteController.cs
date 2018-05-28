@@ -23,7 +23,7 @@ namespace LabClick.Api.Controllers
         {
             var teste = _repository.GetById(id);
 
-            return Request.CreateResponse(HttpStatusCode.OK, teste);
+            return Request.CreateResponse(HttpStatusCode.OK, teste); ;
         }
 
         [HttpPost]

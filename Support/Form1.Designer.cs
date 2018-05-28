@@ -28,95 +28,106 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGet = new System.Windows.Forms.Button();
+            this.lblUrl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnPost = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.txtPost = new System.Windows.Forms.TextBox();
+            this.txtGet = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // btnGet
             // 
-            this.textBox1.Location = new System.Drawing.Point(237, 132);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 20);
-            this.textBox1.TabIndex = 0;
+            this.btnGet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGet.Location = new System.Drawing.Point(364, 361);
+            this.btnGet.Name = "btnGet";
+            this.btnGet.Size = new System.Drawing.Size(83, 26);
+            this.btnGet.TabIndex = 7;
+            this.btnGet.Text = "Get";
+            this.btnGet.UseVisualStyleBackColor = true;
+            this.btnGet.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox2
+            // lblUrl
             // 
-            this.textBox2.Location = new System.Drawing.Point(237, 158);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(179, 20);
-            this.textBox2.TabIndex = 1;
+            this.lblUrl.AutoSize = true;
+            this.lblUrl.Location = new System.Drawing.Point(12, 364);
+            this.lblUrl.Name = "lblUrl";
+            this.lblUrl.Size = new System.Drawing.Size(32, 13);
+            this.lblUrl.TabIndex = 8;
+            this.lblUrl.Text = "URL:";
             // 
-            // textBox3
+            // label1
             // 
-            this.textBox3.Location = new System.Drawing.Point(237, 184);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(179, 20);
-            this.textBox3.TabIndex = 2;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "URL:";
             // 
-            // textBox4
+            // btnPost
             // 
-            this.textBox4.Location = new System.Drawing.Point(237, 210);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(179, 20);
-            this.textBox4.TabIndex = 3;
+            this.btnPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPost.Location = new System.Drawing.Point(364, 30);
+            this.btnPost.Name = "btnPost";
+            this.btnPost.Size = new System.Drawing.Size(83, 28);
+            this.btnPost.TabIndex = 10;
+            this.btnPost.Text = "Post";
+            this.btnPost.UseVisualStyleBackColor = true;
+            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
             // 
-            // textBox5
+            // pictureBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(237, 236);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(179, 20);
-            this.textBox5.TabIndex = 4;
+            this.pictureBox.Location = new System.Drawing.Point(197, 394);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(161, 198);
+            this.pictureBox.TabIndex = 13;
+            this.pictureBox.TabStop = false;
             // 
-            // textBox6
+            // txtPost
             // 
-            this.textBox6.Location = new System.Drawing.Point(237, 262);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(179, 20);
-            this.textBox6.TabIndex = 5;
+            this.txtPost.Location = new System.Drawing.Point(50, 30);
+            this.txtPost.Name = "txtPost";
+            this.txtPost.Size = new System.Drawing.Size(308, 20);
+            this.txtPost.TabIndex = 14;
             // 
-            // button1
+            // txtGet
             // 
-            this.button1.Location = new System.Drawing.Point(259, 317);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 51);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Send";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.txtGet.Location = new System.Drawing.Point(50, 361);
+            this.txtGet.Name = "txtGet";
+            this.txtGet.Size = new System.Drawing.Size(308, 20);
+            this.txtGet.TabIndex = 15;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 486);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(475, 614);
+            this.Controls.Add(this.txtGet);
+            this.Controls.Add(this.txtPost);
+            this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnPost);
+            this.Controls.Add(this.lblUrl);
+            this.Controls.Add(this.btnGet);
             this.Name = "Form1";
             this.Text = "Teste de API";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGet;
+        private System.Windows.Forms.Label lblUrl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnPost;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.TextBox txtPost;
+        private System.Windows.Forms.TextBox txtGet;
     }
 }
 
