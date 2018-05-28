@@ -10,6 +10,7 @@ namespace LabClick.Domain
         public LabClickContext() : base("Name=LabClickContext")
         {
             Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Clinica> Clinica { get; set; }
