@@ -115,6 +115,10 @@
       <Project>{43C6C766-6B21-48DE-AF95-945D46F4F4AF}</Project>
       <Name>LabClick.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LabClick.Infra\LabClick.Infra.csproj">
+      <Project>{9D0578A9-C763-4937-BDFE-03557ACF1AC5}</Project>
+      <Name>LabClick.Infra</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

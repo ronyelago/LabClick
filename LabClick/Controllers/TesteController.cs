@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using LabClick.Infra.Repositories;
+using LabClick.Models;
+using System;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using LabClick.Database;
-using LabClick.Repository;
-using LabClick.Models;
-using System.IO;
 
 namespace LabClick.Controllers
 {
     public class TesteController : Controller
     {
-        private sql_LabClickEntities db = new sql_LabClickEntities();
+        private TesteRepository db = new TesteRepository();
         // GET: Teste
         public ActionResult Index()
         {
             var Teste = db.TESTE.Include(t => t.EXAME).Include(t => t.CLINICA).Include(t => t.PACIENTE);
+
             return View(Teste.ToList());
-            
         }
         public ActionResult Criar(int? id)
 

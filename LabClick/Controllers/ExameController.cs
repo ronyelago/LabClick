@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using LabClick.Database;
-using LabClick.Repository;
 
 
 namespace LabClick.Controllers
@@ -15,7 +11,7 @@ namespace LabClick.Controllers
     [Authorize(Roles = "Administrador, Laboratorio, Clinica")]
     public class ExameController : Controller
     {
-        private sql_LabClickEntities db = new sql_LabClickEntities();
+        private ExameRepository db = new ExameRepository();
         // GET: Exame
         public ActionResult Index()
         {

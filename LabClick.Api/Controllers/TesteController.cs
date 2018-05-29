@@ -1,5 +1,5 @@
-﻿using LabClick.Domain.Data.Repositories;
-using LabClick.Domain.Entities;
+﻿using LabClick.Domain.Entities;
+using LabClick.Infra.Repositories;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
