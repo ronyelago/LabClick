@@ -240,6 +240,16 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LabClick.Domain\LabClick.Domain.csproj">
+      <Project>{43C6C766-6B21-48DE-AF95-945D46F4F4AF}</Project>
+      <Name>LabClick.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LabClick.Infra\LabClick.Infra.csproj">
+      <Project>{9d0578a9-c763-4937-bdfe-03557acf1ac5}</Project>
+      <Name>LabClick.Infra</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

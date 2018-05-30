@@ -15,7 +15,8 @@ namespace LabClick.Infra.Data.Mappings
                 IsOptional();
 
             Property(p => p.DataNascimento).
-                IsOptional();
+                IsOptional().
+                HasColumnType("datetime2");
 
             Property(p => p.DataCadastro).
                 IsOptional();

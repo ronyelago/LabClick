@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Security.Cryptography;
-using System.Text;
+﻿using System.Data;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using LabClick.Database;
-using LabClick.Repository;
 using System.Web.Security;
 
 namespace LabClick.Controllers

@@ -6,6 +6,7 @@ using System.Web.Http;
 
 namespace LabClick.Api.Controllers
 {
+    [RoutePrefix("teste")]
     public class TesteController : ApiController
     {
         private TesteRepository _repository = new TesteRepository();
@@ -18,7 +19,7 @@ namespace LabClick.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, testes);
         }
 
-        [Route("getTesteById/{id}")]
+        [Route("getById/{id}")]
         public HttpResponseMessage GetTesteById(int id)
         {
             var teste = _repository.GetById(id);
