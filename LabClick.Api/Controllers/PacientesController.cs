@@ -1,10 +1,7 @@
 ﻿using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
-using System;
-using System.Globalization;
 using System.Net;
 using System.Net.Http;
-using System.Threading;
 using System.Web.Http;
 
 namespace LabClick.Api.Controllers
@@ -45,8 +42,6 @@ namespace LabClick.Api.Controllers
 
             try
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
-
                 _repository.Add(paciente);
 
                 return Request.CreateResponse(HttpStatusCode.OK, paciente);

@@ -4,9 +4,16 @@ namespace LabClick.Domain.Entities
 {
     public class Paciente
     {
+        public Paciente()
+        {
+            DataCadastro = DateTime.Now;
+            DataModificado = DateTime.Now;
+            EnderecoId = null;
+        }
+
         public int Id { get; set; }
         public int ClinicaId { get; set; }
-        public int EnderecoId { get; set; }
+        public int? EnderecoId { get; set; }
         public string Nome { get; set; }
         public string Sexo { get; set; }
         public string Email { get; set; }

@@ -3,7 +3,9 @@ using LabClick.Infra.Data;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 
 namespace LabClick.Infra.Repositories
 {
@@ -13,6 +15,8 @@ namespace LabClick.Infra.Repositories
 
         public void Add(TEntity obj)
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+
             Db.Set<TEntity>().Add(obj);
             Db.SaveChanges();
         }

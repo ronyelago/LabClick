@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201805302247347_datetime2.Designer.cs">
       <DependentUpon>201805302247347_datetime2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806041858185_enderecoId.cs" />
+    <Compile Include="Migrations\201806041858185_enderecoId.Designer.cs">
+      <DependentUpon>201806041858185_enderecoId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClinicaRepository.cs" />
@@ -85,6 +89,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805302247347_datetime2.resx">
       <DependentUpon>201805302247347_datetime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041858185_enderecoId.resx">
+      <DependentUpon>201806041858185_enderecoId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
