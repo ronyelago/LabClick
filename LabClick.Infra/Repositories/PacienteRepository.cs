@@ -8,9 +8,7 @@ namespace LabClick.Infra.Repositories
     {
         public List<Paciente> GetByName(string name)
         {
-            var pacientes = (from p in Db.Paciente
-                             where p.Nome.Contains(name)
-                             select p).ToList();
+            var pacientes = Db.Paciente.Where(p => p.Nome.Contains(name)).ToList();
 
             return pacientes;
         }
