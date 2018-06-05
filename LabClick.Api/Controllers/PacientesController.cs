@@ -1,5 +1,6 @@
 ﻿using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -19,16 +20,30 @@ namespace LabClick.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, pacientes);
         }
 
-        [Route("getById/{id}")]
+        [Route("getById={id}")]
         public HttpResponseMessage GetPaciente(int id)
         {
             Paciente paciente = _repository.GetById(id);
+
             if (paciente == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, paciente);
+        }
+
+        [Route("getByName={name}")]
+        public HttpResponseMessage GetByName(string name)
+        {
+            List<Paciente> pacientes = _repository.GetByName(name);
+
+            if (pacientes.Count < 1)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, pacientes);
         }
 
         [HttpPost]

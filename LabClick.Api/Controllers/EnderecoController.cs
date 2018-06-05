@@ -33,7 +33,7 @@ namespace LabClick.Api.Controllers
         }
 
         [HttpPost]
-        [Route("pacientes")]
+        [Route("enderecos")]
         public HttpResponseMessage PostEndereco(Endereco endereco)
         {
             if (endereco == null)
@@ -45,7 +45,9 @@ namespace LabClick.Api.Controllers
             {
                 _repository.Add(endereco);
 
-                return Request.CreateResponse(HttpStatusCode.OK, endereco);
+                int id = endereco.Id;
+
+                return Request.CreateResponse(HttpStatusCode.OK, id);
             }
             catch (System.Exception ex)
             {
