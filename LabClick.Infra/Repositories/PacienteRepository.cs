@@ -1,10 +1,11 @@
-﻿using LabClick.Domain.Entities;
+﻿using LabClick.Domain.Data.Interfaces;
+using LabClick.Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LabClick.Infra.Repositories
 {
-    public class PacienteRepository : RepositoryBase<Paciente>
+    public class PacienteRepository : RepositoryBase<Paciente>, IPacienteRepository
     {
         public List<Paciente> GetByName(string name)
         {

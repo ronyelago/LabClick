@@ -1,8 +1,10 @@
 ﻿using LabClick.Domain.Entities;
+using System.Collections.Generic;
 
 namespace LabClick.Domain.Data.Interfaces
 {
-    interface IPacienteRepository : IRepositoryBase<Paciente>
+    public interface IPacienteRepository : IRepositoryBase<Paciente>
     {
+        List<Paciente> GetByName(string name);
     }
 }
