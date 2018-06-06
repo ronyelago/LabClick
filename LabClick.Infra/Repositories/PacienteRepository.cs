@@ -1,6 +1,7 @@
 ﻿using LabClick.Domain.Data.Interfaces;
 using LabClick.Domain.Entities;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace LabClick.Infra.Repositories
@@ -9,7 +10,7 @@ namespace LabClick.Infra.Repositories
     {
         public List<Paciente> GetByName(string name)
         {
-            var pacientes = Db.Paciente.Where(p => p.Nome.Contains(name)).ToList();
+            var pacientes = Db.Paciente.Where(p => p.Nome.Contains(name)).Include(p => p.Endereco).ToList();
 
             return pacientes;
         }
