@@ -27,6 +27,14 @@ namespace LabClick.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, teste); ;
         }
 
+        [Route("getAllByPacienteId={pacienteId}")]
+        public HttpResponseMessage GetAllByPacienteId(int pacienteId)
+        {
+            var testes = _repository.GetAllByPacienteId(pacienteId);
+
+            return Request.CreateResponse(HttpStatusCode.OK, testes);
+        }
+
         [HttpPost]
         [Route("testes")]
         public HttpResponseMessage PostTeste(Teste teste)
