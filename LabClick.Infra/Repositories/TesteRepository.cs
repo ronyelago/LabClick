@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using LabClick.Domain.Data.Interfaces;
 using LabClick.Domain.Entities;
@@ -9,7 +10,11 @@ namespace LabClick.Infra.Repositories
     {
         public ICollection<Teste> GetAllByPacienteId(int pacienteId)
         {
-            return Db.Teste.Where(t => t.PacienteId == pacienteId).ToList();
+            var testes = Db.Teste.Where(t => t.PacienteId == pacienteId).
+                    Include(t => t.Exame).
+                    ToList();
+
+            return testes;
         }
     }
 }

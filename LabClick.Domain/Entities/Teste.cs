@@ -5,6 +5,12 @@ namespace LabClick.Domain.Entities
 {
     public class Teste
     {
+        public Teste()
+        {
+            DataCadastro = DateTime.Now;
+            Status = "Enviado para análise";
+        }
+
         public int Id { get; set; }
         public int ExameId { get; set; }
         public int ClinicaId { get; set; }
