@@ -124,7 +124,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
-    <Compile Include="Controllers\ExameController.cs" />
+    <Compile Include="Controllers\ExamesController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Global.asax.cs">

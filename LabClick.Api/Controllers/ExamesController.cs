@@ -1,13 +1,13 @@
-﻿using System.Net.Http;
+﻿using LabClick.Infra.Repositories;
 using System.Web.Http;
 
 namespace LabClick.Api.Controllers
 {
+    [RoutePrefix("exame")]
     public class ExamesController : ApiController
     {
-        public HttpResponseMessage GetAllByPacienteId(int id)
-        {
+        private readonly ExameRepository _repository = new ExameRepository();
 
-        }
+
     }
 }
