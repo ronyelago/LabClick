@@ -1,10 +1,6 @@
-﻿using LabClick.Repository;
+﻿using LabClick.Infra.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Security;
-using LabClick.Database;
 
 namespace LabClick.Models
 {
@@ -49,13 +45,12 @@ namespace LabClick.Models
 
         public override string[] GetRolesForUser(string username)
         {
-            sql_LabClickEntities db = new sql_LabClickEntities();
+            var repository = new UsuarioRepository();
 
-            string sRoles = db.LOGIN.Where(p => p.email == username).FirstOrDefault().perfil;
+            string sRoles = repository.GetByEmail(username).Email;
             string[] retorno = { sRoles };
-            return retorno;
 
-            throw new NotImplementedException();
+            return retorno;
         }
         public override string[] GetUsersInRole(string roleName)
         {

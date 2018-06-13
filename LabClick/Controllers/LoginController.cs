@@ -48,7 +48,7 @@ namespace LabClick.Controllers
                         /*código abaixo cria uma session para armazenar o nome do usuário*/
                         Session["Nome"] = user.Nome;
                         /*código abaixo cria uma session para armazenar o sobrenome do usuário*/
-                        Session["idusuario"] = user.Id;
+                        Session["Id"] = user.Id;
                         /*retorna para a tela inicial do Home*/
                         if (user.Perfil == "Administrador")
 
