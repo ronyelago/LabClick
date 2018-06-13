@@ -1,5 +1,5 @@
-﻿using System.Data;
-using System.Linq;
+﻿using LabClick.Domain.Entities;
+using LabClick.Infra.Repositories;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -7,7 +7,8 @@ namespace LabClick.Controllers
 {
     public class LoginController : Controller
     {
-        private sql_LabClickEntities db = new sql_LabClickEntities();
+        private readonly UsuarioRepository _repository = new UsuarioRepository();
+
         [AllowAnonymous]
         // GET: Login
         // <param name="returnURL"></param>
@@ -19,154 +20,73 @@ namespace LabClick.Controllers
             Session.Abandon();
             return View();
         }
+
         [HttpPost]
-        public ActionResult Index(LOGIN login, string returnUrl)
+        public ActionResult Index(Usuario usuario, string returnUrl)
         {
 
             if (ModelState.IsValid)
             {
-                using (sql_LabClickEntities db = new sql_LabClickEntities())
-                {
-                    var vLogin = db.LOGIN.Where(p => p.email.Equals(login.email)).FirstOrDefault();
+                var user = _repository.GetByEmail(usuario.Email);
 
-                    /*Verificar se a variavel vLogin está vazia. Isso pode ocorrer caso o usuário não existe. 
-                    Caso não exista ele vai cair na condição else.*/
-                    if (vLogin != null)
-                    {      /*Código abaixo verifica se a senha digitada no site é igual a senha que está sendo retornada 
-                             do banco. Caso não cai direto no else*/
-                        if (Equals(vLogin.senha, login.senha))
+                /*Verificar se a variavel vLogin está vazia. Isso pode ocorrer caso o usuário não existe. 
+                Caso não exista ele vai cair na condição else.*/
+                if (user != null)
+                {      /*Código abaixo verifica se a senha digitada no site é igual a senha que está sendo retornada 
+                            do banco. Caso não cai direto no else*/
+                    if (Equals(user.Senha, usuario.Senha))
+                    {
+                        FormsAuthentication.SetAuthCookie(user.Email, false);
+                        if (Url.IsLocalUrl(returnUrl)
+                        && returnUrl.Length > 1
+                        && returnUrl.StartsWith("/")
+                        && !returnUrl.StartsWith("//")
+                        && returnUrl.StartsWith("/\\"))
                         {
-                            FormsAuthentication.SetAuthCookie(vLogin.email, false);
-                            if (Url.IsLocalUrl(returnUrl)
-                            && returnUrl.Length > 1
-                            && returnUrl.StartsWith("/")
-                            && !returnUrl.StartsWith("//")
-                            && returnUrl.StartsWith("/\\"))
-                            {
-                                return Redirect(returnUrl);
-                            }
-                            /*código abaixo cria uma session para armazenar o nome do usuário*/
-                            Session["Nome"] = vLogin.nome;
-                            /*código abaixo cria uma session para armazenar o sobrenome do usuário*/
-                            Session["idusuario"] = vLogin.id;
-                            /*retorna para a tela inicial do Home*/
-                            if (vLogin.perfil == "Administrador")
-
-                                return RedirectToAction("Index", "Dashboard");
-
-                            else if (vLogin.perfil == "Laboratorio")
-                            {
-                                ViewBag.usuario = "Laboratorio";
-                                return RedirectToAction("IndexLab", "Paciente");
-                            }
-                            else if (vLogin.perfil == "Clinica")
-                            {
-                                ViewBag.usuario = "Clinica";
-                                return RedirectToAction("Index", "Dashboard");
-                            }
-                            return RedirectToAction("Index", "Login");
+                            return Redirect(returnUrl);
                         }
-                        /*Else responsável da validação da senha*/
-                        else
+                        /*código abaixo cria uma session para armazenar o nome do usuário*/
+                        Session["Nome"] = user.Nome;
+                        /*código abaixo cria uma session para armazenar o sobrenome do usuário*/
+                        Session["idusuario"] = user.Id;
+                        /*retorna para a tela inicial do Home*/
+                        if (user.Perfil == "Administrador")
+
+                            return RedirectToAction("Index", "Dashboard");
+
+                        else if (user.Perfil == "Laboratorio")
                         {
-                            /*Escreve na tela a mensagem de erro informada*/
-                            ModelState.AddModelError("", "Senha informada Inválida!!!");
-                            /*Retorna a tela de login*/
-                            return View(new LOGIN());
+                            ViewBag.usuario = "Laboratorio";
+                            return RedirectToAction("IndexLab", "Paciente");
                         }
+                        else if (user.Perfil == "Clinica")
+                        {
+                            ViewBag.usuario = "Clinica";
+                            return RedirectToAction("Index", "Dashboard");
+                        }
+                        return RedirectToAction("Index", "Login");
                     }
-                    /*Else responsável por verificar se o usuário existe*/
+                    /*Else responsável da validação da senha*/
                     else
                     {
                         /*Escreve na tela a mensagem de erro informada*/
-                        ModelState.AddModelError("", "E-mail informado inválido!!!");
+                        ModelState.AddModelError("", "Senha informada Inválida!!!");
                         /*Retorna a tela de login*/
-                        return View(new LOGIN());
+                        return View(new Usuario());
                     }
                 }
-            }
-            /*Caso os campos não esteja de acordo com a solicitação retorna a tela de login com as mensagem dos campos*/
-            return View(login);
-        }
-       
-        [AllowAnonymous]
-        // GET: Login
-        // <param name="returnURL"></param>
-        // <returns></returns>
-        public ActionResult App(string returnURL)
-        {
-            ViewBag.ReturnUrl = returnURL;
-            Session.Abandon();
-            return View();
-        }
-        [HttpPost]
-        public ActionResult App(LOGIN login, string returnUrl)
-        {
-
-            if (ModelState.IsValid)
-            {
-                using (sql_LabClickEntities db = new sql_LabClickEntities())
+                /*Else responsável por verificar se o usuário existe*/
+                else
                 {
-                    var vLogin = db.LOGIN.Where(p => p.email.Equals(login.email)).FirstOrDefault();
-
-                    /*Verificar se a variavel vLogin está vazia. Isso pode ocorrer caso o usuário não existe. 
-                    Caso não exista ele vai cair na condição else.*/
-                    if (vLogin != null)
-                    {      /*Código abaixo verifica se a senha digitada no site é igual a senha que está sendo retornada 
-                             do banco. Caso não cai direto no else*/
-                        if (Equals(vLogin.senha, login.senha))
-                        {
-                            FormsAuthentication.SetAuthCookie(vLogin.email, false);
-                            if (Url.IsLocalUrl(returnUrl)
-                            && returnUrl.Length > 1
-                            && returnUrl.StartsWith("/")
-                            && !returnUrl.StartsWith("//")
-                            && returnUrl.StartsWith("/\\"))
-                            {
-                                return Redirect(returnUrl);
-                            }
-                            /*código abaixo cria uma session para armazenar o nome do usuário*/
-                            Session["Nome"] = vLogin.nome;
-                            /*código abaixo cria uma session para armazenar o sobrenome do usuário*/
-                            Session["idusuario"] = vLogin.id;
-                            /*retorna para a tela inicial do Home*/
-                            if (vLogin.perfil == "Administrador")
-
-                                return RedirectToAction("Index", "Dashboard");
-
-                            else if (vLogin.perfil == "Laboratorio")
-                            {
-                                Session["Usuario"] = vLogin.id_laboratorio;
-                                return RedirectToAction("Index", "Dashboard");
-                            }
-                            else if (vLogin.perfil == "Clinica")
-                            {
-                                Session["Usuario"] = vLogin.id_clinica;
-                                return RedirectToAction("Index", "Dashboard");
-                            }
-                            return RedirectToAction("Index", "Login");
-                        }
-                        /*Else responsável da validação da senha*/
-                        else
-                        {
-                            /*Escreve na tela a mensagem de erro informada*/
-                            ModelState.AddModelError("", "Senha informada Inválida!!!");
-                            /*Retorna a tela de login*/
-                            return View(new LOGIN());
-                        }
-                    }
-                    /*Else responsável por verificar se o usuário existe*/
-                    else
-                    {
-                        /*Escreve na tela a mensagem de erro informada*/
-                        ModelState.AddModelError("", "E-mail informado Inválido!!!");
-                        /*Retorna a tela de login*/
-                        return View(new LOGIN());
-                    }
+                    /*Escreve na tela a mensagem de erro informada*/
+                    ModelState.AddModelError("", "E-mail informado inválido!!!");
+                    /*Retorna a tela de login*/
+                    return View(new Usuario());
                 }
+                
             }
             /*Caso os campos não esteja de acordo com a solicitação retorna a tela de login com as mensagem dos campos*/
-            return View(login);
-        }         
+            return View(usuario);
+        }
     }
 }
