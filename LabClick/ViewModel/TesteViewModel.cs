@@ -4,12 +4,12 @@ namespace LabClick.ViewModel
 {
     public class TesteViewModel
     {
-        public int id { get; set; }
-        public int id_exame { get; set; }
-        public int id_clinica { get; set; }
-        public int id_paciente { get; set; }
-        public string imagem_teste { get; set; }
-        public string status { get; set; }
-        public Nullable<System.DateTime> data_inserido { get; set; }
+        public int Id { get; set; }
+        public int ExameId { get; set; }
+        public int ClinicaId { get; set; }
+        public int PacienteId { get; set; }
+        public byte[] Imagem { get; set; }
+        public string Status { get; set; }
+        public DateTime DataCadastro { get; set; }
     }
 }

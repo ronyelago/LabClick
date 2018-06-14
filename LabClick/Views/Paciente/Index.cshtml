@@ -31,9 +31,6 @@
         <th>
             @Html.DisplayNameFor(model => model.DataCadastro)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataModificado)
-        </th>
         <th></th>
     </tr>
 
@@ -64,10 +61,7 @@
             @Html.DisplayFor(modelItem => item.DataNascimento)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataCadastro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataModificado)
+            @Html.DisplayFor(modelItem => item.DataCadastro.ToShortDateString())
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

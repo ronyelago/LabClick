@@ -2,7 +2,7 @@
 
 namespace LabClick.ViewModel
 {
-    public class PacienteViewModel 
+    public class PacienteViewModel
     {
         public int Id { get; set; }
         public int ClinicaId { get; set; }
@@ -14,7 +14,5 @@ namespace LabClick.ViewModel
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataCadastro { get; set; }
-        public DateTime DataModificado { get; set; }
-
     }
 }
