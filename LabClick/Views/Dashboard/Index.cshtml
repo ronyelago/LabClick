@@ -6,31 +6,57 @@
 <br/>
 <h2>Dashboard</h2>
 <div class="row">
-<div class="col-lg-3">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-xs-6">
-                    <i class="fa fa-address-card-o fa-5x"></i>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <p class="announcement-text">Pacientes</p>
-                </div>
-            </div>
-        </div>
-        <a href="~/Paciente">
-            <div class="panel-footer announcement-bottom">
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-6">
-                        Visualizar
+                        <i class="fa fa-address-card-o fa-5x"></i>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <i class="fa fa-arrow-circle-right"></i>
+                        <p class="announcement-text">Pacientes</p>
                     </div>
                 </div>
             </div>
-        </a>
+            <a href="~/Paciente">
+                <div class="panel-footer announcement-bottom">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Visualizar
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <i class="fa fa-address-card-o fa-5x"></i>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <p class="announcement-text">Testes</p>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Testes", "Teste")">
+                <div class="panel-footer announcement-bottom">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Visualizar
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
-    </div>
 
