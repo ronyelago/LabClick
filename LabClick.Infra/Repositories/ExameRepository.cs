@@ -7,5 +7,11 @@ namespace LabClick.Infra.Repositories
 {
     public class ExameRepository : RepositoryBase<Exame>, IExameRepository
     {
+        public List<Exame> GetExamsPerClinic(int id)
+        {
+           
+
+            return new List<Exame> { };
+        }
     }
 }

@@ -56,13 +56,9 @@
     <Compile Include="Data\Mappings\ResultadoMap.cs" />
     <Compile Include="Data\Mappings\TesteMap.cs" />
     <Compile Include="Data\Mappings\UsuarioMap.cs" />
-    <Compile Include="Migrations\201805302247347_datetime2.cs" />
-    <Compile Include="Migrations\201805302247347_datetime2.Designer.cs">
-      <DependentUpon>201805302247347_datetime2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806041858185_enderecoId.cs" />
-    <Compile Include="Migrations\201806041858185_enderecoId.Designer.cs">
-      <DependentUpon>201806041858185_enderecoId.cs</DependentUpon>
+    <Compile Include="Migrations\201806151313216_Primeira.cs" />
+    <Compile Include="Migrations\201806151313216_Primeira.Designer.cs">
+      <DependentUpon>201806151313216_Primeira.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,11 +83,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805302247347_datetime2.resx">
-      <DependentUpon>201805302247347_datetime2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806041858185_enderecoId.resx">
-      <DependentUpon>201806041858185_enderecoId.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806151313216_Primeira.resx">
+      <DependentUpon>201806151313216_Primeira.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

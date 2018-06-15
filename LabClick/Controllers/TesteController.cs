@@ -1,5 +1,4 @@
 ﻿//using LabClick.Infra.Repositories;
-//using LabClick.Models;
 //using System;
 //using System.Data.Entity;
 //using System.IO;
@@ -13,6 +12,7 @@
 //    public class TesteController : Controller
 //    {
 //        private TesteRepository db = new TesteRepository();
+
 //        // GET: Teste
 //        public ActionResult Index()
 //        {
@@ -20,6 +20,7 @@
 
 //            return View(Teste.ToList());
 //        }
+
 //        public ActionResult Criar(int? id)
 
 //        {
@@ -39,6 +40,7 @@
 
 //            return View();
 //        }
+
 //        [HttpPost]
 //        [ValidateAntiForgeryToken]
 //        public ActionResult Criar(TESTE teste, HttpPostedFileBase file)
@@ -73,6 +75,7 @@
 
 //            return RedirectToAction("Index", "Paciente");
 //        }
+
 //        // GET: Teste/Edit/5
 //        public ActionResult Avaliar(int? id)
 //        {
