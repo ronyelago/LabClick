@@ -1,4 +1,24 @@
-﻿
+﻿@model List<LabClick.ViewModel.TesteViewModel>
 
 <h2>Testes</h2>
+<table class="table">
+    <tr>
+        <th>Tipo</th>
+        <th>Paciente</th>
+        <th>Clínica</th>
+        <th>Status</th>
+        <th>Data</th>
+    </tr>
+    @foreach (var teste in Model)
+    {
+     <tr>
+        <td>@teste.Exame.Nome</td>
+        <td>@teste.Paciente.Nome</td>
+        <td>@teste.Clinica.Nome</td>
+        <td>@teste.Status</td>
+        <td>@teste.DataCadastro</td>
+        <td><a href="@Url.Action()">Análise</a></td>
+     </tr>
+    }
+    </table>
 

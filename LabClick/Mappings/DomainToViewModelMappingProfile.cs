@@ -9,6 +9,7 @@ namespace LabClick.Mappings
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Paciente, PacienteViewModel>();
+            CreateMap<Teste, TesteViewModel>();
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿using LabClick.Infra.Repositories;
+﻿using AutoMapper;
+using LabClick.Infra.Repositories;
+using LabClick.ViewModel;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -16,9 +19,10 @@ namespace LabClick.Controllers
         // GET: Teste
         public ActionResult Testes()
         {
-            
+            var testes = repository.GetAllByUserId((int)(Session["Id"]));
+            List<TesteViewModel> testesViewModel = Mapper.Map<List<TesteViewModel>>(testes);
 
-            return View();
+            return View(testesViewModel);
         }
 
         //public ActionResult Criar(int? id)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LabClick.Domain.Entities;
+using System;
 
 namespace LabClick.ViewModel
 {
@@ -11,5 +12,8 @@ namespace LabClick.ViewModel
         public byte[] Imagem { get; set; }
         public string Status { get; set; }
         public DateTime DataCadastro { get; set; }
+        public Clinica  Clinica { get; set; }
+        public Paciente Paciente { get; set; }
+        public Exame Exame { get; set; }
     }
 }
