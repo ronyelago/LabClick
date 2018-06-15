@@ -11,7 +11,7 @@
 //{
 //    public class TesteController : Controller
 //    {
-//        private TesteRepository db = new TesteRepository();
+//        private TesteRepository repository = new TesteRepository();
 
 //        // GET: Teste
 //        public ActionResult Index()

@@ -10,6 +10,7 @@ namespace LabClick.Controllers
     public class PacienteController : Controller
     {
         private readonly PacienteRepository _repository = new PacienteRepository();
+
         // GET: Paciente
         public ActionResult Index()
         {
