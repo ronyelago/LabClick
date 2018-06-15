@@ -14,7 +14,9 @@ namespace LabClick.Infra.Repositories
                              join lab in Db.Laboratorio on user.LaboratorioId equals lab.Id
                              join clinica in Db.Clinica on lab.Id equals clinica.LaboratorioId
                              join pac in Db.Paciente on clinica.Id equals pac.ClinicaId
-                             where user.Id == id select pac).ToList();
+                             where user.Id == id && pac.Testes.All(t => t.Status == "Em análise")
+                             select pac).
+                             ToList();
 
             return pacientes;
         }

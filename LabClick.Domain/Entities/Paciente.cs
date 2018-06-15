@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LabClick.Domain.Entities
 {
@@ -24,5 +25,6 @@ namespace LabClick.Domain.Entities
         public DateTime DataModificado { get; set; }
         public virtual Endereco Endereco { get; set; }
         public virtual Clinica Clinica { get; set; }
+        public virtual List<Teste> Testes { get; set; }
     }
 }

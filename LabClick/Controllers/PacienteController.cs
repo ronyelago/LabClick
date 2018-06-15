@@ -9,7 +9,7 @@ namespace LabClick.Controllers
 {
     public class PacienteController : Controller
     {
-        private readonly PacienteRepository _repository = new PacienteRepository();
+        private readonly PacienteRepository repository = new PacienteRepository();
 
         // GET: Paciente
         public ActionResult Index()
@@ -22,11 +22,13 @@ namespace LabClick.Controllers
 
             return View(pacientesViewModel);
         }
+
         //public ActionResult IndexLab()
         //{
         //    var id_lab = Util.RetornaID_Laboratorio(System.Web.HttpContext.Current.User.Identity.Name);
         //    return View(Util.Lista_Pacientes_Lab(id_lab));
         //}
+
         //// GET: Paciente/Detalhes/Testes Parcial View
         //public ActionResult ListagemTestes(int? id)
         //{
