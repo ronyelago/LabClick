@@ -26,7 +26,7 @@ namespace LabClick.Infra.Repositories
             return Db.Set<TEntity>().ToList();
         }
 
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int id)
         {
             return Db.Set<TEntity>().Find(id);
         }

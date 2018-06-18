@@ -17,7 +17,7 @@
         <td>@teste.Clinica.Nome</td>
         <td>@teste.Status</td>
         <td>@teste.DataCadastro</td>
-        <td><a href="@Url.Action()">Análise</a></td>
+        <td><a href="@Url.Action("Detalhar", "Teste", new { id = teste.Id })">Detalhar</a></td>
      </tr>
     }
     </table>

@@ -1,62 +1,48 @@
-﻿@model LabClick.Database.TESTE
-
-@{
-    ViewBag.Title = "Detalhes do Teste Rapido";
-
+﻿@model LabClick.ViewModel.TesteViewModel
+@{ 
+    var base64 = Convert.ToBase64String(Model.Imagem);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 }
 
-
 <div>
-
     <hr />
     <dl class="dl-horizontal">
         <dt>
             Imagem:
         </dt>
-
         <dd>
-            <img src="@Model.imagem_teste" class="img-responsive" />
+            <img src="@imgSrc" class="img-responsive" />
         </dd>
         <dt>
             Nome Paciente:
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.PACIENTE.nome_paciente)
+            @Html.DisplayFor(model => model.Paciente.Nome)
         </dd>
         <dt>
             Nome Clinica:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.CLINICA.nome_clinica)
+            @Html.DisplayFor(model => model.Clinica.Nome)
         </dd>
-
         <dt>
             Nome Exame:
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.EXAME.nome_exame)
+            @Html.DisplayFor(model => model.Exame.Nome)
         </dd>
-        
-
-        
         <dt>
-         Status:
+            Status:
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.status)
+            @Html.DisplayFor(model => model.Status)
         </dd>
-
         <dt>
             Data Inclusão:
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.data_inserido)
+            @Html.DisplayFor(model => model.DataCadastro)
         </dd>
-
     </dl>
 </div>
 <p>

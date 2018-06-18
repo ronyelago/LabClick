@@ -32,5 +32,15 @@ namespace LabClick.Infra.Repositories
 
             return testes;
         }
+
+        public override Teste GetById(int id)
+        {
+            Teste teste = Db.Teste.Include(t => t.Paciente)
+                .Include(t => t.Clinica)
+                .Include(t => t.Exame)
+                .FirstOrDefault(t => t.Id == id);
+
+            return teste;
+        }
     }
 }

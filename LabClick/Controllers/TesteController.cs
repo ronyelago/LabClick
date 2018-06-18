@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
 using LabClick.ViewModel;
 using System;
@@ -23,6 +24,21 @@ namespace LabClick.Controllers
             List<TesteViewModel> testesViewModel = Mapper.Map<List<TesteViewModel>>(testes);
 
             return View(testesViewModel);
+        }
+
+        // GET: Teste/Detalhes/5
+        public ActionResult Detalhar(int id)
+        {
+            Teste teste = repository.GetById(id);
+
+            if (teste == null)
+            {
+                return HttpNotFound();
+            }
+
+            var testeViewModel = Mapper.Map<TesteViewModel>(teste);
+
+            return View(testeViewModel);
         }
 
         //public ActionResult Criar(int? id)
@@ -147,20 +163,7 @@ namespace LabClick.Controllers
 
         //    return View(teste);
         //}
-        //// GET: Teste/Detalhes/5
-        //public ActionResult Detalhes(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    TESTE Teste = db.TESTE.Find(id);
-        //    if (Teste == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(Teste);
-        //}
+
         //protected override void Dispose(bool disposing)
         //{
         //    if (disposing)

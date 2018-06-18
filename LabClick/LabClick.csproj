@@ -224,8 +224,7 @@
     <Content Include="Views\Shared\_LayoutApp.cshtml" />
     <Content Include="Views\Teste\Criar.cshtml" />
     <Content Include="Views\Shared\_LayoutCad.cshtml" />
-    <Content Include="Views\Teste\Avaliar.cshtml" />
-    <Content Include="Views\Teste\Detalhes.cshtml" />
+    <Content Include="Views\Teste\Detalhar.cshtml" />
     <Content Include="Views\Paciente\Criado.cshtml" />
     <Content Include="Views\Paciente\ListaPacientes.cshtml" />
     <Content Include="Views\Resultado\Detalhes.cshtml" />
