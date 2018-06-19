@@ -226,10 +226,8 @@
     <Content Include="Views\Shared\_LayoutCad.cshtml" />
     <Content Include="Views\Teste\Detalhar.cshtml" />
     <Content Include="Views\Paciente\Criado.cshtml" />
-    <Content Include="Views\Paciente\ListaPacientes.cshtml" />
     <Content Include="Views\Resultado\Detalhes.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Paciente\IndexLab.cshtml" />
     <Content Include="Views\Shared\_LayoutLab.cshtml" />
     <Content Include="Views\Resultado\GerarPDF.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

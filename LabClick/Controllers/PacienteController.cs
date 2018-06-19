@@ -23,52 +23,11 @@ namespace LabClick.Controllers
             return View(pacientesViewModel);
         }
 
-        //public ActionResult IndexLab()
-        //{
-        //    var id_lab = Util.RetornaID_Laboratorio(System.Web.HttpContext.Current.User.Identity.Name);
-        //    return View(Util.Lista_Pacientes_Lab(id_lab));
-        //}
-
-        //// GET: Paciente/Detalhes/Testes Parcial View
-        //public ActionResult ListagemTestes(int? id)
-        //{
-        //    var Teste = db.TESTE.Include(t => t.EXAME).Include(t => t.CLINICA).Include(t => t.PACIENTE).Where(t => t.id_paciente == id);
-
-        //    return View(Teste.ToList());
-
-        //}
-
-        //// GET: Paciente/Criar
-        //public ActionResult Criar()
-        //{
-        //    return View();
-        //}
-
-        //// POST: Paciente/Criar
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Criar(PACIENTE paciente, int id_clinica)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        paciente.data_inserido = DateTime.Now;
-        //        paciente.data_modificado = DateTime.Now;
-        //        paciente.cpf = FormatCnpjCpf.SemFormatacao(paciente.cpf);
-        //        db.PACIENTE.Add(paciente);
-        //        db.SaveChanges();
-
-        //        return RedirectToAction("Criado", "Paciente", new { id = paciente.id });
-        //    }
-
-        //    return RedirectToAction("Criado", "Paciente", new { id = paciente.id });
-        //}
-        //public ActionResult Criado(int? id)
-        //{
-        //    ViewBag.cadastrado = id;
-        //    return View();
-        //}
+        // GET: Paciente/Criar
+        public ActionResult Criar()
+        {
+            return View();
+        }
 
         //// GET: Paciente/Editar/5
         //public ActionResult Editar(int? id)
@@ -100,10 +59,6 @@ namespace LabClick.Controllers
         //        return RedirectToAction("Index");
         //    }
         //    return View(paciente);
-        //}
-        //public ActionResult ListaPacientes(int? id)
-        //{
-        //    return View(Util.Lista_Pacientes(id));
         //}
 
         //// GET: Paciente/Delete/5
@@ -139,13 +94,14 @@ namespace LabClick.Controllers
         //{
         //    return View(db.PACIENTE.ToList());
         //}
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                repository.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
