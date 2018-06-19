@@ -222,7 +222,6 @@
     <Content Include="Views\Paciente\ListagemTestes.cshtml" />
     <Content Include="Views\Login\App.cshtml" />
     <Content Include="Views\Shared\_LayoutApp.cshtml" />
-    <Content Include="Views\Teste\Criar.cshtml" />
     <Content Include="Views\Shared\_LayoutCad.cshtml" />
     <Content Include="Views\Teste\Detalhar.cshtml" />
     <Content Include="Views\Paciente\Criado.cshtml" />
@@ -233,6 +232,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Paciente\Index.cshtml" />
     <Content Include="Views\Teste\Testes.cshtml" />
+    <Content Include="Views\Teste\EmitirLaudo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
