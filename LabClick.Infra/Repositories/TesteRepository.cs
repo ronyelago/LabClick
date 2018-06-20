@@ -28,6 +28,7 @@ namespace LabClick.Infra.Repositories
                           .Include(t => t.Clinica)
                           .Include(t => t.Paciente)
                           .Include(t => t.Exame)
+                          .OrderBy(t => t.DataCadastro)
                           .ToList();
 
             return testes;

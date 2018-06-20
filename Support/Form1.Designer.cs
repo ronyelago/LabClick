@@ -63,9 +63,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 11;
-            this.label1.Text = "URL:";
+            this.label1.Text = "File Path:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnPost
             // 
@@ -88,9 +89,9 @@
             // 
             // txtPost
             // 
-            this.txtPost.Location = new System.Drawing.Point(50, 30);
+            this.txtPost.Location = new System.Drawing.Point(69, 30);
             this.txtPost.Name = "txtPost";
-            this.txtPost.Size = new System.Drawing.Size(308, 20);
+            this.txtPost.Size = new System.Drawing.Size(289, 20);
             this.txtPost.TabIndex = 14;
             // 
             // txtGet

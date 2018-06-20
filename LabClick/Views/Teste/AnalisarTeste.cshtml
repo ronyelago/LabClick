@@ -1,0 +1,95 @@
+﻿@model LabClick.ViewModel.TesteViewModel
+@{
+    var base64 = Convert.ToBase64String(Model.Imagem);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    ViewBag.Title = "Avaliar";
+    var exame = Model.Exame;
+    var paciente = Model.Paciente;
+
+}
+@using (Html.BeginForm("Avaliar", "Teste", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <input id="id_exame" name="id_exame" type="hidden" value="@Model.ExameId">
+        <input id="id_clinica" name="id_clinica" type="hidden" value="@Model.ClinicaId">
+        <input id="id_paciente" name="id_paciente" type="hidden" value="@Model.PacienteId">
+        <input id="id_teste" name="id_teste" type="hidden" value="@Model.Id">
+        <input id="data_inserido" name="data_inserido" type="hidden" value="@Model.DataCadastro">
+        @Html.HiddenFor(model => model.Imagem)
+        @Html.HiddenFor(model => model.Status, new { @Value = "Finalizado" })
+        <div class="form-group">
+            <label class="control-label col-md-4">Nome Exame:</label>
+            <div class="col-md-6">
+                @Html.Raw(exame.Nome)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-4">Nome Paciente:</label>
+            <div class="col-md-6">
+                @Html.Raw(Model.Paciente.Nome)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                <img src="@imgSrc" width="100" height="100" class="img-responsive" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-4">Laudo:</label>
+            <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" value="Positivo" name="laudo">Positivo</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" value="Negativo" name="laudo">Negativo</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" id="indeterminado" value="Indeterminado" name="laudo">Indeterminado</label>
+                    <select id="vinderterminado" name="vindeterminado" class="form-control">
+                        <option value="">Selecione...</option>
+                        <option>Solicitar envio do cassete/fita do teste rápido para releitura</option>
+                        <option>Repetir teste rápido</option>
+                        <option>Repetir o teste utilizando metodologia com maior sensibilidade</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-4">Inserir Tabela("Parametro do Resultado"):</label>
+            <div class="col-md-6">
+                @Html.TextBox("file", "file", new { @class = "form-control", type = "file" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-4">Observação:</label>
+            <div class="col-md-6">
+                <textarea class="form-control" type="text" name="observacao"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-4">
+                <input type="submit" value="Emitir" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>$("#vinderterminado").hide();
+    $("input[type='radio']").change(function () {
+
+        if ($(this).val() == "Indeterminado") {
+            $("#vinderterminado").show();
+        } else {
+            $("#vinderterminado").hide();
+        }
+    });</script>

@@ -17,7 +17,6 @@ namespace LabClick.Controllers
     {
         private readonly TesteRepository repository = new TesteRepository();
 
-        // GET: Teste
         public ActionResult Testes()
         {
             var testes = repository.GetAllByUserId((int)(Session["Id"]));
@@ -26,8 +25,7 @@ namespace LabClick.Controllers
             return View(testesViewModel);
         }
 
-        // GET: Teste/Detalhes/5
-        public ActionResult Detalhar(int id)
+        public ActionResult AnalisarTeste(int id)
         {
             Teste teste = repository.GetById(id);
 
@@ -41,85 +39,9 @@ namespace LabClick.Controllers
             return View(testeViewModel);
         }
 
-        //public ActionResult Criar(int? id)
-
-        //{
-
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    PACIENTE paciente = db.PACIENTE.Find(id);
-        //    if (paciente == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.paciente = Util.RetornaPaciente(id);
-        //    ViewBag.id_exame = new SelectList(db.EXAME, "id", "nome_exame");
-        //    ViewBag.id_clinica = new SelectList(db.CLINICA, "id", "nome_clinica");
-
-        //    return View();
-        //}
-
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult Criar(TESTE teste, HttpPostedFileBase file)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        try
-        //        {
-
-        //            string _FileName = Path.GetFileName(file.FileName);
-        //            string _path = System.IO.Path.Combine(Server.MapPath("~/Content/Uploads"), _FileName);
-        //            file.SaveAs(_path);
-        //            teste.imagem_teste = "/Content/Uploads/" + _FileName;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            TempData["MensagemErro"] = ex.Message;
-        //        }
-        //        teste.status = "Em avaliação";
-        //        teste.data_inserido = DateTime.Now;
-        //        db.TESTE.Add(teste);
-        //        db.SaveChanges();
-
-        //        return RedirectToAction("Index", "Paciente");
-
-        //    }
-
-        //    ViewBag.id_exame = new SelectList(db.EXAME, "id", "nome_exame", teste.id_exame);
-        //    ViewBag.id_clinica = new SelectList(db.CLINICA, "id", "nome_laboratorio", teste.id_clinica);
-
-        //    return RedirectToAction("Index", "Paciente");
-        //}
-
-        //// GET: Teste/Edit/5
-        //public ActionResult Avaliar(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    TESTE teste = db.TESTE.Find(id);
-        //    if (teste == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.id_exame = new SelectList(db.EXAME, "id", "nome_exame", teste.id_exame);
-        //    ViewBag.id_laboratorio = new SelectList(db.LABORATORIO, "id", "nome_clinica", teste.id_clinica);
-        //    ViewBag.id_paciente = new SelectList(db.PACIENTE, "id", "nome_paciente", teste.id_paciente);
-        //    return View(teste);
-        //}
-
-        //// POST: Teste/Edit/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Avaliar(TESTE teste, string laudo, string observacao, string vindeterminado, HttpPostedFileBase file)
+        //public ActionResult Avaliar(Teste teste, string laudo, string observacao, string vindeterminado, HttpPostedFileBase file)
         //{
         //    if (ModelState.IsValid)
         //    {
@@ -164,13 +86,13 @@ namespace LabClick.Controllers
         //    return View(teste);
         //}
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                repository.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

@@ -19,26 +19,7 @@ namespace Support
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var str = File.ReadAllBytes(@"C:\Users\MfDev\Downloads\aindaBem.jpg");
 
-            var Teste = new
-            {
-                ExameId = 1,
-                ClinicaId = 3,
-                PacienteId = 2,
-                Imagem = str,
-                Status = "deu bom!",
-                DataCadastro = DateTime.Now
-            };
-
-            var serialized = JsonConvert.SerializeObject(Teste);
-
-            HttpClient client = new HttpClient();
-            Uri uri = new Uri(@"http://localhost:3000/testes");
-
-            var content = new StringContent(serialized, Encoding.UTF8, "application/json");
-
-            var result = client.PostAsync(uri, content);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,6 +33,39 @@ namespace Support
         }
 
         private void btnPost_Click(object sender, EventArgs e)
+        {
+            var str = File.ReadAllBytes(txtPost.Text);
+
+            var Teste = new
+            {
+                ExameId = 1,
+                ClinicaId = 1,
+                PacienteId = 1,
+                Imagem = str,
+                Status = "Em análise",
+                DataCadastro = DateTime.Now
+            };
+
+            var serialized = JsonConvert.SerializeObject(Teste);
+
+            HttpClient client = new HttpClient();
+            Uri uri = new Uri(@"http://apilabclick.mflogic.com.br/teste/testes");
+
+            var content = new StringContent(serialized, Encoding.UTF8, "application/json");
+
+            var result = client.PostAsync(uri, content);
+
+            if (result.Result.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Deu bom.");
+            }
+            else
+            {
+                MessageBox.Show("Deu ruim.");
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
