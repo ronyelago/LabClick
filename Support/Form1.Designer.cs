@@ -35,6 +35,7 @@
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.txtPost = new System.Windows.Forms.TextBox();
             this.txtGet = new System.Windows.Forms.TextBox();
+            this.btnSeed = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,11 +102,22 @@
             this.txtGet.Size = new System.Drawing.Size(308, 20);
             this.txtGet.TabIndex = 15;
             // 
+            // btnSeed
+            // 
+            this.btnSeed.Location = new System.Drawing.Point(364, 80);
+            this.btnSeed.Name = "btnSeed";
+            this.btnSeed.Size = new System.Drawing.Size(75, 23);
+            this.btnSeed.TabIndex = 16;
+            this.btnSeed.Text = "Run Seed";
+            this.btnSeed.UseVisualStyleBackColor = true;
+            this.btnSeed.Click += new System.EventHandler(this.btnSeed_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(475, 614);
+            this.Controls.Add(this.btnSeed);
             this.Controls.Add(this.txtGet);
             this.Controls.Add(this.txtPost);
             this.Controls.Add(this.pictureBox);
@@ -129,6 +141,7 @@
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.TextBox txtPost;
         private System.Windows.Forms.TextBox txtGet;
+        private System.Windows.Forms.Button btnSeed;
     }
 }
 

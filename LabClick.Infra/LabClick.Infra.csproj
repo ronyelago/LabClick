@@ -56,9 +56,9 @@
     <Compile Include="Data\Mappings\ResultadoMap.cs" />
     <Compile Include="Data\Mappings\TesteMap.cs" />
     <Compile Include="Data\Mappings\UsuarioMap.cs" />
-    <Compile Include="Migrations\201806151412025_Primeira.cs" />
-    <Compile Include="Migrations\201806151412025_Primeira.Designer.cs">
-      <DependentUpon>201806151412025_Primeira.cs</DependentUpon>
+    <Compile Include="Migrations\201806221844135_Primeira.cs" />
+    <Compile Include="Migrations\201806221844135_Primeira.Designer.cs">
+      <DependentUpon>201806221844135_Primeira.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,8 +83,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806151412025_Primeira.resx">
-      <DependentUpon>201806151412025_Primeira.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806221844135_Primeira.resx">
+      <DependentUpon>201806221844135_Primeira.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

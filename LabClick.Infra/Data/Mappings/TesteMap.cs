@@ -1,4 +1,5 @@
 ﻿using LabClick.Domain.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
 namespace LabClick.Infra.Data.Mappings
@@ -11,11 +12,17 @@ namespace LabClick.Infra.Data.Mappings
 
             HasKey(k => k.Id);
 
+            Property(p => p.Id).
+                HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            HasOptional(p => p.Resultado)
+                .WithRequired(t => t.Teste);
+
             Property(p => p.DataCadastro).IsOptional();
 
-            Property(p => p.Status).
-                IsRequired().
-                HasMaxLength(50);
+            Property(p => p.Status)
+                .IsRequired()
+                .HasMaxLength(50);
         }
     }
 }

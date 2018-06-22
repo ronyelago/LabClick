@@ -95,25 +95,6 @@ namespace LabClick.Infra.Migrations
                 .Index(t => t.EnderecoId);
             
             CreateTable(
-                "dbo.Resultados",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        ExameId = c.Int(nullable: false),
-                        TesteId = c.Int(nullable: false),
-                        Laudo = c.Binary(),
-                        Tabela = c.String(maxLength: 500, unicode: false),
-                        Observacoes = c.String(maxLength: 200, unicode: false),
-                        Documento = c.Binary(),
-                        DataCadastro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Exames", t => t.ExameId)
-                .ForeignKey("dbo.Testes", t => t.TesteId)
-                .Index(t => t.ExameId)
-                .Index(t => t.TesteId);
-            
-            CreateTable(
                 "dbo.Testes",
                 c => new
                     {
@@ -132,6 +113,21 @@ namespace LabClick.Infra.Migrations
                 .Index(t => t.ExameId)
                 .Index(t => t.ClinicaId)
                 .Index(t => t.PacienteId);
+            
+            CreateTable(
+                "dbo.Resultados",
+                c => new
+                    {
+                        TesteId = c.Int(nullable: false),
+                        Laudo = c.String(maxLength: 500, unicode: false),
+                        Tabela = c.Binary(maxLength: 500),
+                        Documento = c.Binary(),
+                        Observacoes = c.String(maxLength: 200, unicode: false),
+                        DataCadastro = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.TesteId)
+                .ForeignKey("dbo.Testes", t => t.TesteId)
+                .Index(t => t.TesteId);
             
             CreateTable(
                 "dbo.Usuarios",
@@ -163,7 +159,6 @@ namespace LabClick.Infra.Migrations
             DropForeignKey("dbo.Testes", "PacienteId", "dbo.Pacientes");
             DropForeignKey("dbo.Testes", "ExameId", "dbo.Exames");
             DropForeignKey("dbo.Testes", "ClinicaId", "dbo.Clinicas");
-            DropForeignKey("dbo.Resultados", "ExameId", "dbo.Exames");
             DropForeignKey("dbo.Pacientes", "EnderecoId", "dbo.Enderecos");
             DropForeignKey("dbo.Pacientes", "ClinicaId", "dbo.Clinicas");
             DropForeignKey("dbo.Exames", "ClinicaId", "dbo.Clinicas");
@@ -172,11 +167,10 @@ namespace LabClick.Infra.Migrations
             DropForeignKey("dbo.Clinicas", "EnderecoId", "dbo.Enderecos");
             DropIndex("dbo.Usuarios", new[] { "ClinicaId" });
             DropIndex("dbo.Usuarios", new[] { "LaboratorioId" });
+            DropIndex("dbo.Resultados", new[] { "TesteId" });
             DropIndex("dbo.Testes", new[] { "PacienteId" });
             DropIndex("dbo.Testes", new[] { "ClinicaId" });
             DropIndex("dbo.Testes", new[] { "ExameId" });
-            DropIndex("dbo.Resultados", new[] { "TesteId" });
-            DropIndex("dbo.Resultados", new[] { "ExameId" });
             DropIndex("dbo.Pacientes", new[] { "EnderecoId" });
             DropIndex("dbo.Pacientes", new[] { "ClinicaId" });
             DropIndex("dbo.Exames", new[] { "ClinicaId" });
@@ -184,8 +178,8 @@ namespace LabClick.Infra.Migrations
             DropIndex("dbo.Clinicas", new[] { "EnderecoId" });
             DropIndex("dbo.Clinicas", new[] { "LaboratorioId" });
             DropTable("dbo.Usuarios");
-            DropTable("dbo.Testes");
             DropTable("dbo.Resultados");
+            DropTable("dbo.Testes");
             DropTable("dbo.Pacientes");
             DropTable("dbo.Exames");
             DropTable("dbo.Laboratorios");

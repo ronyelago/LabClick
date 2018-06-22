@@ -13,7 +13,7 @@ namespace LabClick.Infra.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201806151412025_Primeira"; }
+            get { return "201806221844135_Primeira"; }
         }
         
         string IMigrationMetadata.Source

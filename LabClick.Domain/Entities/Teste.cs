@@ -8,12 +8,11 @@ namespace LabClick.Domain.Entities
         public Teste()
         {
             DataCadastro = DateTime.Now;
-            Status = "Enviado para análise";
+            Status = "Aguardando análise";
         }
 
         public int Id { get; set; }
         public int ExameId { get; set; }
-        public int ResultadoId { get; set; }
         public int ClinicaId { get; set; }
         public int PacienteId { get; set; }
         public byte[] Imagem { get; set; }

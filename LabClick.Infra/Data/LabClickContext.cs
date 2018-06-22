@@ -33,11 +33,6 @@ namespace LabClick.Infra.Data
             modelBuilder.Configurations.Add(new TesteMap());
             modelBuilder.Configurations.Add(new ResultadoMap());
 
-            // Configura o relacionamento entre as entidades Teste e Resultado
-            modelBuilder.Entity<Teste>().
-                HasOptional(t => t.Resultado).
-                WithRequired(r => r.Teste);
-
             //Remove a pluralização automática das tabelas
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             //Remove a exclusão em cascata de tabelas relacionadas (um para muitos)

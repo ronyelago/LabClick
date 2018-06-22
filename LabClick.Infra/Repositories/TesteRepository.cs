@@ -39,6 +39,7 @@ namespace LabClick.Infra.Repositories
             Teste teste = Db.Teste.Include(t => t.Paciente)
                 .Include(t => t.Clinica)
                 .Include(t => t.Exame)
+                .Include(t => t.Resultado)
                 .FirstOrDefault(t => t.Id == id);
 
             return teste;

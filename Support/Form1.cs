@@ -1,4 +1,5 @@
 ﻿using LabClick.Domain.Entities;
+using LabClick.Infra.Data;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -66,6 +67,11 @@ namespace Support
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSeed_Click(object sender, EventArgs e)
         {
 
         }
