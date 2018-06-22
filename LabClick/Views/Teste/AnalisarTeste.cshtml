@@ -20,7 +20,7 @@
         <input id="id_teste" name="id_teste" type="hidden" value="@Model.Id">
         <input id="data_inserido" name="data_inserido" type="hidden" value="@Model.DataCadastro">
         @Html.HiddenFor(model => model.Imagem)
-        @Html.HiddenFor(model => model.Status, new { @Value = "Finalizado" })
+        @Html.HiddenFor(model => model.Status, new { @Value = "Concluído" })
         <div class="form-group">
             <label class="control-label col-md-4">Nome Exame:</label>
             <div class="col-md-6">
@@ -73,7 +73,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-4 col-md-4">
-                <input type="submit" value="Emitir" class="btn btn-success" />
+                <input type="submit" value="Gerar Laudo" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -84,7 +84,10 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script>$("#vinderterminado").hide();
+<script>
+
+    $("#vinderterminado").hide();
+
     $("input[type='radio']").change(function () {
 
         if ($(this).val() == "Indeterminado") {
@@ -92,4 +95,6 @@
         } else {
             $("#vinderterminado").hide();
         }
-    });</script>
+    });
+
+</script>
