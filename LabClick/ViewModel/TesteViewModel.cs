@@ -12,6 +12,17 @@ namespace LabClick.ViewModel
         public byte[] Imagem { get; set; }
         public string Status { get; set; }
         public DateTime DataCadastro { get; set; }
+        
+        public string DataTeste
+        {
+            get { return this.DataCadastro.ToShortDateString(); }
+        }
+
+        public string HoraTeste
+        {
+            get { return this.DataCadastro.ToShortTimeString(); }
+        }
+
         public Clinica  Clinica { get; set; }
         public Paciente Paciente { get; set; }
         public Exame Exame { get; set; }
