@@ -26,5 +26,15 @@
                 @Html.DisplayFor(model => model.HoraTeste)
             </div>
         </div>
+        <div>
+            <div class="form-group">
+                @Html.Label("Nome do Paciente:")
+                @Html.DisplayFor(model => model.Paciente.Nome)
+            </div>
+            <div class="form-group">
+                @Html.Label("Clínica:")
+                @Html.DisplayFor(model => model.Clinica.Nome)
+            </div>
+        </div>
     </div>
 }
