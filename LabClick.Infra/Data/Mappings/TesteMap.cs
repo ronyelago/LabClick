@@ -15,7 +15,7 @@ namespace LabClick.Infra.Data.Mappings
             Property(p => p.Id).
                 HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            HasOptional(p => p.Resultado)
+            HasOptional(p => p.Laudo)
                 .WithRequired(t => t.Teste);
 
             Property(p => p.DataCadastro).IsOptional();

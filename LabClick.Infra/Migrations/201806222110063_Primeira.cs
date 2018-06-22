@@ -73,26 +73,18 @@ namespace LabClick.Infra.Migrations
                 .Index(t => t.ClinicaId);
             
             CreateTable(
-                "dbo.Pacientes",
+                "dbo.Laudos",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        ClinicaId = c.Int(nullable: false),
-                        EnderecoId = c.Int(),
-                        Nome = c.String(nullable: false, maxLength: 150, unicode: false),
-                        Sexo = c.String(nullable: false, maxLength: 10, unicode: false),
-                        Email = c.String(maxLength: 100, unicode: false),
-                        Telefone = c.String(maxLength: 30, unicode: false),
-                        Cpf = c.String(nullable: false, maxLength: 20, unicode: false),
-                        DataNascimento = c.DateTime(precision: 7, storeType: "datetime2"),
-                        DataCadastro = c.DateTime(),
-                        DataModificado = c.DateTime(),
+                        TesteId = c.Int(nullable: false),
+                        Resultado = c.String(maxLength: 500, unicode: false),
+                        Documento = c.Binary(),
+                        Observacoes = c.String(maxLength: 200, unicode: false),
+                        DataCadastro = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Clinicas", t => t.ClinicaId)
-                .ForeignKey("dbo.Enderecos", t => t.EnderecoId)
-                .Index(t => t.ClinicaId)
-                .Index(t => t.EnderecoId);
+                .PrimaryKey(t => t.TesteId)
+                .ForeignKey("dbo.Testes", t => t.TesteId)
+                .Index(t => t.TesteId);
             
             CreateTable(
                 "dbo.Testes",
@@ -115,19 +107,26 @@ namespace LabClick.Infra.Migrations
                 .Index(t => t.PacienteId);
             
             CreateTable(
-                "dbo.Resultados",
+                "dbo.Pacientes",
                 c => new
                     {
-                        TesteId = c.Int(nullable: false),
-                        Laudo = c.String(maxLength: 500, unicode: false),
-                        Tabela = c.Binary(maxLength: 500),
-                        Documento = c.Binary(),
-                        Observacoes = c.String(maxLength: 200, unicode: false),
-                        DataCadastro = c.DateTime(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
+                        ClinicaId = c.Int(nullable: false),
+                        EnderecoId = c.Int(),
+                        Nome = c.String(nullable: false, maxLength: 150, unicode: false),
+                        Sexo = c.String(nullable: false, maxLength: 10, unicode: false),
+                        Email = c.String(maxLength: 100, unicode: false),
+                        Telefone = c.String(maxLength: 30, unicode: false),
+                        Cpf = c.String(nullable: false, maxLength: 20, unicode: false),
+                        DataNascimento = c.DateTime(precision: 7, storeType: "datetime2"),
+                        DataCadastro = c.DateTime(),
+                        DataModificado = c.DateTime(),
                     })
-                .PrimaryKey(t => t.TesteId)
-                .ForeignKey("dbo.Testes", t => t.TesteId)
-                .Index(t => t.TesteId);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Clinicas", t => t.ClinicaId)
+                .ForeignKey("dbo.Enderecos", t => t.EnderecoId)
+                .Index(t => t.ClinicaId)
+                .Index(t => t.EnderecoId);
             
             CreateTable(
                 "dbo.Usuarios",
@@ -155,32 +154,32 @@ namespace LabClick.Infra.Migrations
         {
             DropForeignKey("dbo.Usuarios", "LaboratorioId", "dbo.Laboratorios");
             DropForeignKey("dbo.Usuarios", "ClinicaId", "dbo.Clinicas");
-            DropForeignKey("dbo.Resultados", "TesteId", "dbo.Testes");
             DropForeignKey("dbo.Testes", "PacienteId", "dbo.Pacientes");
-            DropForeignKey("dbo.Testes", "ExameId", "dbo.Exames");
-            DropForeignKey("dbo.Testes", "ClinicaId", "dbo.Clinicas");
             DropForeignKey("dbo.Pacientes", "EnderecoId", "dbo.Enderecos");
             DropForeignKey("dbo.Pacientes", "ClinicaId", "dbo.Clinicas");
+            DropForeignKey("dbo.Laudos", "TesteId", "dbo.Testes");
+            DropForeignKey("dbo.Testes", "ExameId", "dbo.Exames");
+            DropForeignKey("dbo.Testes", "ClinicaId", "dbo.Clinicas");
             DropForeignKey("dbo.Exames", "ClinicaId", "dbo.Clinicas");
             DropForeignKey("dbo.Clinicas", "LaboratorioId", "dbo.Laboratorios");
             DropForeignKey("dbo.Laboratorios", "EnderecoId", "dbo.Enderecos");
             DropForeignKey("dbo.Clinicas", "EnderecoId", "dbo.Enderecos");
             DropIndex("dbo.Usuarios", new[] { "ClinicaId" });
             DropIndex("dbo.Usuarios", new[] { "LaboratorioId" });
-            DropIndex("dbo.Resultados", new[] { "TesteId" });
+            DropIndex("dbo.Pacientes", new[] { "EnderecoId" });
+            DropIndex("dbo.Pacientes", new[] { "ClinicaId" });
             DropIndex("dbo.Testes", new[] { "PacienteId" });
             DropIndex("dbo.Testes", new[] { "ClinicaId" });
             DropIndex("dbo.Testes", new[] { "ExameId" });
-            DropIndex("dbo.Pacientes", new[] { "EnderecoId" });
-            DropIndex("dbo.Pacientes", new[] { "ClinicaId" });
+            DropIndex("dbo.Laudos", new[] { "TesteId" });
             DropIndex("dbo.Exames", new[] { "ClinicaId" });
             DropIndex("dbo.Laboratorios", new[] { "EnderecoId" });
             DropIndex("dbo.Clinicas", new[] { "EnderecoId" });
             DropIndex("dbo.Clinicas", new[] { "LaboratorioId" });
             DropTable("dbo.Usuarios");
-            DropTable("dbo.Resultados");
-            DropTable("dbo.Testes");
             DropTable("dbo.Pacientes");
+            DropTable("dbo.Testes");
+            DropTable("dbo.Laudos");
             DropTable("dbo.Exames");
             DropTable("dbo.Laboratorios");
             DropTable("dbo.Enderecos");

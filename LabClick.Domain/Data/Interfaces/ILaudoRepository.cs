@@ -2,7 +2,7 @@
 
 namespace LabClick.Domain.Data.Interfaces
 {
-    public interface IResultadoRepository : IRepositoryBase<Resultado>
+    public interface ILaudoRepository : IRepositoryBase<Laudo>
     {
     }
 }

@@ -2,10 +2,10 @@
 
 namespace LabClick.Domain.Entities
 {
-    public class Resultado
+    public class Laudo
     {
         public int Id { get; set; }
-        public string Laudo { get; set; }
+        public string Resultado { get; set; }
         public byte[] Documento { get; set; }
         public string Observacoes { get; set; }
         public DateTime DataCadastro { get; set; }

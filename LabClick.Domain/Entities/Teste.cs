@@ -21,6 +21,6 @@ namespace LabClick.Domain.Entities
         public virtual Exame Exame { get; set; }
         public virtual Clinica Clinica { get; set; }
         public virtual Paciente Paciente { get; set; }
-        public virtual Resultado Resultado { get; set; }
+        public virtual Laudo Laudo { get; set; }
     }
 }

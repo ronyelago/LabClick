@@ -55,7 +55,7 @@
     <Compile Include="Data\Interfaces\ILaboratorioRepository.cs" />
     <Compile Include="Data\Interfaces\IPacienteRepository.cs" />
     <Compile Include="Data\Interfaces\IRepositoryBase.cs" />
-    <Compile Include="Data\Interfaces\IResultadoRepository.cs" />
+    <Compile Include="Data\Interfaces\ILaudoRepository.cs" />
     <Compile Include="Data\Interfaces\ITesteRepository.cs" />
     <Compile Include="Data\Interfaces\IUsuarioRepository.cs" />
     <Compile Include="Entities\Clinica.cs" />
@@ -63,7 +63,7 @@
     <Compile Include="Entities\Exame.cs" />
     <Compile Include="Entities\Laboratorio.cs" />
     <Compile Include="Entities\Paciente.cs" />
-    <Compile Include="Entities\Resultado.cs" />
+    <Compile Include="Entities\Laudo.cs" />
     <Compile Include="Entities\Teste.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

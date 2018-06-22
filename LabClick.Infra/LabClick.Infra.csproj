@@ -53,12 +53,12 @@
     <Compile Include="Data\Mappings\ExameMap.cs" />
     <Compile Include="Data\Mappings\LaboratorioMap.cs" />
     <Compile Include="Data\Mappings\PacienteMap.cs" />
-    <Compile Include="Data\Mappings\ResultadoMap.cs" />
+    <Compile Include="Data\Mappings\LaudoMap.cs" />
     <Compile Include="Data\Mappings\TesteMap.cs" />
     <Compile Include="Data\Mappings\UsuarioMap.cs" />
-    <Compile Include="Migrations\201806221844135_Primeira.cs" />
-    <Compile Include="Migrations\201806221844135_Primeira.Designer.cs">
-      <DependentUpon>201806221844135_Primeira.cs</DependentUpon>
+    <Compile Include="Migrations\201806222110063_Primeira.cs" />
+    <Compile Include="Migrations\201806222110063_Primeira.Designer.cs">
+      <DependentUpon>201806222110063_Primeira.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,7 +68,7 @@
     <Compile Include="Repositories\LaboratorioRepository.cs" />
     <Compile Include="Repositories\PacienteRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
-    <Compile Include="Repositories\ResultadoRepository.cs" />
+    <Compile Include="Repositories\LaudoRepository.cs" />
     <Compile Include="Repositories\TesteRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
   </ItemGroup>
@@ -83,8 +83,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806221844135_Primeira.resx">
-      <DependentUpon>201806221844135_Primeira.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806222110063_Primeira.resx">
+      <DependentUpon>201806222110063_Primeira.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

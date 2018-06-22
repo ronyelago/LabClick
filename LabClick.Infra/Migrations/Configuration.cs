@@ -310,50 +310,46 @@ namespace LabClick.Infra.Migrations
             context.Teste.Add(t4);
             context.SaveChanges();
 
-            Resultado r1 = new Resultado
+            Laudo r1 = new Laudo
             {
                 Id = 1,
-                Laudo = "",
-                Tabela = null,
+                Resultado = "",
                 Observacoes = "Nenhuma",
                 Documento = null,
                 DataCadastro = DateTime.Now
             };
 
-            Resultado r2 = new Resultado
+            Laudo r2 = new Laudo
             {
                 Id = 2,
-                Laudo = "",
-                Tabela = null,
+                Resultado = "",
                 Observacoes = "Nenhuma",
                 Documento = null,
                 DataCadastro = DateTime.Now
             };
 
-            Resultado r3 = new Resultado
+            Laudo r3 = new Laudo
             {
                 Id = 3,
-                Laudo = "",
-                Tabela = null,
+                Resultado = "",
                 Observacoes = "Nenhuma",
                 Documento = null,
                 DataCadastro = DateTime.Now
             };
 
-            Resultado r4 = new Resultado
+            Laudo r4 = new Laudo
             {
                 Id = 4,
-                Laudo = "",
-                Tabela = null,
+                Resultado = "",
                 Observacoes = "Nenhuma",
                 Documento = null,
                 DataCadastro = DateTime.Now
             };
 
-            context.Resultado.Add(r1);
-            context.Resultado.Add(r2);
-            context.Resultado.Add(r3);
-            context.Resultado.Add(r4);
+            context.Laudo.Add(r1);
+            context.Laudo.Add(r2);
+            context.Laudo.Add(r3);
+            context.Laudo.Add(r4);
             context.SaveChanges();
         }
     }

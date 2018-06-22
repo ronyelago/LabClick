@@ -4,11 +4,11 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace LabClick.Infra.Data.Mappings
 {
-    public class ResultadoMap : EntityTypeConfiguration<Resultado>
+    public class LaudoMap : EntityTypeConfiguration<Laudo>
     {
-        public ResultadoMap()
+        public LaudoMap()
         {
-            ToTable("Resultados");
+            ToTable("Laudos");
 
             HasKey(r => r.Id);
 
@@ -16,9 +16,6 @@ namespace LabClick.Infra.Data.Mappings
             Property(p => p.Id)
                 .HasColumnName("TesteId")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
-            Property(p => p.Tabela)
-                .HasMaxLength(500);
 
             Property(p => p.Observacoes)
                 .HasMaxLength(200);

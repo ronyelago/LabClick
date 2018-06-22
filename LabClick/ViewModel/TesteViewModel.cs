@@ -15,6 +15,6 @@ namespace LabClick.ViewModel
         public Clinica  Clinica { get; set; }
         public Paciente Paciente { get; set; }
         public Exame Exame { get; set; }
-        public Resultado Resultado { get; set; }
+        public Laudo Laudo { get; set; }
     }
 }
