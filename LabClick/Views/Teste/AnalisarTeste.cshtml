@@ -54,18 +54,24 @@
                 <label>Resultado da Análise</label>
             </div>
             <div>
-                <div>
+                <div class="radio">
                     @Html.RadioButtonFor(m => m.Laudo.Resultado, "Positivo")
                     <label>Positivo</label>
                 </div>
-                <div>
+                <div class="radio">
                     @Html.RadioButtonFor(m => m.Laudo.Resultado, "Negativo")
                     <label>Negativo</label>
                 </div>
             </div>
-            <div>
+            <div class="radio">
                 @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
                 <label>Indeterminado</label>
+                <select id="ListaEspecifique" class="form-control">
+                    <option value="">Especifique...</option>
+                    <option>Solicitar envio do cassete/fita do teste rápido para releitura</option>
+                    <option>Repetir teste rápido</option>
+                    <option>Repetir o teste utilizando metodologia com maior sensibilidade</option>
+                </select>
             </div>
         </div>
     </div>
