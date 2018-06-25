@@ -1,11 +1,16 @@
 ﻿@model LabClick.ViewModel.TesteViewModel
 
-@using(Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+@{
+    var base64 = Convert.ToBase64String(Model.Imagem);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+}
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <div >
+        <div>
             <h3>Análise de Teste - @Model.Exame.Nome</h3>
         </div>
         <div>
@@ -34,6 +39,14 @@
             <div class="form-group">
                 @Html.Label("Clínica:")
                 @Html.DisplayFor(model => model.Clinica.Nome)
+            </div>
+        </div>
+        <div>
+            <div>
+                @Html.Label("Imagem do Teste")
+            </div>
+            <div>
+                <img src="@imgSrc" width="100" height="100" class="img-responsive" />
             </div>
         </div>
     </div>
