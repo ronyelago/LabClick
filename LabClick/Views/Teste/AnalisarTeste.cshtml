@@ -49,5 +49,24 @@
                 <img src="@imgSrc" width="100" height="100" class="img-responsive" />
             </div>
         </div>
+        <div class="form-group">
+            <div>
+                <label>Resultado da Análise</label>
+            </div>
+            <div>
+                <div>
+                    @Html.RadioButtonFor(m => m.Laudo.Resultado, "Positivo")
+                    <label>Positivo</label>
+                </div>
+                <div>
+                    @Html.RadioButtonFor(m => m.Laudo.Resultado, "Negativo")
+                    <label>Negativo</label>
+                </div>
+            </div>
+            <div>
+                @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
+                <label>Indeterminado</label>
+            </div>
+        </div>
     </div>
 }
