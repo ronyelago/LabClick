@@ -39,6 +39,13 @@ namespace LabClick.Controllers
             return View(testeViewModel);
         }
 
+        [HttpPost]
+        public ActionResult GerarLaudo(TesteViewModel testeViewModel)
+        {
+
+            return View();
+        }
+
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public ActionResult Avaliar(Teste teste, string laudo, string observacao, string vindeterminado, HttpPostedFileBase file)

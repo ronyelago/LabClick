@@ -5,14 +5,14 @@
     var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 
     var Options = new List<SelectListItem>
-{
-new SelectListItem { Text = "Solicitar envio do cassete/fita do teste rápido para releitura" },
-new SelectListItem { Text = "Repetir teste rápido" },
-new SelectListItem { Text = "Repetir o teste utilizando metodologia com maior sensibilidade" }
-};
+    {
+    new SelectListItem { Text = "Solicitar envio do cassete/fita do teste rápido para releitura" },
+    new SelectListItem { Text = "Repetir teste rápido" },
+    new SelectListItem { Text = "Repetir o teste utilizando metodologia com maior sensibilidade" }
+    };
 }
 
-@using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+@using (Html.BeginForm("GerarLaudo", "Teste", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 
@@ -89,6 +89,9 @@ new SelectListItem { Text = "Repetir o teste utilizando metodologia com maior se
             <div>
                 @Html.TextAreaFor(m => m.Laudo.Observacoes)
             </div>
+        </div>
+        <div>
+            <button type="submit">Gerar Laudo</button>
         </div>
     </div>
 }
