@@ -42,6 +42,13 @@ namespace LabClick.Controllers
         [HttpPost]
         public ActionResult GerarLaudo(TesteViewModel testeViewModel)
         {
+            var laudoRepository = new LaudoRepository();
+
+            Laudo laudo = testeViewModel.Laudo;
+            laudo.Id = testeViewModel.Id;
+            laudo.DataCadastro = DateTime.Now;
+
+            laudoRepository.Add(laudo);
 
             return View();
         }
