@@ -17,6 +17,7 @@ namespace LabClick.Controllers
     {
         private readonly TesteRepository repository = new TesteRepository();
 
+        //Listagem de todos os testes ordenados por data de cadastro
         public ActionResult Testes()
         {
             var testes = repository.GetAllByUserId((int)(Session["Id"]));
@@ -25,6 +26,7 @@ namespace LabClick.Controllers
             return View(testesViewModel);
         }
 
+        //Exibe o teste selecionado para análise
         public ActionResult AnalisarTeste(int id)
         {
             Teste teste = repository.GetById(id);
@@ -32,6 +34,13 @@ namespace LabClick.Controllers
             if (teste == null)
             {
                 return HttpNotFound();
+            }
+
+            //Altera o Status do Teste para "Em análise"
+            if (teste.Status == "Aguardando análise")
+            {
+                teste.Status = "Em análise";
+                repository.Update(teste);
             }
 
             var testeViewModel = Mapper.Map<TesteViewModel>(teste);
@@ -44,13 +53,18 @@ namespace LabClick.Controllers
         {
             var laudoRepository = new LaudoRepository();
 
+            //Altera o Status do Teste para "Análise concluída"
+            var teste = repository.GetById(testeViewModel.Id);
+            teste.Status = "Análise concluída";
+            repository.Update(teste);
+
             Laudo laudo = testeViewModel.Laudo;
             laudo.Id = testeViewModel.Id;
             laudo.DataCadastro = DateTime.Now;
 
             laudoRepository.Add(laudo);
 
-            return View();
+            return View(laudo);
         }
 
         //[HttpPost]

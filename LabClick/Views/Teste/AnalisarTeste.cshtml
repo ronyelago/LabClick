@@ -80,7 +80,7 @@
             <div class="radio">
                 @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
                 <label>Indeterminado</label>
-                @Html.DropDownListFor(m => m.Laudo.Resultado, Options, "Especifique...")
+                @Html.DropDownList("dropDown", Options)
             </div>
         </div>
         <div class="form-group" style="border-style: groove; padding: 20px; margin: 10px">

@@ -11,14 +11,21 @@
     </tr>
     @foreach (var teste in Model)
     {
-     <tr>
+    <tr>
         <td>@teste.Exame.Nome</td>
         <td>@teste.Paciente.Nome</td>
         <td>@teste.Clinica.Nome</td>
         <td>@teste.Status</td>
         <td>@teste.DataCadastro</td>
-        <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Analisar</a></td>
-     </tr>
+        @if (teste.Laudo != null)
+        {
+            <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Ver Laudo</a></td>
+        }
+        else
+        {
+            <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Analisar</a></td>
+        }
+    </tr>
     }
     </table>
 

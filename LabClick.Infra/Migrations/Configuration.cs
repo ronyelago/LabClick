@@ -270,7 +270,7 @@ namespace LabClick.Infra.Migrations
                 ClinicaId = 1,
                 PacienteId = 1,
                 Imagem = null,
-                Status = "Em análise",
+                Status = "Aguardando análise",
                 DataCadastro = DateTime.Now
             };
 
@@ -280,7 +280,7 @@ namespace LabClick.Infra.Migrations
                 ClinicaId = 1,
                 PacienteId = 2,
                 Imagem = null,
-                Status = "Em análise",
+                Status = "Aguardando análise",
                 DataCadastro = DateTime.Now
             };
 
@@ -290,7 +290,7 @@ namespace LabClick.Infra.Migrations
                 ClinicaId = 2,
                 PacienteId = 3,
                 Imagem = null,
-                Status = "Em análise",
+                Status = "Aguardando análise",
                 DataCadastro = DateTime.Now
             };
 
@@ -300,7 +300,7 @@ namespace LabClick.Infra.Migrations
                 ClinicaId = 2,
                 PacienteId = 4,
                 Imagem = null,
-                Status = "Em análise",
+                Status = "Aguardando análise",
                 DataCadastro = DateTime.Now
             };
 
@@ -310,47 +310,47 @@ namespace LabClick.Infra.Migrations
             context.Teste.Add(t4);
             context.SaveChanges();
 
-            Laudo r1 = new Laudo
-            {
-                Id = 1,
-                Resultado = "",
-                Observacoes = "Nenhuma",
-                Documento = null,
-                DataCadastro = DateTime.Now
-            };
+            //Laudo r1 = new Laudo
+            //{
+            //    Id = 1,
+            //    Resultado = "",
+            //    Observacoes = "Nenhuma",
+            //    Documento = null,
+            //    DataCadastro = DateTime.Now
+            //};
 
-            Laudo r2 = new Laudo
-            {
-                Id = 2,
-                Resultado = "",
-                Observacoes = "Nenhuma",
-                Documento = null,
-                DataCadastro = DateTime.Now
-            };
+            //Laudo r2 = new Laudo
+            //{
+            //    Id = 2,
+            //    Resultado = "",
+            //    Observacoes = "Nenhuma",
+            //    Documento = null,
+            //    DataCadastro = DateTime.Now
+            //};
 
-            Laudo r3 = new Laudo
-            {
-                Id = 3,
-                Resultado = "",
-                Observacoes = "Nenhuma",
-                Documento = null,
-                DataCadastro = DateTime.Now
-            };
+            //Laudo r3 = new Laudo
+            //{
+            //    Id = 3,
+            //    Resultado = "",
+            //    Observacoes = "Nenhuma",
+            //    Documento = null,
+            //    DataCadastro = DateTime.Now
+            //};
 
-            Laudo r4 = new Laudo
-            {
-                Id = 4,
-                Resultado = "",
-                Observacoes = "Nenhuma",
-                Documento = null,
-                DataCadastro = DateTime.Now
-            };
+            //Laudo r4 = new Laudo
+            //{
+            //    Id = 4,
+            //    Resultado = "",
+            //    Observacoes = "Nenhuma",
+            //    Documento = null,
+            //    DataCadastro = DateTime.Now
+            //};
 
-            context.Laudo.Add(r1);
-            context.Laudo.Add(r2);
-            context.Laudo.Add(r3);
-            context.Laudo.Add(r4);
-            context.SaveChanges();
+            //context.Laudo.Add(r1);
+            //context.Laudo.Add(r2);
+            //context.Laudo.Add(r3);
+            //context.Laudo.Add(r4);
+            //context.SaveChanges();
         }
     }
 }

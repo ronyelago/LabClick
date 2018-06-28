@@ -23,11 +23,12 @@ namespace LabClick.Infra.Repositories
                           join lab in Db.Laboratorio on user.LaboratorioId equals lab.Id
                           join clinica in Db.Clinica on lab.Id equals clinica.LaboratorioId
                           join teste in Db.Teste on clinica.Id equals teste.ClinicaId
-                          where user.Id == userId && teste.Status == "Em análise"
+                          where user.Id == userId
                           select teste)
                           .Include(t => t.Clinica)
                           .Include(t => t.Paciente)
                           .Include(t => t.Exame)
+                          .Include(t => t.Laudo)
                           .OrderBy(t => t.DataCadastro)
                           .ToList();
 
