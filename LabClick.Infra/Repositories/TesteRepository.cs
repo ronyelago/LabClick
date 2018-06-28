@@ -36,7 +36,9 @@ namespace LabClick.Infra.Repositories
 
         public override Teste GetById(int id)
         {
-            Teste teste = Db.Teste.Include(t => t.Paciente)
+            Teste teste = Db.Teste
+                .Include(t => t.Paciente)
+                .Include(t => t.Paciente.Endereco)
                 .Include(t => t.Clinica)
                 .Include(t => t.Exame)
                 .Include(t => t.Laudo)
