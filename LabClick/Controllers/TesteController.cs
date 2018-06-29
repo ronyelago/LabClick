@@ -71,10 +71,19 @@ namespace LabClick.Controllers
                 var graphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page);
                 var textFormatter = new PdfSharp.Drawing.Layout.XTextFormatter(graphics);
                 var font = new PdfSharp.Drawing.XFont("Arial", 14);
+
+                textFormatter.DrawString(testeViewModel.Paciente.Nome, 
+                    font, PdfSharp.Drawing.XBrushes.Blue, new PdfSharp.Drawing.XRect());
+
+                //PdfDocument to byte array
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    doc.Save(stream);
+                    
+
+                    return File(stream.ToArray(), "application/pdf");
+                }
             }
-
-
-                return View(laudo);
         }
 
         //[HttpPost]
