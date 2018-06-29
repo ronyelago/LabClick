@@ -64,7 +64,17 @@ namespace LabClick.Controllers
 
             laudoRepository.Add(laudo);
 
-            return View(laudo);
+            //Geração de PDF - posteriormente abstrair para outra classe
+            using (var doc = new PdfSharp.Pdf.PdfDocument())
+            {
+                var page = doc.AddPage();
+                var graphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page);
+                var textFormatter = new PdfSharp.Drawing.Layout.XTextFormatter(graphics);
+                var font = new PdfSharp.Drawing.XFont("Arial", 14);
+            }
+
+
+                return View(laudo);
         }
 
         //[HttpPost]
