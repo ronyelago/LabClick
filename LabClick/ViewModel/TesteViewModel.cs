@@ -18,5 +18,13 @@ namespace LabClick.ViewModel
         public Paciente Paciente { get; set; }
         public Exame Exame { get; set; }
         public Laudo Laudo { get; set; }
+
+        //public int IdadePaciente
+        //{
+        //    get
+        //    {
+        //        return Paciente.DataNascimento.Date - DateTime.Now.Date;
+        //    }
+        //}
     }
 }

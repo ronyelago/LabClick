@@ -2,13 +2,11 @@
 using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
 using LabClick.ViewModel;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace LabClick.Controllers
@@ -49,12 +47,12 @@ namespace LabClick.Controllers
         }
 
         [HttpPost]
-        public ActionResult GerarLaudo(TesteViewModel testeViewModel)
+        public ActionResult GerarLaudo(TesteViewModel testeViewModel, string indeterminado)
         {
             var laudoRepository = new LaudoRepository();
 
             //Altera o Status do Teste para "Análise concluída"
-            var teste = repository.GetById(testeViewModel.Id);
+            Teste teste = repository.GetById(testeViewModel.Id);
             teste.Status = "Análise concluída";
             repository.Update(teste);
 
@@ -62,76 +60,52 @@ namespace LabClick.Controllers
             laudo.Id = testeViewModel.Id;
             laudo.DataCadastro = DateTime.Now;
 
-            laudoRepository.Add(laudo);
-
             //Geração de PDF - posteriormente abstrair para outra classe
-            using (var doc = new PdfSharp.Pdf.PdfDocument())
+            PdfDocument document = new PdfDocument();
+
+            // Create a font
+            XFont font = new XFont("Arial", 8);
+
+            // Create a new page
+            PdfPage page = document.AddPage();
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+            //Logo
+            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\LaborLabisLogo.png"), 20, 20, 210, 80);
+
+            //Desenho Cabeçalho
+            gfx.DrawLine(XPens.MidnightBlue, 40, 135, 572, 135);
+            gfx.DrawLine(XPens.MidnightBlue, 40, 135, 40, 200);
+            gfx.DrawLine(XPens.MidnightBlue, 40, 200, 572, 200);
+            gfx.DrawLine(XPens.MidnightBlue, 572, 200, 572, 135);
+            gfx.DrawLine(XPens.MidnightBlue, 204, 135, 204, 200);
+            gfx.DrawLine(XPens.MidnightBlue, 408, 135, 408, 200);
+
+
+            //Paciente
+            gfx.DrawString($"Nome: {teste.Paciente.Nome}", font,
+              XBrushes.Black, 50, 150, XStringFormats.Default);
+            gfx.DrawString($"Idade: {teste.Paciente.DataNascimento}", font,
+                XBrushes.Black, 50, 160, XStringFormats.Default);
+            gfx.DrawString($"Cidade: {teste.Paciente.Endereco.Cidade}", font,
+                XBrushes.Black, 50, 170, XStringFormats.Default);
+            gfx.DrawString($"CEP: {teste.Paciente.Endereco.Cep}", font,
+                XBrushes.Black, 50, 180, XStringFormats.Default);
+            gfx.DrawString($"CPF: {teste.Paciente.Cpf}", font,
+                XBrushes.Black, 250, 150, XStringFormats.Default);
+
+
+            //PdfDocument to byte array
+            using (MemoryStream stream = new MemoryStream())
             {
-                var page = doc.AddPage();
-                var graphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page);
-                var textFormatter = new PdfSharp.Drawing.Layout.XTextFormatter(graphics);
-                var font = new PdfSharp.Drawing.XFont("Arial", 14);
+                document.Save(stream);
+                laudo.Documento = stream.ToArray();
+                //laudoRepository.Add(laudo);
 
-                textFormatter.DrawString(testeViewModel.Paciente.Nome, 
-                    font, PdfSharp.Drawing.XBrushes.Blue, new PdfSharp.Drawing.XRect());
+                return File(stream.ToArray(), "application/pdf");
 
-                //PdfDocument to byte array
-                using (MemoryStream stream = new MemoryStream())
-                {
-                    doc.Save(stream);
-                    
-
-                    return File(stream.ToArray(), "application/pdf");
-                }
             }
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Avaliar(Teste teste, string laudo, string observacao, string vindeterminado, HttpPostedFileBase file)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        repository.Update(teste);
-
-        //        Resultado resultado = new Resultado();
-
-        //        if (file == null)
-        //        {
-        //            resultado.Tabela = null;
-        //        }
-        //        else
-        //        {
-        //            try
-        //            {
-
-        //                string _FileName = Path.GetFileName(file.FileName);
-        //                string _path = System.IO.Path.Combine(Server.MapPath("~/Content/Uploads/Laudos/"), _FileName);
-        //                file.SaveAs(_path);
-        //                resultado.Tabela = "/Content/Uploads/Laudos/" + _FileName;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                TempData["MensagemErro"] = ex.Message;
-        //            }
-        //        }
-        //        resultado.ExameId = teste.ExameId;
-        //        resultado.TesteId = teste.Id;
-        //        resultado.Laudo = laudo + " " + vindeterminado;
-        //        resultado.observacao = observacao;
-        //        resultado.data_inserido = DateTime.Now;
-        //        resultado.documento = null;
-        //        db.RESULTADO.Add(resultado);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.id_exame = new SelectList(db.EXAME, "id", "nome_exame", teste.id_exame);
-        //    ViewBag.id_laboratorio = new SelectList(db.LABORATORIO, "id", "nome_clinica", teste.id_clinica);
-        //    ViewBag.id_paciente = new SelectList(db.PACIENTE, "id", "nome_paciente", teste.id_paciente);
-
-        //    return View(teste);
-        //}
 
         protected override void Dispose(bool disposing)
         {
