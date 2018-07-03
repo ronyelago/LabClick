@@ -36,11 +36,11 @@ namespace LabClick.Controllers
             }
 
             //Altera o Status do Teste para "Em análise"
-            if (teste.Status == "Aguardando análise")
-            {
-                teste.Status = "Em análise";
-                repository.Update(teste);
-            }
+            //if (teste.Status == "Aguardando análise")
+            //{
+            //    teste.Status = "Em análise";
+            //    repository.Update(teste);
+            //}
 
             var testeViewModel = Mapper.Map<TesteViewModel>(teste);
 
@@ -73,6 +73,7 @@ namespace LabClick.Controllers
 
             //Logo
             gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\LaborLabisLogo.png"), 20, 20, 210, 80);
+            gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 70);
 
             //Desenho Cabeçalho
             gfx.DrawLine(XPens.MidnightBlue, 40, 135, 572, 135);
@@ -107,6 +108,8 @@ namespace LabClick.Controllers
             {
                 document.Save(stream);
                 laudo.Documento = stream.ToArray();
+
+                //Salva o laudo do teste
                 //laudoRepository.Add(laudo);
 
                 return File(stream.ToArray(), "application/pdf");
