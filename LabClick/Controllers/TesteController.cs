@@ -4,6 +4,7 @@ using LabClick.Infra.Repositories;
 using LabClick.ViewModel;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
+using Support;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -81,7 +82,6 @@ namespace LabClick.Controllers
             gfx.DrawLine(XPens.MidnightBlue, 204, 135, 204, 200);
             gfx.DrawLine(XPens.MidnightBlue, 408, 135, 408, 200);
 
-
             //Paciente
             gfx.DrawString($"Nome: {teste.Paciente.Nome}", font,
               XBrushes.Black, 50, 150, XStringFormats.Default);
@@ -93,6 +93,13 @@ namespace LabClick.Controllers
                 XBrushes.Black, 50, 180, XStringFormats.Default);
             gfx.DrawString($"CPF: {teste.Paciente.Cpf}", font,
                 XBrushes.Black, 250, 150, XStringFormats.Default);
+
+            //Imagem do Teste
+            Stream str = new MemoryStream(teste.Imagem);
+            XImage xImage = XImage.FromStream(str);
+            gfx.DrawImage(xImage, 40, 250, 300, 100);
+
+
 
 
             //PdfDocument to byte array

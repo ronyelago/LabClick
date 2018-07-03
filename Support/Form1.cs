@@ -18,32 +18,15 @@ namespace Support
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string url = txtGet.Text;
-            var jsonTeste = Senders.GetTesteById(url);
-            Teste teste = JsonConvert.DeserializeObject<Teste>(jsonTeste);
-
-            pictureBox.Image = ImageControl.ConvertByteToImage(teste.Imagem);
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-        }
-
         private void btnPost_Click(object sender, EventArgs e)
         {
-            var str = File.ReadAllBytes(txtPost.Text);
-
             var Teste = new
             {
-                ExameId = 1,
-                ClinicaId = 1,
-                PacienteId = 1,
-                Imagem = str,
-                Status = "Em análise",
+                ExameId = int.Parse(tboExameId.Text),
+                ClinicaId = int.Parse(tboClinicaId.Text),
+                PacienteId = int.Parse(tboPacienteId.Text),
+                Imagem = ImageControl.ConvertFileToByte(pbImagemTeste),
+                Status = tboStatus.Text,
                 DataCadastro = DateTime.Now
             };
 
@@ -74,6 +57,11 @@ namespace Support
         private void btnSeed_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            ImageControl.SelectImage(pbImagemTeste);
         }
     }
 }

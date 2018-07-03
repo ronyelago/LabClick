@@ -46,7 +46,7 @@ namespace Support
             ofd.Multiselect = false;
 
             // Especifica quais os filtros de extensão de arquivos poderão ser exibidos
-            ofd.Filter = "JPG|*.jpg|PNG|*.png|GIF|*.gif";
+            ofd.Filter = "JPG|*.jpeg|PNG|*.png|GIF|*.gif";
 
             // Ação do botão Ok
             if (ofd.ShowDialog() == DialogResult.OK)
