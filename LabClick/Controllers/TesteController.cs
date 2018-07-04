@@ -72,29 +72,35 @@ namespace LabClick.Controllers
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            //Logo
+            //Logo e email
             gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\LaborLabisLogo.png"), 20, 20, 210, 80);
             gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 70);
 
             //Desenho Cabeçalho
-            gfx.DrawLine(XPens.MidnightBlue, 40, 135, 572, 135);
-            gfx.DrawLine(XPens.MidnightBlue, 40, 135, 40, 200);
-            gfx.DrawLine(XPens.MidnightBlue, 40, 200, 572, 200);
-            gfx.DrawLine(XPens.MidnightBlue, 572, 200, 572, 135);
-            gfx.DrawLine(XPens.MidnightBlue, 204, 135, 204, 200);
-            gfx.DrawLine(XPens.MidnightBlue, 408, 135, 408, 200);
+            //Linha superior
+            gfx.DrawLine(XPens.MidnightBlue, 25, 135, 587, 135);
+            //Linha lateral esquerda
+            gfx.DrawLine(XPens.MidnightBlue, 25, 135, 25, 200);
+            //Linha inferior
+            gfx.DrawLine(XPens.MidnightBlue, 25, 200, 587, 200);
+            //Linha lateral direita
+            gfx.DrawLine(XPens.MidnightBlue, 587, 200, 587, 135);
+            //linha interna esquerda
+            gfx.DrawLine(XPens.MidnightBlue, 306, 135, 306, 200);
+            //linha interna direita
+            gfx.DrawLine(XPens.MidnightBlue, 445, 135, 445, 200);
 
-            //Paciente
+            //Dados do Paciente
             gfx.DrawString($"Nome: {teste.Paciente.Nome}", font,
-              XBrushes.Black, 50, 150, XStringFormats.Default);
+              XBrushes.Black, 35, 150, XStringFormats.Default);
             gfx.DrawString($"Idade: {testeViewModel.IdadePaciente} anos", font,
-                XBrushes.Black, 50, 160, XStringFormats.Default);
+                XBrushes.Black, 35, 160, XStringFormats.Default);
             gfx.DrawString($"Cidade: {teste.Paciente.Endereco.Cidade}", font,
-                XBrushes.Black, 50, 170, XStringFormats.Default);
+                XBrushes.Black, 35, 170, XStringFormats.Default);
             gfx.DrawString($"CEP: {teste.Paciente.Endereco.Cep}", font,
-                XBrushes.Black, 50, 180, XStringFormats.Default);
+                XBrushes.Black, 35, 180, XStringFormats.Default);
             gfx.DrawString($"CPF: {teste.Paciente.Cpf}", font,
-                XBrushes.Black, 230, 150, XStringFormats.Default);
+                XBrushes.Black, 214, 150, XStringFormats.Default);
 
             //Área e Imagem do Teste
 
