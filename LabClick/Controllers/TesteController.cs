@@ -87,14 +87,14 @@ namespace LabClick.Controllers
             //Paciente
             gfx.DrawString($"Nome: {teste.Paciente.Nome}", font,
               XBrushes.Black, 50, 150, XStringFormats.Default);
-            gfx.DrawString($"Idade: {teste.Paciente.DataNascimento}", font,
+            gfx.DrawString($"Idade: {testeViewModel.IdadePaciente} anos", font,
                 XBrushes.Black, 50, 160, XStringFormats.Default);
             gfx.DrawString($"Cidade: {teste.Paciente.Endereco.Cidade}", font,
                 XBrushes.Black, 50, 170, XStringFormats.Default);
             gfx.DrawString($"CEP: {teste.Paciente.Endereco.Cep}", font,
                 XBrushes.Black, 50, 180, XStringFormats.Default);
             gfx.DrawString($"CPF: {teste.Paciente.Cpf}", font,
-                XBrushes.Black, 250, 150, XStringFormats.Default);
+                XBrushes.Black, 230, 150, XStringFormats.Default);
 
             //Área e Imagem do Teste
 
