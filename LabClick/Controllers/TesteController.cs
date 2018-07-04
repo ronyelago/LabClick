@@ -61,6 +61,7 @@ namespace LabClick.Controllers
             laudo.Id = testeViewModel.Id;
             laudo.DataCadastro = DateTime.Now;
 
+            #region Geração do PDF
             //Geração de PDF - posteriormente abstrair para outra classe
             PdfDocument document = new PdfDocument();
 
@@ -97,13 +98,16 @@ namespace LabClick.Controllers
 
             //Área e Imagem do Teste
 
-            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\Resultado.png"), 40, 230, 15, 15);
+            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\Resultado.PNG"), 40, 220, 75, 17);
 
             Stream str = new MemoryStream(teste.Imagem);
             XImage xImage = XImage.FromStream(str);
             gfx.DrawImage(xImage, 40, 250, 300, 100);
 
+            //Rodapé e assinatura
+            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\rodape.PNG"), 30, 690, 560, 80);
 
+            #endregion
 
 
             //PdfDocument to byte array
