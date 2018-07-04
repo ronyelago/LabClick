@@ -101,6 +101,10 @@ namespace LabClick.Controllers
                 XBrushes.Black, 35, 180, XStringFormats.Default);
             gfx.DrawString($"CPF: {teste.Paciente.Cpf}", font,
                 XBrushes.Black, 214, 150, XStringFormats.Default);
+            gfx.DrawString($"Sexo: {teste.Paciente.Sexo}", font, 
+                XBrushes.Black, 214, 160, XStringFormats.Default);
+            gfx.DrawString($"UF: {teste.Paciente.Endereco.UF}", font,
+                XBrushes.Black, 214, 170, XStringFormats.Default);
 
             //Área e Imagem do Teste
 
