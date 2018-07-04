@@ -95,7 +95,10 @@ namespace LabClick.Controllers
             gfx.DrawString($"CPF: {teste.Paciente.Cpf}", font,
                 XBrushes.Black, 250, 150, XStringFormats.Default);
 
-            //Imagem do Teste
+            //Área e Imagem do Teste
+
+            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\Resultado.png"), 40, 230, 15, 15);
+
             Stream str = new MemoryStream(teste.Imagem);
             XImage xImage = XImage.FromStream(str);
             gfx.DrawImage(xImage, 40, 250, 300, 100);
