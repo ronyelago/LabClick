@@ -2,9 +2,6 @@
 using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
 using LabClick.ViewModel;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using Support;
 using System;
 using System.Collections.Generic;
 using System.IO;

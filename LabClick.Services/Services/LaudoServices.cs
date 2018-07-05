@@ -3,7 +3,9 @@ using LabClick.Infra.Repositories;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace LabClick.Services.Services
 {
@@ -14,6 +16,32 @@ namespace LabClick.Services.Services
         public LaudoServices()
         {
             repository = new LaudoRepository();
+        }
+
+        public void New(Laudo laudo)
+
+        {
+            repository.Add(laudo);
+        }
+
+        public void Update(Laudo laudo)
+        {
+            repository.Update(laudo);
+        }
+
+        public Laudo GetById(int id)
+        {
+            return repository.GetById(id);
+        }
+
+        public List<Laudo> GetAll()
+        {
+            return repository.GetAll().ToList();
+        }
+
+        public void Delete(Laudo laudo)
+        {
+            repository.Remove(laudo);
         }
 
         public PdfDocument GerarLaudoPdf(Teste teste)
