@@ -4,5 +4,6 @@ namespace LabClick.Domain.Data.Interfaces
 {
     public interface ILaudoRepository : IRepositoryBase<Laudo>
     {
+
     }
 }

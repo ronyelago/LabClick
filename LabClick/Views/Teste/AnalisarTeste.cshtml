@@ -6,6 +6,7 @@
 
     var Options = new List<SelectListItem>
     {
+        new SelectListItem { Text = "Selecione..." },
     new SelectListItem { Text = "Solicitar envio do cassete/fita do teste rápido para releitura" },
     new SelectListItem { Text = "Repetir teste rápido" },
     new SelectListItem { Text = "Repetir o teste utilizando metodologia com maior sensibilidade" }
@@ -79,8 +80,8 @@
             </div>
             <div class="radio">
                 @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
-                <label>Indeterminado</label>
-                @Html.DropDownList("indeterminado", Options)
+                <label>Indeterminado/Inválido   </label>
+                @Html.DropDownList("IndeterminadoDescricao", Options)
             </div>
         </div>
         <div class="form-group" style="border-style: groove; padding: 20px; margin: 10px">

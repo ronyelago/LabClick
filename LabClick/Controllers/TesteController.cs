@@ -48,8 +48,13 @@ namespace LabClick.Controllers
         }
 
         [HttpPost]
-        public ActionResult GerarLaudo(TesteViewModel testeViewModel, string indeterminado)
+        public ActionResult GerarLaudo(TesteViewModel testeViewModel)
         {
+            if (testeViewModel.Laudo.Resultado == "Indeterminado")
+            {
+                testeViewModel.Laudo.Resultado += $": {testeViewModel.IndeterminadoDescricao}";
+            }
+
             var laudoRepository = new LaudoRepository();
 
             //Altera o Status do Teste para "Análise concluída"
@@ -57,12 +62,15 @@ namespace LabClick.Controllers
             teste.Status = "Análise concluída";
             repository.Update(teste);
 
+            //Geração do Laudo
             Laudo laudo = testeViewModel.Laudo;
             laudo.Id = testeViewModel.Id;
             laudo.DataCadastro = DateTime.Now;
 
-            #region Geração do PDF
-            //Geração de PDF - posteriormente abstrair para outra classe
+
+
+            #region Geração do PDF (Laudo)
+            //*******************************************************
             PdfDocument document = new PdfDocument();
 
             // Create a font
@@ -106,7 +114,11 @@ namespace LabClick.Controllers
             gfx.DrawString($"UF: {teste.Paciente.Endereco.UF}", font,
                 XBrushes.Black, 214, 170, XStringFormats.Default);
 
-            //Área e Imagem do Teste
+            //Dados do Teste
+            gfx.DrawString($"Data do Teste: {teste.DataCadastro}", font,
+                XBrushes.Black, 316, 150, XStringFormats.Default);
+
+            //Resultado e Imagem do Teste
 
             gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\Resultado.PNG"), 40, 220, 75, 17);
 
