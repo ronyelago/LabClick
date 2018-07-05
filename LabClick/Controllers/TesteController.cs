@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
+using LabClick.Services.Services;
 using LabClick.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace LabClick.Controllers
     public class TesteController : Controller
     {
         private readonly TesteRepository repository = new TesteRepository();
+        private readonly LaudoServices service = new LaudoServices();
 
         //Listagem de todos os testes ordenados por data de cadastro
         public ActionResult Testes()
@@ -66,7 +68,7 @@ namespace LabClick.Controllers
 
 
 
-            
+            var document = service.GerarLaudoPdf(teste);
 
 
             //PdfDocument to byte array

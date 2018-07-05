@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace LabClick.Services.Services
 {
-    class LaudoServices
+    public class LaudoServices
     {
         private readonly LaudoRepository repository;
 
