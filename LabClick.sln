@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabClick.Infra", "LabClick.Infra\LabClick.Infra.csproj", "{9D0578A9-C763-4937-BDFE-03557ACF1AC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabClick.Services", "LabClick.Services\LabClick.Services.csproj", "{48FF8990-F35A-46C2-8596-ED544EC8AF40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabClick.Services", "LabClick.Services\LabClick.Services.csproj", "{3C323BC0-D0AA-409C-895E-E6323379835A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,10 @@ Global
 		{9D0578A9-C763-4937-BDFE-03557ACF1AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9D0578A9-C763-4937-BDFE-03557ACF1AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D0578A9-C763-4937-BDFE-03557ACF1AC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{48FF8990-F35A-46C2-8596-ED544EC8AF40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48FF8990-F35A-46C2-8596-ED544EC8AF40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48FF8990-F35A-46C2-8596-ED544EC8AF40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48FF8990-F35A-46C2-8596-ED544EC8AF40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C323BC0-D0AA-409C-895E-E6323379835A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C323BC0-D0AA-409C-895E-E6323379835A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C323BC0-D0AA-409C-895E-E6323379835A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C323BC0-D0AA-409C-895E-E6323379835A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

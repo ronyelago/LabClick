@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{48FF8990-F35A-46C2-8596-ED544EC8AF40}</ProjectGuid>
+    <ProjectGuid>{3C323BC0-D0AA-409C-895E-E6323379835A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LabClick.Services</RootNamespace>

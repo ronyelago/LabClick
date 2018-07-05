@@ -7,7 +7,7 @@ using System.IO;
 
 namespace LabClick.Services.Services
 {
-    class LaudoServices : LaudoRepository
+    class LaudoServices
     {
         private readonly LaudoRepository repository;
 
