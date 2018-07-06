@@ -83,16 +83,59 @@ namespace LabClick.Controllers
                 laudoRepository.Add(laudo);
 
                 return File(stream.ToArray(), "application/pdf");
-
             }
         }
 
         public ActionResult Editar(int id)
         {
+            Teste teste = repository.GetById(id);
+            var testeViewModel = Mapper.Map<TesteViewModel>(teste);
 
+            testeViewModel.Laudo.Resultado = string.Empty;
+            testeViewModel.Laudo.Observacoes = string.Empty;
 
+            return View(testeViewModel);
+        }
 
-            return RedirectToAction("Testes");
+        [HttpPost]
+        public ActionResult Editar(TesteViewModel model)
+        {
+            Teste teste = repository.GetById(model.Id);
+            var laudoRepository = new LaudoRepository();
+
+            //Geração do Laudo
+            Laudo laudo = model.Laudo;
+            laudo.Id = teste.Id;
+            laudo.DataCadastro = DateTime.Now;
+
+            if (model.Laudo.Resultado == "Indeterminado")
+            {
+                teste.Status = "Indeterminado";
+                repository.Update(teste);
+
+                laudo.Resultado += $": {model.IndeterminadoDescricao}";
+                service.New(laudo);
+
+                return RedirectToAction("Testes");
+            }
+
+            teste.LaudoOk = true;
+            teste.Status = "Análise concluída";
+            repository.Update(teste);
+
+            var document = service.GerarLaudoPdf(teste);
+            //PdfDocument to byte array
+            using (MemoryStream stream = new MemoryStream())
+            {
+                document.Save(stream);
+                laudo.Documento = stream.ToArray();
+
+                //Salva o laudo do teste
+                laudoRepository.Update(laudo);
+
+                return File(stream.ToArray(), "application/pdf");
+
+            }
         }
 
         protected override void Dispose(bool disposing)
