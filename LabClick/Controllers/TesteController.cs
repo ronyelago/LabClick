@@ -49,28 +49,30 @@ namespace LabClick.Controllers
         [HttpPost]
         public ActionResult GerarLaudo(TesteViewModel testeViewModel)
         {
-            if (testeViewModel.Laudo != null)
+            Teste teste = repository.GetById(testeViewModel.Id);
+            var laudoRepository = new LaudoRepository();
+            
+            //Geração do Laudo
+            Laudo laudo = testeViewModel.Laudo;
+            laudo.Id = teste.Id;
+            laudo.DataCadastro = DateTime.Now;
+
+            if (testeViewModel.Laudo.Resultado == "Indeterminado")
             {
-                return View("Editar", testeViewModel);
+                teste.Status = "Indeterminado";
+                repository.Update(teste);
+
+                laudo.Resultado += $": {testeViewModel.IndeterminadoDescricao}";
+                service.New(laudo);
+
+                return RedirectToAction("Testes");
             }
 
-            var laudoRepository = new LaudoRepository();
-
-            //Altera o Status do Teste para "Análise concluída"
-            Teste teste = repository.GetById(testeViewModel.Id);
+            teste.LaudoOk = true;
             teste.Status = "Análise concluída";
             repository.Update(teste);
 
-            //Geração do Laudo
-            Laudo laudo = testeViewModel.Laudo;
-            laudo.Id = testeViewModel.Id;
-            laudo.DataCadastro = DateTime.Now;
-
-
-
             var document = service.GerarLaudoPdf(teste);
-
-
             //PdfDocument to byte array
             using (MemoryStream stream = new MemoryStream())
             {
@@ -78,11 +80,19 @@ namespace LabClick.Controllers
                 laudo.Documento = stream.ToArray();
 
                 //Salva o laudo do teste
-                //laudoRepository.Add(laudo);
+                laudoRepository.Add(laudo);
 
                 return File(stream.ToArray(), "application/pdf");
 
             }
+        }
+
+        public ActionResult Editar(int id)
+        {
+
+
+
+            return RedirectToAction("Testes");
         }
 
         protected override void Dispose(bool disposing)
