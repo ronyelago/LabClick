@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201806282025006_Primeira.Designer.cs">
       <DependentUpon>201806282025006_Primeira.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807061442002_Flag.cs" />
+    <Compile Include="Migrations\201807061442002_Flag.Designer.cs">
+      <DependentUpon>201807061442002_Flag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClinicaRepository.cs" />
@@ -85,6 +89,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806282025006_Primeira.resx">
       <DependentUpon>201806282025006_Primeira.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807061442002_Flag.resx">
+      <DependentUpon>201807061442002_Flag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
