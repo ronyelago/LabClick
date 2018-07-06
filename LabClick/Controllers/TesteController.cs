@@ -49,9 +49,9 @@ namespace LabClick.Controllers
         [HttpPost]
         public ActionResult GerarLaudo(TesteViewModel testeViewModel)
         {
-            if (testeViewModel.Laudo.Resultado == "Indeterminado")
+            if (testeViewModel.Laudo != null)
             {
-                testeViewModel.Laudo.Resultado += $": {testeViewModel.IndeterminadoDescricao}";
+                return View("Editar", testeViewModel);
             }
 
             var laudoRepository = new LaudoRepository();
