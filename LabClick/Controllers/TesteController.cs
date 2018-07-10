@@ -144,6 +144,7 @@ namespace LabClick.Controllers
             {
                 repository.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }
