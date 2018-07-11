@@ -14,172 +14,228 @@
 }
 
 <div class="form-horizontal" style="width: 700px; border: groove; padding: 20px; align-self: center">
-    <div>
-        <h3>Análise de Teste - @Model.Exame.Nome</h3>
-    </div>
-    <div style="border-style: groove; padding: 20px; margin: 10px">
-        <div class="form-group">
-            @Html.Label("Exame:")
-            @Html.DisplayFor(model => model.Exame.Nome)
-        </div>
-        <div class="form-group">
-            @Html.Label("Status:")
-            @Html.DisplayFor(model => model.Status)
-        </div>
-        <div class="form-group">
-            @Html.Label("Data do Teste:")
-            @Html.DisplayFor(model => model.DataTeste)
-        </div>
-        <div class="form-group">
-            @Html.Label("Hora do Teste:")
-            @Html.DisplayFor(model => model.HoraTeste)
-        </div>
-    </div>
-    <div style="border-style: groove; padding: 20px; margin: 10px">
-        <div class="form-group">
-            @Html.Label("Nome do Paciente:")
-            @Html.DisplayFor(model => model.Paciente.Nome)
-        </div>
-        <div class="form-group">
-            @Html.Label("Clínica:")
-            @Html.DisplayFor(model => model.Clinica.Nome)
-        </div>
-    </div>
-    <div style="border-style: groove; padding: 20px; margin: 10px">
-        <div>
-            @Html.Label("Imagem do Teste/Cassete")
-        </div>
-        <div>
-            <img src="@imgSrc" id="TesteImg" alt="Imagem do Teste/Cassete" style="width:50%;max-width:200px" />
-            <!-- Modal -->
-            <div id="myModal" class="modalImage">
-                <span class="close">&times;</span>
-                <img class="modalImage-content" id="img01">
-                <div id="caption"></div>
-            </div>
-            <!--fim Modal-->
-        </div>
-    </div>
-    <div class="form-group" style="border-style: groove; padding: 20px; margin: 10px">
-        <div>
-            <label>Resultado da Análise</label>
-        </div>
-        <div>
-            <div class="radio">
-                @Html.RadioButtonFor(m => m.Laudo.Resultado, "Positivo")
-                <label>Positivo</label>
-            </div>
-            <div class="radio">
-                @Html.RadioButtonFor(m => m.Laudo.Resultado, "Negativo")
-                <label>Negativo</label>
-            </div>
-        </div>
-        <div class="radio">
-            @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
-            <label>Indeterminado/Inválido   </label>
-            @Html.DropDownList("IndeterminadoDescricao", Options)
-        </div>
-    </div>
-    <div class="form-group" style="border-style: groove; padding: 20px; margin: 10px">
-        <div>
-            <label>Observações</label>
-        </div>
-        <div>
-            @Html.TextAreaFor(m => m.Laudo.Observacoes)
-        </div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="formModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Laudo - Pré-visualização</h4>
+    @*@using (Html.BeginForm("GerarLaudo", "Teste", FormMethod.Post, new { @target = "_blank" }))
+    {*@
+        @Html.AntiForgeryToken()
+        <div>
+            <h3>Análise de Teste - @Model.Exame.Nome</h3>
+        </div>
+        <div style="border-style: groove; padding: 20px; margin: 10px">
+            <div class="form-group">
+                @Html.Label("Exame:")
+                @Html.DisplayFor(model => model.Exame.Nome)
+            </div>
+            <div class="form-group">
+                @Html.Label("Status:")
+                @Html.DisplayFor(model => model.Status)
+            </div>
+            <div class="form-group">
+                @Html.Label("Data do Teste:")
+                @Html.DisplayFor(model => model.DataTeste)
+            </div>
+            <div class="form-group">
+                @Html.Label("Hora do Teste:")
+                @Html.DisplayFor(model => model.HoraTeste)
+            </div>
+        </div>
+        <div style="border-style: groove; padding: 20px; margin: 10px">
+            <div class="form-group">
+                @Html.Label("Nome do Paciente:")
+                @Html.DisplayFor(model => model.Paciente.Nome)
+            </div>
+            <div class="form-group">
+                @Html.Label("Clínica:")
+                @Html.DisplayFor(model => model.Clinica.Nome)
+            </div>
+        </div>
+        <div style="border-style: groove; padding: 20px; margin: 10px">
+            <div>
+                @Html.Label("Imagem do Teste/Cassete")
+            </div>
+            <div>
+                <img src="@imgSrc" id="TesteImg" alt="Imagem do Teste/Cassete" style="width:50%;max-width:200px" />
+                <!-- Modal da Imagem -->
+                <div id="myModal" class="modalImage">
+                    <span class="close">&times;</span>
+                    <img class="modalImage-content" id="img01">
+                    <div id="caption"></div>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        @Html.Label("Exame:")
-                        @Html.DisplayFor(model => model.Exame.Nome)
-                    </div>
-                    <div class="form-group">
-                        @Html.Label("Status:")
-                        @Html.DisplayFor(model => model.Status)
-                    </div>
-                    <div class="form-group">
-                        @Html.Label("Data do Teste:")
-                        @Html.DisplayFor(model => model.DataTeste)
-                    </div>
-                    <div class="form-group">
-                        @Html.Label("Hora do Teste:")
-                        @Html.DisplayFor(model => model.HoraTeste)
-                    </div>
+                <!--fim Modal-->
+            </div>
+        </div>
+        <div class="form-group" id="divResultado" style="border-style: groove; padding: 20px; margin: 10px">
+            <div>
+                <label>Resultado da Análise</label>
+            </div>
+            <div>
+                <div class="radio">
+                    @Html.RadioButtonFor(m => m.Laudo.Resultado, "Positivo")
+                    @Html.ValidationMessageFor(m => m.Laudo.Resultado)
+                    <label>Positivo</label>
                 </div>
-                <div style="border-style: groove; padding: 20px; margin: 10px">
-                    <div class="form-group">
-                        @Html.Label("Nome do Paciente:")
-                        @Html.DisplayFor(model => model.Paciente.Nome)
-                    </div>
-                    <div class="form-group">
-                        @Html.Label("Clínica:")
-                        @Html.DisplayFor(model => model.Clinica.Nome)
-                    </div>
-                    <div class="form-group">
-                        @Html.Label("Resultado:")
-                        <label id="lblResultado"></label>
-                    </div>
+                <div class="radio">
+                    @Html.RadioButtonFor(m => m.Laudo.Resultado, "Negativo")
+                    @Html.ValidationMessageFor(m => m.Laudo.Resultado)
+                    <label>Negativo</label>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-default" id="concluir">Concluir</button>
+            </div>
+            <div class="radio">
+                @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
+                @Html.ValidationMessageFor(m => m.Laudo.Resultado)
+                <label>Indeterminado/Inválido   </label>
+                @Html.DropDownList("IndeterminadoDescricao", Options)
+            </div>
+        </div>
+        <div class="form-group" style="border-style: groove; padding: 20px; margin: 10px">
+            <div>
+                <label>Observações</label>
+            </div>
+            <div>
+                @Html.TextAreaFor(m => m.Laudo.Observacoes)
+            </div>
+        </div>
+
+        <!-- Modal de Laudo-->
+        <div class="modal fade" id="formModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Laudo - Pré-visualização</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            @Html.Label("Exame:")
+                            @Html.DisplayFor(model => model.Exame.Nome)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Status:")
+                            @Html.DisplayFor(model => model.Status)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Data do Teste:")
+                            @Html.DisplayFor(model => model.DataTeste)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Hora do Teste:")
+                            @Html.DisplayFor(model => model.HoraTeste)
+                        </div>
+                    </div>
+                    <div style="border-style: groove; padding: 20px; margin: 10px">
+                        <div class="form-group">
+                            @Html.Label("Nome do Paciente:")
+                            @Html.DisplayFor(model => model.Paciente.Nome)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Clínica:")
+                            @Html.DisplayFor(model => model.Clinica.Nome)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Resultado:")
+                            <label id="lblResultado"></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" id="btnConcluir" class="btn btn-default">Gerar Laudo</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--Fim Modal-->
+        <!--Fim Modal-->
 
-    <div>
-        <button type="button" onclick="getResult()" class="btn btn-info btn-lg" data-toggle="modal" data-target="#formModal">Gerar Laudo</button>
-    </div>
-    @Html.HiddenFor(m => m.Id)
-    @Html.HiddenFor(m => m.Paciente.Nome)
-    @Html.HiddenFor(m => m.Paciente.Cpf)
-    @Html.HiddenFor(m => m.Exame.Nome)
-    @Html.HiddenFor(m => m.Paciente.DataNascimento)
+        <div>
+            <button type="button" 
+                    onclick="getResult()" 
+                    class="btn btn-info btn-lg" 
+                    id="btnGerarLaudo">
+                Gerar Laudo
+            </button>
+        </div>
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.Paciente.Nome)
+        @Html.HiddenFor(m => m.Paciente.Cpf)
+        @Html.HiddenFor(m => m.Exame.Nome)
+        @Html.HiddenFor(m => m.Paciente.DataNascimento)
+    @*}*@
 
 </div>
 
-<script>
-    // Get the modal
-    var modal = document.getElementById('myModal');
+@section Scripts
+{
+    <script>
 
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = document.getElementById('TesteImg');
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
-    img.onclick = function () {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
-    }
+        $(document).ready(function () {
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+            $('#btnGerarLaudo').click(function () {
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
+                if ($("#Laudo_Resultado:checked").val() != null) {
+                    $('#erro').remove();
+                    $('#formModal').modal('toggle');
+                }
+                else {
+                    $('#erro').remove();
+                    $('#divResultado').prepend($('<div id="erro" style="color: red;"><strong>Favor definir um resultado para o Teste</strong></div>'))
+                    $('#divResultado').css('border-color', 'red')
+                }
+            })
 
-    function getResult() {
+            $('#btnConcluir').click(function () {
 
-        $("#lblResultado").text("")
-        var result = $("#Laudo_Resultado:checked").val()
-        $("#lblResultado").append(result)
-    }
+                var testeViewModel = {
+                    Id: $('#Id').val(),
+                    Laudo: {
+                        Resultado: $("#Laudo_Resultado:checked").val(),
+                        Observacoes: $('#Laudo_Observacoes').val()
+                    },
+                    Paciente: {
+                        Nome: $('#Paciente_Nome').val(),
+                        Cpf: $('#Paciente_Cpf').val(),
+                        DataNascimento: $('#Paciente_DataNascimento').val()
+                    },
+                    Exame: {
+                        Nome: $('#Exame_Nome').val()
+                    }
+                }
 
 
-</script>
+            })
+        })
+
+
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('TesteImg');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        function getResult() {
+
+            $("#lblResultado").text("")
+            var result = $("#Laudo_Resultado:checked").val()
+            $("#lblResultado").append(result)
+        }
+
+    </script>
+}
+
+
 
 <style>
     body {
