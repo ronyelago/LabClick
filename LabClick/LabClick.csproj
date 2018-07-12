@@ -116,6 +116,7 @@
     <Content Include="Content\styles\css\lightbox.min.css" />
     <Content Include="Content\styles\css\menu.css" />
     <Content Include="Content\styles\css\pe-icon-7-stroke.min.css" />
+    <Content Include="Content\styles\css\test-image.css" />
     <Content Include="Content\styles\css\theme-debbie.css" />
     <Content Include="Content\styles\css\theme-hot.css" />
     <Content Include="Content\styles\css\theme-jaded.css" />
@@ -177,6 +178,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\test-image.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -5,12 +5,12 @@
     var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 
     var Options = new List<SelectListItem>
-    {
-        new SelectListItem { Text = "Selecione..." },
-        new SelectListItem { Text = "Solicitar envio do cassete/fita do teste rápido para releitura" },
-        new SelectListItem { Text = "Repetir teste rápido" },
-        new SelectListItem { Text = "Repetir o teste utilizando metodologia com maior sensibilidade" }
-    };
+{
+new SelectListItem { Text = "Selecione..." },
+new SelectListItem { Text = "Solicitar envio do cassete/fita do teste rápido para releitura" },
+new SelectListItem { Text = "Repetir teste rápido" },
+new SelectListItem { Text = "Repetir o teste utilizando metodologia com maior sensibilidade" }
+};
 }
 
 <div class="form-horizontal">
@@ -102,3 +102,5 @@
     }
 </div>
 
+@Styles.Render(@"~/Content/styles/css/test-image.css")
+@Scripts.Render("~/Scripts/test-image.js")
