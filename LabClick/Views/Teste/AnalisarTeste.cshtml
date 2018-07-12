@@ -15,8 +15,8 @@
 
 <div class="form-horizontal" style="width: 700px; border: groove; padding: 20px; align-self: center">
 
-    @*@using (Html.BeginForm("GerarLaudo", "Teste", FormMethod.Post, new { @target = "_blank" }))
-    {*@
+    @using (Html.BeginForm("GerarLaudo", "Teste", FormMethod.Post, new { @target = "_blank" }))
+    {
         @Html.AntiForgeryToken()
         <div>
             <h3>Análise de Teste - @Model.Exame.Nome</h3>
@@ -138,7 +138,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        <button type="button" id="btnConcluir" class="btn btn-default">Gerar Laudo</button>
+                        <button type="submit" id="btnConcluir" class="btn btn-default">Concluir</button>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
         @Html.HiddenFor(m => m.Paciente.Cpf)
         @Html.HiddenFor(m => m.Exame.Nome)
         @Html.HiddenFor(m => m.Paciente.DataNascimento)
-    @*}*@
+    }
 
 </div>
 
@@ -179,29 +179,14 @@
                     $('#divResultado').prepend($('<div id="erro" style="color: red;"><strong>Favor definir um resultado para o Teste</strong></div>'))
                     $('#divResultado').css('border-color', 'red')
                 }
-            })
+            });
 
             $('#btnConcluir').click(function () {
 
-                var testeViewModel = {
-                    Id: $('#Id').val(),
-                    Laudo: {
-                        Resultado: $("#Laudo_Resultado:checked").val(),
-                        Observacoes: $('#Laudo_Observacoes').val()
-                    },
-                    Paciente: {
-                        Nome: $('#Paciente_Nome').val(),
-                        Cpf: $('#Paciente_Cpf').val(),
-                        DataNascimento: $('#Paciente_DataNascimento').val()
-                    },
-                    Exame: {
-                        Nome: $('#Exame_Nome').val()
-                    }
-                }
-
-
-            })
-        })
+                $('#formModal').modal('toggle');
+                window.location.href = "https://www.facebook.com.br";
+            });
+        });
 
 
         // Get the modal
