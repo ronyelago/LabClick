@@ -66,7 +66,7 @@
         </div>
         <div class="form-group" id="divResultado" style="border-style: groove; padding: 20px; margin: 10px">
             <div>
-                <label>Resultado da Análise</label>
+                <label>Resultado da Avaliação</label>
             </div>
             <div>
                 <div class="radio">
@@ -87,12 +87,22 @@
                 @Html.DropDownList("IndeterminadoDescricao", Options)
             </div>
         </div>
+
         <div class="form-group" style="border-style: groove; padding: 20px; margin: 10px">
             <div>
                 <label>Observações</label>
             </div>
             <div>
                 @Html.TextAreaFor(m => m.Laudo.Observacoes)
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <button class="btn btn-primary"><strong>@Html.ActionLink("Voltar", "Testes", "Teste", new { @style = "text-decoration: none; color: white" })</strong></button>
+            </div>
+            <div>
+                <button type="button" onclick="getResult()" class="btn btn-info btn-lg" id="btnGerarLaudo">Gerar Laudo</button>
             </div>
         </div>
 
@@ -144,20 +154,7 @@
             </div>
         </div>
         <!--Fim Modal-->
-        <div>
-            <div>
-                <button class="btn btn-primary"><strong>@Html.ActionLink("Voltar", "Testes", "Teste", new { @style = "text-decoration: none; color: white" })</strong></button>
-            </div>
-            <div>
-                <button type="button"
-                        onclick="getResult()"
-                        class="btn btn-info btn-lg"
-                        id="btnGerarLaudo">
-                    Gerar Laudo
-                </button>
-            </div>
-        </div>
-        
+
         @Html.HiddenFor(m => m.Id)
         @Html.HiddenFor(m => m.Paciente.Nome)
         @Html.HiddenFor(m => m.Paciente.Cpf)

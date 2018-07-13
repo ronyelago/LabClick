@@ -35,11 +35,11 @@ namespace LabClick.Controllers
             }
 
             //Altera o Status do Teste para "Em análise"
-            //if (teste.Status == "Aguardando análise")
-            //{
-            //    teste.Status = "Em análise";
-            //    repository.Update(teste);
-            //}
+            if (teste.Status == "Aguardando análise")
+            {
+                teste.Status = "Em análise";
+                repository.Update(teste);
+            }
 
             var testeViewModel = Mapper.Map<TesteViewModel>(teste);
 
@@ -63,7 +63,15 @@ namespace LabClick.Controllers
                 repository.Update(teste);
 
                 laudo.Resultado += $": {testeViewModel.IndeterminadoDescricao}";
-                service.New(laudo);
+
+                if (teste.Laudo != null)
+                {
+                    service.Update(laudo);
+                }
+                else
+                {
+                    service.New(laudo);
+                }
 
                 return RedirectToAction("Testes");
             }
@@ -79,63 +87,26 @@ namespace LabClick.Controllers
                 document.Save(stream);
                 laudo.Documento = stream.ToArray();
 
-                //Salva o laudo do teste
-                laudoRepository.Add(laudo);
+                //Salva ou atualiza o laudo
+                if (teste.Laudo != null)
+                {
+                    laudoRepository.Update(laudo);
+                }
+                else
+                {
+                    laudoRepository.Add(laudo);
+                }
+                
 
                 return File(stream.ToArray(), "application/pdf");
             }
         }
 
-        public ActionResult Editar(int id)
+        public ActionResult ViewPdf(int id)
         {
-            Teste teste = repository.GetById(id);
-            var testeViewModel = Mapper.Map<TesteViewModel>(teste);
+            var pdf = repository.GetById(id).Laudo.Documento;
 
-            testeViewModel.Laudo.Resultado = string.Empty;
-            testeViewModel.Laudo.Observacoes = string.Empty;
-
-            return View(testeViewModel);
-        }
-
-        [HttpPost]
-        public ActionResult Editar(TesteViewModel model)
-        {
-            Teste teste = repository.GetById(model.Id);
-            var laudoRepository = new LaudoRepository();
-
-            //Geração do Laudo
-            Laudo laudo = model.Laudo;
-            laudo.Id = teste.Id;
-            laudo.DataCadastro = DateTime.Now;
-
-            if (model.Laudo.Resultado == "Indeterminado")
-            {
-                teste.Status = "Indeterminado";
-                repository.Update(teste);
-
-                laudo.Resultado += $": {model.IndeterminadoDescricao}";
-                service.New(laudo);
-
-                return RedirectToAction("Testes");
-            }
-
-            teste.LaudoOk = true;
-            teste.Status = "Análise concluída";
-            repository.Update(teste);
-
-            var document = service.GerarLaudoPdf(teste);
-            //PdfDocument to byte array
-            using (MemoryStream stream = new MemoryStream())
-            {
-                document.Save(stream);
-                laudo.Documento = stream.ToArray();
-
-                //Salva o laudo do teste
-                laudoRepository.Update(laudo);
-
-                return File(stream.ToArray(), "application/pdf");
-
-            }
+            return File(pdf, "application/pdf");
         }
 
         protected override void Dispose(bool disposing)

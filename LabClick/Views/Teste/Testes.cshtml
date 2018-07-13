@@ -19,15 +19,15 @@
         <td>@teste.DataCadastro</td>
         @if (teste.Laudo == null)
         {
-            <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Analisar</a></td>
+            <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Avaliar</a></td>
         }
         else if (teste.Laudo != null && !teste.LaudoOk)
         {
-            <td><a href="@Url.Action("Editar", "Teste", new { id = teste.Id })">Reanalisar</a></td>
+            <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Reavaliar</a></td>
         }
         else
         {
-            <td><a href="@Url.Action("Editar", "Teste", new { id = teste.Id })">Detalhar</a></td>
+            <td><a target="_blank" href="@Url.Action("ViewPdf", "Teste", new { id = teste.Id })">Visualizar</a></td>
         }
     </tr>
     }
