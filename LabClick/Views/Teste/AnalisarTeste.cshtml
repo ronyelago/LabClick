@@ -11,6 +11,14 @@
         new SelectListItem { Text = "Repetir teste rápido" },
         new SelectListItem { Text = "Repetir o teste utilizando metodologia com maior sensibilidade" }
     };
+
+    var Details = new List<SelectListItem>
+    {
+        new SelectListItem { Text = "Selecione..." },
+        new SelectListItem { Text = "IgG Reagente" },
+        new SelectListItem { Text = "IgM Reagente" },
+        new SelectListItem { Text = "IgG/IgM Reagente" }
+    };
 }
 
 <div class="form-horizontal" style="width: 700px; border: groove; padding: 20px; align-self: center">
@@ -73,6 +81,7 @@
                     @Html.RadioButtonFor(m => m.Laudo.Resultado, "Positivo")
                     @Html.ValidationMessageFor(m => m.Laudo.Resultado)
                     <label>Positivo</label>
+                    @Html.DropDownList("ResultadoDetalhes", Details)
                 </div>
                 <div class="radio">
                     @Html.RadioButtonFor(m => m.Laudo.Resultado, "Negativo")
@@ -80,11 +89,13 @@
                     <label>Negativo</label>
                 </div>
             </div>
-            <div class="radio">
-                @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
-                @Html.ValidationMessageFor(m => m.Laudo.Resultado)
-                <label>Indeterminado/Inválido   </label>
-                @Html.DropDownList("IndeterminadoDescricao", Options)
+            <div>
+                <div class="radio">
+                    @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
+                    @Html.ValidationMessageFor(m => m.Laudo.Resultado)
+                    <label>Indeterminado/Inválido   </label>
+                    @Html.DropDownList("ResultadoDetalhes", Options)
+                </div>
             </div>
         </div>
 

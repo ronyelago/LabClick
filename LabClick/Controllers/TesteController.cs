@@ -59,10 +59,11 @@ namespace LabClick.Controllers
 
             if (testeViewModel.Laudo.Resultado == "Indeterminado")
             {
-                teste.Status = "Indeterminado";
+                teste.Status = "Pendente";
                 repository.Update(teste);
 
-                laudo.Resultado += $": {testeViewModel.IndeterminadoDescricao}";
+                laudo.Resultado = testeViewModel.Laudo.Resultado;
+                laudo.ResultadoDetalhes += testeViewModel.ResultadoDetalhes;
 
                 if (teste.Laudo != null)
                 {
