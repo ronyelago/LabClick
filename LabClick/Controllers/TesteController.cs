@@ -13,7 +13,7 @@ namespace LabClick.Controllers
     public class TesteController : Controller
     {
         private readonly TesteRepository repository = new TesteRepository();
-        private readonly LaudoServices service = new LaudoServices();
+        private readonly LaudoServices laudoService = new LaudoServices();
 
         //Listagem de todos os testes ordenados por data de cadastro
         public ActionResult Testes()
@@ -50,52 +50,35 @@ namespace LabClick.Controllers
         public ActionResult GerarLaudo(TesteViewModel testeViewModel)
         {
             Teste teste = repository.GetById(testeViewModel.Id);
-            var laudoRepository = new LaudoRepository();
             
             //Geração do Laudo
             Laudo laudo = testeViewModel.Laudo;
             laudo.Id = teste.Id;
             laudo.DataCadastro = DateTime.Now;
-            laudo.ResultadoDetalhes += testeViewModel.ResultadoDetalhes;
+            laudo.ResultadoDetalhes = testeViewModel.ResultadoDetalhes;
 
             if (testeViewModel.Laudo.Resultado == "Indeterminado")
             {
                 teste.Status = "Pendente";
+                teste.Laudo = laudo;
                 repository.Update(teste);
 
-                if (teste.Laudo != null)
-                {
-                    service.Update(laudo);
-                }
-                else
-                {
-                    service.New(laudo);
-                }
-
-                return RedirectToAction("Testes");
+                return Redirect("Dashboard"); 
             }
 
-            teste.LaudoOk = true;
-            teste.Status = "Análise concluída";
-            repository.Update(teste);
+            var document = laudoService.GerarLaudoPdf(teste, laudo);
 
-            var document = service.GerarLaudoPdf(teste);
             //PdfDocument to byte array
             using (MemoryStream stream = new MemoryStream())
             {
                 document.Save(stream);
                 laudo.Documento = stream.ToArray();
 
-                //Salva ou atualiza o laudo
-                if (teste.Laudo != null)
-                {
-                    laudoRepository.Update(laudo);
-                }
-                else
-                {
-                    laudoRepository.Add(laudo);
-                }
-                
+                teste.Laudo = laudo;
+                teste.Status = "Concluído";
+                teste.LaudoOk = true;
+
+                repository.Update(teste);
 
                 return File(stream.ToArray(), "application/pdf");
             }

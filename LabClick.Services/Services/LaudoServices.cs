@@ -44,7 +44,7 @@ namespace LabClick.Services.Services
             repository.Remove(laudo);
         }
 
-        public PdfDocument GerarLaudoPdf(Teste teste)
+        public PdfDocument GerarLaudoPdf(Teste teste, Laudo laudo)
         {
             #region Geração do PDF (Laudo)
             //*******************************************************
@@ -102,6 +102,11 @@ namespace LabClick.Services.Services
             Stream str = new MemoryStream(teste.Imagem);
             XImage xImage = XImage.FromStream(str);
             gfx.DrawImage(xImage, 40, 250, 300, 100);
+
+            gfx.DrawString($"{laudo.Resultado}", font,
+                XBrushes.Black, 40, 500);
+            gfx.DrawString($"{laudo.ResultadoDetalhes}", font,
+                XBrushes.Black, 40, 520);
 
             //Rodapé e assinatura
             gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\rodape.PNG"), 30, 690, 560, 80);
