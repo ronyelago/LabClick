@@ -79,20 +79,17 @@
             <div>
                 <div class="radio">
                     @Html.RadioButtonFor(m => m.Laudo.Resultado, "Positivo")
-                    @Html.ValidationMessageFor(m => m.Laudo.Resultado)
                     <label>Positivo</label>
                     @Html.DropDownList("ResultadoDetalhes", Details)
                 </div>
                 <div class="radio">
                     @Html.RadioButtonFor(m => m.Laudo.Resultado, "Negativo")
-                    @Html.ValidationMessageFor(m => m.Laudo.Resultado)
                     <label>Negativo</label>
                 </div>
             </div>
             <div>
                 <div class="radio">
                     @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
-                    @Html.ValidationMessageFor(m => m.Laudo.Resultado)
                     <label>Indeterminado/Inválido   </label>
                     @Html.DropDownList("ResultadoDetalhes", Options)
                 </div>

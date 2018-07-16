@@ -56,14 +56,12 @@ namespace LabClick.Controllers
             Laudo laudo = testeViewModel.Laudo;
             laudo.Id = teste.Id;
             laudo.DataCadastro = DateTime.Now;
+            laudo.ResultadoDetalhes += testeViewModel.ResultadoDetalhes;
 
             if (testeViewModel.Laudo.Resultado == "Indeterminado")
             {
                 teste.Status = "Pendente";
                 repository.Update(teste);
-
-                laudo.Resultado = testeViewModel.Laudo.Resultado;
-                laudo.ResultadoDetalhes += testeViewModel.ResultadoDetalhes;
 
                 if (teste.Laudo != null)
                 {
