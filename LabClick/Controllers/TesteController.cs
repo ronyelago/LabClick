@@ -42,6 +42,7 @@ namespace LabClick.Controllers
             }
 
             var testeViewModel = Mapper.Map<TesteViewModel>(teste);
+            testeViewModel.Target = "_self";
 
             return View(testeViewModel);
         }
@@ -66,6 +67,7 @@ namespace LabClick.Controllers
                 return RedirectToAction("Testes");
             }
 
+            testeViewModel.Target = "_blank";
             var document = laudoService.GerarLaudoPdf(teste, laudo);
 
             //PdfDocument to byte array
@@ -90,7 +92,7 @@ namespace LabClick.Controllers
 
             return File(pdf, "application/pdf");
         }
-
+ 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
