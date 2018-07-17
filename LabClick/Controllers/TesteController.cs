@@ -63,7 +63,7 @@ namespace LabClick.Controllers
                 teste.Laudo = laudo;
                 repository.Update(teste);
 
-                return Redirect("Dashboard"); 
+                return RedirectToAction("Testes");
             }
 
             var document = laudoService.GerarLaudoPdf(teste, laudo);
