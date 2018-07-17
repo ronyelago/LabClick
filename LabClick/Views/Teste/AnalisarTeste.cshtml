@@ -23,7 +23,7 @@
 
 <div class="form-horizontal" style="width: 700px; border: groove; padding: 20px; align-self: center">
 
-    @using (Html.BeginForm("GerarLaudo", "Teste", FormMethod.Post, new { @target = "_blank" }))
+    @using (Html.BeginForm("GerarLaudo", "Teste", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         <div>
@@ -194,7 +194,6 @@
             $('#btnConcluir').click(function () {
 
                 $('#formModal').modal('toggle');
-                //window.location.href = "";
             });
         });
 

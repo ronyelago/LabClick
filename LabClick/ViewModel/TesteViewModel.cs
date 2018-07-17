@@ -20,5 +20,7 @@ namespace LabClick.ViewModel
         public Paciente Paciente { get; set; }
         public Exame Exame { get; set; }
         public Laudo Laudo { get; set; }
+        public string Target { get; set; }
+        public string Action { get; set; }
     }
 }
