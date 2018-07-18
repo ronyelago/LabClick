@@ -23,7 +23,7 @@
 
 <div class="form-horizontal" style="width: 700px; border: groove; padding: 20px; align-self: center">
 
-    @using (Html.BeginForm("GerarLaudo", "Teste", FormMethod.Post, new { @target = Model.Target }))
+    @using (Html.BeginForm("GerarLaudo", "Teste", FormMethod.Post, new { @target = "_blank" }))
     {
         @Html.AntiForgeryToken()
         <div>
@@ -183,6 +183,10 @@
                 if ($("#Laudo_Resultado:checked").val() != null) {
                     $('#erro').remove();
                     $('#formModal').modal('toggle');
+
+                    if ($("#Laudo_Resultado:checked").val() == 'Indeterminado') {
+                        $("form").attr("target", "_self");
+                    }
                 }
                 else {
                     $('#erro').remove();

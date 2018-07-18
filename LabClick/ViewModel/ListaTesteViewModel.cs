@@ -8,6 +8,7 @@ namespace LabClick.ViewModel
         public string Nome { get; set; }
         public string NomePaciente { get; set; }
         public string NomeClinica { get; set; }
+        public string NomeExame { get; set; }
         public string Status { get; set; }
         public DateTime DataTeste { get; set; }
     }
