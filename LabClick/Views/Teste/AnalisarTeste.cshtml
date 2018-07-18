@@ -187,6 +187,9 @@
                     if ($("#Laudo_Resultado:checked").val() == 'Indeterminado') {
                         $("form").attr("target", "_self");
                     }
+                    else {
+                        $("form").attr("target", "_blank");
+                    }
                 }
                 else {
                     $('#erro').remove();
