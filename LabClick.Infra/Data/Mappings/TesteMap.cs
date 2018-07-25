@@ -15,16 +15,15 @@ namespace LabClick.Infra.Data.Mappings
             Property(p => p.Id).
                 HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            HasOptional(p => p.Laudo)
-                .WithRequired(t => t.Teste);
+            HasOptional(p => p.Laudo).WithRequired(t => t.Teste);
 
             Property(p => p.DataCadastro).IsOptional();
 
             Property(p => p.Code).IsOptional();
 
-            Property(p => p.Status)
-                .IsRequired()
-                .HasMaxLength(50);
+            Property(p => p.Code).HasMaxLength(100);
+
+            Property(p => p.Status).IsRequired().HasMaxLength(50);
         }
     }
 }
