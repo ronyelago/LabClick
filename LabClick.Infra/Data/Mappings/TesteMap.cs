@@ -20,6 +20,8 @@ namespace LabClick.Infra.Data.Mappings
 
             Property(p => p.DataCadastro).IsOptional();
 
+            Property(p => p.Code).IsOptional();
+
             Property(p => p.Status)
                 .IsRequired()
                 .HasMaxLength(50);
