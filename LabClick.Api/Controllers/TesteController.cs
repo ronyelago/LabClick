@@ -69,7 +69,7 @@ namespace LabClick.Api.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            //db.Dispose();
+            _repository.Dispose();
         }
     }
 }
