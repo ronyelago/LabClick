@@ -15,6 +15,7 @@ namespace LabClick.Domain.Entities
         public int ClinicaId { get; set; }
         public int PacienteId { get; set; }
         public byte[] Imagem { get; set; }
+        public string Code { get; set; }
         public string Status { get; set; }
         public bool LaudoOk { get; set; }
         public DateTime DataCadastro { get; set; }

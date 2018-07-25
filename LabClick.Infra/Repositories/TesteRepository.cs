@@ -10,8 +10,8 @@ namespace LabClick.Infra.Repositories
     {
         public ICollection<Teste> GetAllByPacienteId(int pacienteId)
         {
-            var testes = Db.Teste.Where(t => t.PacienteId == pacienteId).
-                    Include(t => t.Exame)
+            var testes = Db.Teste.Where(t => t.PacienteId == pacienteId)
+                    .Include(t => t.Exame)
                     .ToList();
 
             return testes;
@@ -44,6 +44,19 @@ namespace LabClick.Infra.Repositories
                 .Include(t => t.Exame)
                 .Include(t => t.Laudo)
                 .FirstOrDefault(t => t.Id == id);
+
+            return teste;
+        }
+
+        public Teste GetByPatientId(int pacienteId)
+        {
+            Teste teste = Db.Teste
+                .Include(t => t.Paciente)
+                .Include(t => t.Paciente.Endereco)
+                .Include(t => t.Clinica)
+                .Include(t => t.Exame)
+                .Include(t => t.Laudo)
+                .FirstOrDefault(t => t.PacienteId == pacienteId);
 
             return teste;
         }
