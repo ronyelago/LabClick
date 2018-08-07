@@ -68,7 +68,7 @@ namespace LabClick.Controllers
 
             var document = laudoService.GerarLaudoPdf(teste, laudo);
 
-            //PdfDocument to byte array
+            //PdfDocument to byte array--
             using (MemoryStream stream = new MemoryStream())
             {
                 document.Save(stream);
