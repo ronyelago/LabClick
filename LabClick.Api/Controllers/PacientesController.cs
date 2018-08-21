@@ -63,11 +63,32 @@ namespace LabClick.Api.Controllers
             }
             catch (System.Exception ex)
             {
-
                 return Request.CreateResponse(HttpStatusCode.InternalServerError,
                     $"Falha ao incluir o Teste.\n{ex.Message}");
             }
 
+        }
+
+        [HttpPost]
+        [Route("updatePaciente")]
+        public HttpResponseMessage UpdatePaciente(Paciente paciente)
+        {
+            if (paciente == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            try
+            {
+                _repository.Update(paciente);
+
+                return Request.CreateResponse(HttpStatusCode.OK, paciente);
+            }
+            catch (System.Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError,
+                    $"Falha ao incluir o Teste.\n{ex.Message}");
+            }
         }
 
         protected override void Dispose(bool disposing)
