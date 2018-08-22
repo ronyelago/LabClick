@@ -56,6 +56,30 @@ namespace LabClick.Api.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("updateEndereco")]
+        public HttpResponseMessage UpdateEndereco(Endereco endereco)
+        {
+            if (endereco == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            try
+            {
+                _repository.Update(endereco);
+
+                int id = endereco.Id;
+
+                return Request.CreateResponse(HttpStatusCode.OK, id);
+            }
+            catch (System.Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError,
+                    $"Falha ao atualizar o Endereço. {ex.Message}");
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

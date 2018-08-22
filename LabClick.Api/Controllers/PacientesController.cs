@@ -48,7 +48,7 @@ namespace LabClick.Api.Controllers
 
         [HttpPost]
         [Route("pacientes")]
-        public HttpResponseMessage PostTeste(Paciente paciente)
+        public HttpResponseMessage PostPatient(Paciente paciente)
         {
             if (paciente == null)
             {
@@ -64,7 +64,7 @@ namespace LabClick.Api.Controllers
             catch (System.Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError,
-                    $"Falha ao incluir o Teste.\n{ex.Message}");
+                    $"Falha ao incluir o Paciente.\n{ex.Message}");
             }
 
         }
@@ -87,7 +87,7 @@ namespace LabClick.Api.Controllers
             catch (System.Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError,
-                    $"Falha ao incluir o Teste.\n{ex.Message}");
+                    $"Falha ao atualizar o Paciente.\n{ex.Message}");
             }
         }
 
