@@ -18,6 +18,19 @@ namespace LabClick.Infra.Repositories
             return testes;
         }
 
+        public ICollection<Teste> GetAllByPacienteName(string name)
+        {
+            var testes = (from test in Db.Teste
+                          join pac in Db.Paciente on test.PacienteId equals pac.Id
+                          where pac.Nome.Contains(name)
+                          select test)
+                          .Include(t => t.Paciente)
+                          .Include(t => t.Exame)
+                          .ToList();
+
+            return testes;
+        }
+
         public ICollection<Teste> GetAllByUserId(int userId)
         {
             var testes = (from user in Db.Usuario

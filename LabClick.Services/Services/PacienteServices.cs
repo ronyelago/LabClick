@@ -44,5 +44,10 @@ namespace LabClick.Services.Services
         {
             return repository.GetByLabId(id);
         }
+
+        public List<Paciente> GetByName(string name)
+        {
+            return repository.GetByName(name);
+        }
     }
 }
