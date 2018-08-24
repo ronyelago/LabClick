@@ -10,6 +10,12 @@ namespace LabClick.Infra.Data.Mappings
             ToTable("Enderecos");
 
             HasKey(k => k.Id);
+
+            Property(p => p.Logradouro).HasMaxLength(100);
+            Property(p => p.Cep).HasMaxLength(20);
+            Property(p => p.Cidade).HasMaxLength(100);
+            Property(p => p.Bairro).HasMaxLength(50);
+            Property(p => p.UF).HasMaxLength(6);
         }
     }
 }
