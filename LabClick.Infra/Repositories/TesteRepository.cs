@@ -45,7 +45,9 @@ namespace LabClick.Infra.Repositories
 
         /// <summary>
         /// Obtem pelo Id de um usuário [de um laboratório] todos os testes
-        /// pelo qual o laboratório é responsável.
+        /// pelo qual o laboratório é responsável. Inclui as propriedades
+        /// de navegação Clinica, Paciente, Exame, Laudo. Ordena o retorno pela
+        /// Data de Cadastro do Teste.
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
