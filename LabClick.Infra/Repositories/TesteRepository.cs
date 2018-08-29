@@ -8,6 +8,12 @@ namespace LabClick.Infra.Repositories
 {
     public class TesteRepository : RepositoryBase<Teste>, ITesteRepository
     {
+        /// <summary>
+        /// Obtem todos os testes de um paciente pelo seu respectivo Id
+        /// e os retorna. Inclui as propriedades de navegação Exame e Laudo.
+        /// </summary>
+        /// <param name="pacienteId"></param>
+        /// <returns></returns>
         public ICollection<Teste> GetAllByPacienteId(int pacienteId)
         {
             var testes = Db.Teste.Where(t => t.PacienteId == pacienteId)
@@ -18,6 +24,12 @@ namespace LabClick.Infra.Repositories
             return testes;
         }
 
+        /// <summary>
+        /// Obtem  e retorna todos os testes dos pacientes pelo nome ou trecho do nome.
+        /// Inclui as propriedades de navegação Paciente e Exame.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public ICollection<Teste> GetAllByPacienteName(string name)
         {
             var testes = (from test in Db.Teste

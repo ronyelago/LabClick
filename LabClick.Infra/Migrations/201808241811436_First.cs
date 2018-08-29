@@ -3,7 +3,7 @@ namespace LabClick.Infra.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Primeira : DbMigration
+    public partial class First : DbMigration
     {
         public override void Up()
         {
@@ -32,12 +32,12 @@ namespace LabClick.Infra.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Cep = c.String(maxLength: 500, unicode: false),
-                        Cidade = c.String(maxLength: 500, unicode: false),
-                        UF = c.String(maxLength: 500, unicode: false),
+                        Cep = c.String(maxLength: 20, unicode: false),
+                        Cidade = c.String(maxLength: 100, unicode: false),
+                        UF = c.String(maxLength: 6, unicode: false),
                         Numero = c.Int(nullable: false),
-                        Bairro = c.String(maxLength: 500, unicode: false),
-                        Logradouro = c.String(maxLength: 500, unicode: false),
+                        Bairro = c.String(maxLength: 50, unicode: false),
+                        Logradouro = c.String(maxLength: 100, unicode: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -78,6 +78,7 @@ namespace LabClick.Infra.Migrations
                     {
                         TesteId = c.Int(nullable: false),
                         Resultado = c.String(maxLength: 500, unicode: false),
+                        ResultadoDetalhes = c.String(maxLength: 500, unicode: false),
                         Documento = c.Binary(),
                         Observacoes = c.String(maxLength: 200, unicode: false),
                         DataCadastro = c.DateTime(nullable: false),
@@ -95,7 +96,9 @@ namespace LabClick.Infra.Migrations
                         ClinicaId = c.Int(nullable: false),
                         PacienteId = c.Int(nullable: false),
                         Imagem = c.Binary(),
+                        Code = c.String(maxLength: 100, unicode: false),
                         Status = c.String(nullable: false, maxLength: 50, unicode: false),
+                        LaudoOk = c.Boolean(nullable: false),
                         DataCadastro = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)

@@ -56,25 +56,9 @@
     <Compile Include="Data\Mappings\LaudoMap.cs" />
     <Compile Include="Data\Mappings\TesteMap.cs" />
     <Compile Include="Data\Mappings\UsuarioMap.cs" />
-    <Compile Include="Migrations\201806282025006_Primeira.cs" />
-    <Compile Include="Migrations\201806282025006_Primeira.Designer.cs">
-      <DependentUpon>201806282025006_Primeira.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807061442002_Flag.cs" />
-    <Compile Include="Migrations\201807061442002_Flag.Designer.cs">
-      <DependentUpon>201807061442002_Flag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807161502357_DetalhesResultado.cs" />
-    <Compile Include="Migrations\201807161502357_DetalhesResultado.Designer.cs">
-      <DependentUpon>201807161502357_DetalhesResultado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807252114485_CodeProperty.cs" />
-    <Compile Include="Migrations\201807252114485_CodeProperty.Designer.cs">
-      <DependentUpon>201807252114485_CodeProperty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808241458173_ChangeAddress.cs" />
-    <Compile Include="Migrations\201808241458173_ChangeAddress.Designer.cs">
-      <DependentUpon>201808241458173_ChangeAddress.cs</DependentUpon>
+    <Compile Include="Migrations\201808241811436_First.cs" />
+    <Compile Include="Migrations\201808241811436_First.Designer.cs">
+      <DependentUpon>201808241811436_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,20 +83,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806282025006_Primeira.resx">
-      <DependentUpon>201806282025006_Primeira.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807061442002_Flag.resx">
-      <DependentUpon>201807061442002_Flag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807161502357_DetalhesResultado.resx">
-      <DependentUpon>201807161502357_DetalhesResultado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807252114485_CodeProperty.resx">
-      <DependentUpon>201807252114485_CodeProperty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808241458173_ChangeAddress.resx">
-      <DependentUpon>201808241458173_ChangeAddress.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808241811436_First.resx">
+      <DependentUpon>201808241811436_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
