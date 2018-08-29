@@ -43,6 +43,12 @@ namespace LabClick.Infra.Repositories
             return testes;
         }
 
+        /// <summary>
+        /// Obtem pelo Id de um usuário [de um laboratório] todos os testes
+        /// pelo qual o laboratório é responsável.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public ICollection<Teste> GetAllByUserId(int userId)
         {
             var testes = (from user in Db.Usuario
