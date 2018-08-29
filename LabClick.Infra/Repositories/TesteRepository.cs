@@ -69,6 +69,13 @@ namespace LabClick.Infra.Repositories
             return testes;
         }
 
+        /// <summary>
+        /// Obtem pelo Id e retorna um único teste.
+        /// Inclui as propriedades de navegação Paciente
+        /// Paciente.Endereco, Clinica, Exame e Laudo.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public override Teste GetById(int id)
         {
             Teste teste = Db.Teste
