@@ -3,7 +3,7 @@ namespace LabClick.Infra.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class First : DbMigration
+    public partial class TesteImagem : DbMigration
     {
         public override void Up()
         {
@@ -95,7 +95,7 @@ namespace LabClick.Infra.Migrations
                         ExameId = c.Int(nullable: false),
                         ClinicaId = c.Int(nullable: false),
                         PacienteId = c.Int(nullable: false),
-                        Imagem = c.Binary(),
+                        TesteImagemId = c.Int(nullable: false),
                         Code = c.String(maxLength: 100, unicode: false),
                         Status = c.String(nullable: false, maxLength: 50, unicode: false),
                         LaudoOk = c.Boolean(nullable: false),
@@ -105,6 +105,8 @@ namespace LabClick.Infra.Migrations
                 .ForeignKey("dbo.Clinicas", t => t.ClinicaId)
                 .ForeignKey("dbo.Exames", t => t.ExameId)
                 .ForeignKey("dbo.Pacientes", t => t.PacienteId)
+                .ForeignKey("dbo.TesteImagem", t => t.Id)
+                .Index(t => t.Id)
                 .Index(t => t.ExameId)
                 .Index(t => t.ClinicaId)
                 .Index(t => t.PacienteId);
@@ -132,6 +134,18 @@ namespace LabClick.Infra.Migrations
                 .Index(t => t.EnderecoId);
             
             CreateTable(
+                "dbo.TesteImagem",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        TesteId = c.Int(nullable: false),
+                        Imagem = c.Binary(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Testes", t => t.TesteId)
+                .Index(t => t.TesteId);
+            
+            CreateTable(
                 "dbo.Usuarios",
                 c => new
                     {
@@ -157,6 +171,8 @@ namespace LabClick.Infra.Migrations
         {
             DropForeignKey("dbo.Usuarios", "LaboratorioId", "dbo.Laboratorios");
             DropForeignKey("dbo.Usuarios", "ClinicaId", "dbo.Clinicas");
+            DropForeignKey("dbo.Testes", "Id", "dbo.TesteImagem");
+            DropForeignKey("dbo.TesteImagem", "TesteId", "dbo.Testes");
             DropForeignKey("dbo.Testes", "PacienteId", "dbo.Pacientes");
             DropForeignKey("dbo.Pacientes", "EnderecoId", "dbo.Enderecos");
             DropForeignKey("dbo.Pacientes", "ClinicaId", "dbo.Clinicas");
@@ -169,17 +185,20 @@ namespace LabClick.Infra.Migrations
             DropForeignKey("dbo.Clinicas", "EnderecoId", "dbo.Enderecos");
             DropIndex("dbo.Usuarios", new[] { "ClinicaId" });
             DropIndex("dbo.Usuarios", new[] { "LaboratorioId" });
+            DropIndex("dbo.TesteImagem", new[] { "TesteId" });
             DropIndex("dbo.Pacientes", new[] { "EnderecoId" });
             DropIndex("dbo.Pacientes", new[] { "ClinicaId" });
             DropIndex("dbo.Testes", new[] { "PacienteId" });
             DropIndex("dbo.Testes", new[] { "ClinicaId" });
             DropIndex("dbo.Testes", new[] { "ExameId" });
+            DropIndex("dbo.Testes", new[] { "Id" });
             DropIndex("dbo.Laudos", new[] { "TesteId" });
             DropIndex("dbo.Exames", new[] { "ClinicaId" });
             DropIndex("dbo.Laboratorios", new[] { "EnderecoId" });
             DropIndex("dbo.Clinicas", new[] { "EnderecoId" });
             DropIndex("dbo.Clinicas", new[] { "LaboratorioId" });
             DropTable("dbo.Usuarios");
+            DropTable("dbo.TesteImagem");
             DropTable("dbo.Pacientes");
             DropTable("dbo.Testes");
             DropTable("dbo.Laudos");

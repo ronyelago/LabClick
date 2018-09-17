@@ -7,13 +7,13 @@ namespace LabClick.Infra.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class First : IMigrationMetadata
+    public sealed partial class TesteImagem : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(First));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TesteImagem));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808241811436_First"; }
+            get { return "201809172049047_TesteImagem"; }
         }
         
         string IMigrationMetadata.Source
