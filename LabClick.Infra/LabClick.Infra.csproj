@@ -54,6 +54,7 @@
     <Compile Include="Data\Mappings\LaboratorioMap.cs" />
     <Compile Include="Data\Mappings\PacienteMap.cs" />
     <Compile Include="Data\Mappings\LaudoMap.cs" />
+    <Compile Include="Data\Mappings\TesteImagemMap.cs" />
     <Compile Include="Data\Mappings\TesteMap.cs" />
     <Compile Include="Data\Mappings\UsuarioMap.cs" />
     <Compile Include="Migrations\201808241811436_First.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Repositories\PacienteRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\LaudoRepository.cs" />
+    <Compile Include="Repositories\TesteImagemRepository.cs" />
     <Compile Include="Repositories\TesteRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
   </ItemGroup>
