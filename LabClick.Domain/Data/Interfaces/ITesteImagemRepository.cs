@@ -2,7 +2,7 @@
 
 namespace LabClick.Domain.Data.Interfaces
 {
-    interface ITesteImagemRepository : IRepositoryBase<TesteImagem>
+    public interface ITesteImagemRepository : IRepositoryBase<TesteImagem>
     {
 
     }
