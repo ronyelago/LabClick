@@ -19,6 +19,7 @@ namespace LabClick.Infra.Repositories
             var testes = Db.Teste.Where(t => t.PacienteId == pacienteId)
                     .Include(t => t.Exame)
                     .Include(t => t.Laudo)
+                    .Include(t => t.Paciente)
                     .ToList();
 
             return testes;
@@ -26,7 +27,7 @@ namespace LabClick.Infra.Repositories
 
         /// <summary>
         /// Obtem  e retorna todos os testes dos pacientes pelo nome ou trecho do nome.
-        /// Inclui as propriedades de navegação Paciente e Exame.
+        /// Inclui as propriedades de navegação Paciente, Exame e Laudo.
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -38,6 +39,7 @@ namespace LabClick.Infra.Repositories
                           select test)
                           .Include(t => t.Paciente)
                           .Include(t => t.Exame)
+                          .Include(t => t.Laudo)
                           .ToList();
 
             return testes;
