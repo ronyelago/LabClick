@@ -32,6 +32,7 @@ namespace LabClick.Infra.Data
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new ExameMap());
             modelBuilder.Configurations.Add(new TesteMap());
+            modelBuilder.Configurations.Add(new TesteImagemMap());
             modelBuilder.Configurations.Add(new LaudoMap());
 
             //Remove a pluralização automática das tabelas
