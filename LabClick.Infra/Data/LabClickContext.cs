@@ -20,6 +20,7 @@ namespace LabClick.Infra.Data
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Exame> Exame { get; set; }
         public DbSet<Teste> Teste { get; set; }
+        public DbSet<TesteImagem> TesteImagtem { get; set; }
         public DbSet<Laudo> Laudo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
