@@ -1,10 +1,16 @@
 ﻿using LabClick.Domain.Data.Interfaces;
 using LabClick.Domain.Entities;
+using System.Linq;
 
 namespace LabClick.Infra.Repositories
 {
-    class TesteImagemRepository : RepositoryBase<TesteImagem>, ITesteImagemRepository
+    public class TesteImagemRepository : RepositoryBase<TesteImagem>, ITesteImagemRepository
     {
+        public TesteImagem GetByTesteId(int testeId)
+        {
+            var testeImagem = Db.TesteImagem.FirstOrDefault(i => i.TesteId == testeId);
 
+            return testeImagem;
+        }
     }
 }
