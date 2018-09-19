@@ -57,9 +57,9 @@
     <Compile Include="Data\Mappings\TesteImagemMap.cs" />
     <Compile Include="Data\Mappings\TesteMap.cs" />
     <Compile Include="Data\Mappings\UsuarioMap.cs" />
-    <Compile Include="Migrations\201809172049047_TesteImagem.cs" />
-    <Compile Include="Migrations\201809172049047_TesteImagem.Designer.cs">
-      <DependentUpon>201809172049047_TesteImagem.cs</DependentUpon>
+    <Compile Include="Migrations\201809192017492_TesteImagem.cs" />
+    <Compile Include="Migrations\201809192017492_TesteImagem.Designer.cs">
+      <DependentUpon>201809192017492_TesteImagem.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,8 +85,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809172049047_TesteImagem.resx">
-      <DependentUpon>201809172049047_TesteImagem.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809192017492_TesteImagem.resx">
+      <DependentUpon>201809192017492_TesteImagem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

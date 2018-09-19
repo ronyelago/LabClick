@@ -52,10 +52,6 @@ namespace LabClick.Infra.Data
                 Configure(p => p.HasColumnType("varchar"));
             modelBuilder.Properties<string>().
                 Configure(p => p.HasMaxLength(500));
-
-            modelBuilder.Entity<Teste>()
-                .HasRequired(t => t.TesteImagem)
-                .WithOptional();
         }
     }
 }
