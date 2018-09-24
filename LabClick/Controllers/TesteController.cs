@@ -14,6 +14,7 @@ namespace LabClick.Controllers
     {
         private readonly TesteRepository repository = new TesteRepository();
         private readonly LaudoServices laudoService = new LaudoServices();
+        private readonly TesteImagemRepository testeImagemRepository = new TesteImagemRepository();
 
         //Listagem de todos os testes ordenados por data de cadastro
         public ActionResult Testes()
@@ -28,6 +29,7 @@ namespace LabClick.Controllers
         public ActionResult AnalisarTeste(int id)
         {
             Teste teste = repository.GetById(id);
+            var testeImagem = testeImagemRepository.GetByTesteId(id);
 
             if (teste == null)
             {
@@ -42,6 +44,7 @@ namespace LabClick.Controllers
             }
 
             var testeViewModel = Mapper.Map<TesteViewModel>(teste);
+            testeViewModel.Imagem = testeImagem.Imagem;
 
             return View(testeViewModel);
         }
@@ -50,6 +53,7 @@ namespace LabClick.Controllers
         public ActionResult GerarLaudo(TesteViewModel testeViewModel)
         {
             Teste teste = repository.GetById(testeViewModel.Id);
+            TesteImagem testeImagem = testeImagemRepository.GetByTesteId(testeViewModel.Id);
             
             //Geração do Laudo
             Laudo laudo = testeViewModel.Laudo;
@@ -66,7 +70,7 @@ namespace LabClick.Controllers
                 return RedirectToAction("Testes");
             }
 
-            var document = laudoService.GerarLaudoPdf(teste, laudo);
+            var document = laudoService.GerarLaudoPdf(teste, testeImagem, laudo);
 
             //PdfDocument to byte array--
             using (MemoryStream stream = new MemoryStream())
