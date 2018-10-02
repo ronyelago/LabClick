@@ -9,7 +9,8 @@ namespace LabClick.Domain.Entities
         public int EnderecoId { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
-        public byte[] Assinatura { get; set; }
+        public byte[] ImagemLogo { get; set; }
+        public byte[] ImagemFooter { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime DataModificado { get; set; }
         public virtual Endereco Endereco { get; set; }
