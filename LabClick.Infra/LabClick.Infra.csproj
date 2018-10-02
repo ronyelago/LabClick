@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201809192017492_TesteImagem.Designer.cs">
       <DependentUpon>201809192017492_TesteImagem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810022047025_LabFields.cs" />
+    <Compile Include="Migrations\201810022047025_LabFields.Designer.cs">
+      <DependentUpon>201810022047025_LabFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClinicaRepository.cs" />
@@ -87,6 +91,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809192017492_TesteImagem.resx">
       <DependentUpon>201809192017492_TesteImagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810022047025_LabFields.resx">
+      <DependentUpon>201810022047025_LabFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
