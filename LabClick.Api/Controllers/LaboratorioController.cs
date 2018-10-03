@@ -34,5 +34,13 @@ namespace LabClick.Api.Controllers
             }
 
         }
+
+        [Route("all")]
+        public HttpResponseMessage GetAll()
+        {
+            var laboratorios = _repository.GetAll();
+
+            return Request.CreateResponse(HttpStatusCode.OK, laboratorios);
+        }
     }
 }
