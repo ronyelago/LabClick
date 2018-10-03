@@ -57,8 +57,11 @@ namespace LabClick.Services.Services
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            //Logo e email
+            //Logo e Footer
             gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\LaborLabisLogo.png"), 20, 20, 210, 80);
+            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\rodape.PNG"), 30, 690, 560, 80);
+
+
             gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 70);
 
             //Desenho Cabeçalho
@@ -107,9 +110,6 @@ namespace LabClick.Services.Services
                 XBrushes.Black, 40, 500);
             gfx.DrawString($"{laudo.ResultadoDetalhes}", font,
                 XBrushes.Black, 40, 520);
-
-            //Rodapé e assinatura
-            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\rodape.PNG"), 30, 690, 560, 80);
 
             #endregion
 

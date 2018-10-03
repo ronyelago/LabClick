@@ -14,7 +14,7 @@ namespace LabClick.Controllers
         // GET: Paciente
         public ActionResult Index()
         {
-            var pacientes = repository.GetByLabId((int)(Session["Id"]));
+            var pacientes = repository.GetByLabId((int)(Session["LaboratorioId"]));
 
             var pacientesViewModel = Mapper.Map<List<PacienteViewModel>>(pacientes);
 

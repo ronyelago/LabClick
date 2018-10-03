@@ -15,6 +15,7 @@ namespace LabClick.Controllers
         private readonly TesteRepository repository = new TesteRepository();
         private readonly LaudoServices laudoService = new LaudoServices();
         private readonly TesteImagemRepository testeImagemRepository = new TesteImagemRepository();
+        private readonly LaboratorioRepository laboratorioRepository = new LaboratorioRepository();
 
         //Listagem de todos os testes ordenados por data de cadastro
         public ActionResult Testes()
@@ -54,6 +55,7 @@ namespace LabClick.Controllers
         {
             Teste teste = repository.GetById(testeViewModel.Id);
             TesteImagem testeImagem = testeImagemRepository.GetByTesteId(testeViewModel.Id);
+            Laboratorio laboratorio = laboratorioRepository.GetById((int)(Session["LaboratorioId"]));
             
             //Geração do Laudo
             Laudo laudo = testeViewModel.Laudo;
