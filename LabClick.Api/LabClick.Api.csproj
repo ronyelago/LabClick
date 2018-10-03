@@ -125,6 +125,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\ExamesController.cs" />
+    <Compile Include="Controllers\LaboratorioController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Controllers\TesteImagemController.cs" />
