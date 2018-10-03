@@ -57,30 +57,18 @@ namespace LabClick.Services.Services
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            //Logo e Footer
+            //Logo
             Stream logoStream = new MemoryStream(laboratorio.ImagemLogo);
             XImage logoImage = XImage.FromStream(logoStream);
-            gfx.DrawImage(logoImage, 20, 20, 210, 80);
-
+            gfx.DrawImage(logoImage, 20, 10, 210, 80);
+            //Footer
             Stream footerStream = new MemoryStream(laboratorio.ImagemFooter);
             XImage footerImage = XImage.FromStream(footerStream);
-            gfx.DrawImage(footerImage, 30, 690, 560, 80);
+            gfx.DrawImage(footerImage, 30, 680, 500, 110);
 
-            gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 70);
+            gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 40);
 
-            //Desenho Cabeçalho
-            //Linha superior
-            gfx.DrawLine(XPens.MidnightBlue, 25, 135, 587, 135);
-            //Linha lateral esquerda
-            gfx.DrawLine(XPens.MidnightBlue, 25, 135, 25, 200);
-            //Linha inferior
-            gfx.DrawLine(XPens.MidnightBlue, 25, 200, 587, 200);
-            //Linha lateral direita
-            gfx.DrawLine(XPens.MidnightBlue, 587, 200, 587, 135);
-            //linha interna esquerda
-            gfx.DrawLine(XPens.MidnightBlue, 306, 135, 306, 200);
-            //linha interna direita
-            gfx.DrawLine(XPens.MidnightBlue, 445, 135, 445, 200);
+            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\header.PNG"), 20, 100, 570, 70);
 
             //Dados do Paciente
             gfx.DrawString($"Nome: {teste.Paciente.Nome}", font,
@@ -108,7 +96,7 @@ namespace LabClick.Services.Services
 
             Stream str = new MemoryStream(testeImagem.Imagem);
             XImage xImage = XImage.FromStream(str);
-            gfx.DrawImage(xImage, 40, 250, 300, 100);
+            gfx.DrawImage(xImage, 40, 250, 200, 200);
 
             gfx.DrawString($"{laudo.Resultado}", font,
                 XBrushes.Black, 40, 500);
