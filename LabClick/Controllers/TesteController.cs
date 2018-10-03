@@ -72,7 +72,7 @@ namespace LabClick.Controllers
                 return RedirectToAction("Testes");
             }
 
-            var document = laudoService.GerarLaudoPdf(teste, testeImagem, laudo);
+            var document = laudoService.GerarLaudoPdf(laboratorio, teste, testeImagem, laudo);
 
             //PdfDocument to byte array--
             using (MemoryStream stream = new MemoryStream())
