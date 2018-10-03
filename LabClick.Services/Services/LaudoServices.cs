@@ -66,10 +66,6 @@ namespace LabClick.Services.Services
             XImage footerImage = XImage.FromStream(footerStream);
             gfx.DrawImage(footerImage, 30, 690, 560, 80);
 
-            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\LaborLabisLogo.png"), 20, 20, 210, 80);
-            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\rodape.PNG"), 30, 690, 560, 80);
-
-
             gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 70);
 
             //Desenho Cabeçalho

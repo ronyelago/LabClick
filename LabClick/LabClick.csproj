@@ -135,6 +135,7 @@
     <Content Include="Content\styles\images\ico-8.png" />
     <Content Include="Content\styles\images\ico-hold.png" />
     <Content Include="Content\styles\images\ico-mail.png" />
+    <Content Include="Content\styles\images\LaborLabisLogo.png" />
     <Content Include="Content\styles\images\logo-labclick.png" />
     <Content Include="Content\styles\images\titulo.png" />
     <Content Include="Content\styles\js\bootstrap.min.js" />
