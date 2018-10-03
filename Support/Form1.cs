@@ -1,12 +1,7 @@
-﻿using LabClick.Domain.Entities;
-using LabClick.Infra.Data;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
-using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Support
@@ -20,20 +15,21 @@ namespace Support
 
         private void btnPost_Click(object sender, EventArgs e)
         {
-            var Teste = new
+            var Laboratorio = new
             {
-                ExameId = int.Parse(tboExameId.Text),
-                ClinicaId = int.Parse(tboClinicaId.Text),
-                PacienteId = int.Parse(tboPacienteId.Text),
-                Imagem = ImageControl.ConvertFileToByte(pbImagemTeste),
-                Status = tboStatus.Text,
-                DataCadastro = DateTime.Now
+                EnderecoId = int.Parse(tboEnderecoId.Text),
+                Nome = tboNome.Text,
+                Email = tboEmail.Text,
+                ImagemLogo = ImageControl.ConvertFileToByte(pbImagemLogo),
+                ImagemFooter = ImageControl.ConvertFileToByte(pbImagemFooter),
+                DataCadastro = DateTime.Now,
+                DataModificado = DateTime.Now
             };
 
-            var serialized = JsonConvert.SerializeObject(Teste);
+            var serialized = JsonConvert.SerializeObject(Laboratorio);
 
             HttpClient client = new HttpClient();
-            Uri uri = new Uri(@"http://apilabclick.mflogic.com.br/teste/testes");
+            Uri uri = new Uri(@"http://localhost:52434/laboratorio/add");
 
             var content = new StringContent(serialized, Encoding.UTF8, "application/json");
 
@@ -49,19 +45,14 @@ namespace Support
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSeed_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            ImageControl.SelectImage(pbImagemTeste);
+            ImageControl.SelectImage(pbImagemLogo);
+        }
+
+        private void btnSelectImagemFooter_Click(object sender, EventArgs e)
+        {
+            ImageControl.SelectImage(pbImagemFooter);
         }
     }
 }
