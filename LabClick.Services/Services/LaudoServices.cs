@@ -71,11 +71,11 @@ namespace LabClick.Services.Services
 
             if (laudo.Resultado == "Positivo")
             {
-                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\positivo.PNG"), 100, 500, 150, 30);
+                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\positivo.PNG"), 120, 470, 150, 30);
             }
             else
             {
-                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\negativo.PNG"), 100, 500, 150, 30);
+                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\negativo.PNG"), 120, 470, 120, 30);
             }
 
             //Footer
