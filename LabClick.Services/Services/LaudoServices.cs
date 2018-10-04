@@ -46,8 +46,6 @@ namespace LabClick.Services.Services
 
         public PdfDocument GerarLaudoPdf(Laboratorio laboratorio, Teste teste, TesteImagem testeImagem, Laudo laudo)
         {
-            #region Geração do PDF (Laudo)
-            //*******************************************************
             PdfDocument document = new PdfDocument();
 
             // Create a font
@@ -82,9 +80,7 @@ namespace LabClick.Services.Services
             Stream footerStream = new MemoryStream(laboratorio.ImagemFooter);
             XImage footerImage = XImage.FromStream(footerStream);
             gfx.DrawImage(footerImage, 30, 630, 550, 130);
-
             gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 40);
-
             gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\header.PNG"), 20, 100, 570, 70);
 
             //Dados do Paciente
@@ -104,13 +100,6 @@ namespace LabClick.Services.Services
                 XBrushes.Black, 244, 140, XStringFormats.Default);
             gfx.DrawString($"Data do Teste: {teste.DataCadastro}", font,
                 XBrushes.Black, 410, 120, XStringFormats.Default);
-
-            //gfx.DrawString($"{laudo.Resultado}", font,
-            //    XBrushes.Black, 40, 500);
-            //gfx.DrawString($"{laudo.ResultadoDetalhes}", font,
-            //    XBrushes.Black, 40, 520);
-
-            #endregion
 
             return document;
         }
