@@ -63,7 +63,7 @@ namespace LabClick.Services.Services
             gfx.DrawImage(logoImage, 20, 10, 210, 80);
 
             //Body
-            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\body.PNG"), 20, 220, 570, 450);
+            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\body.PNG"), 20, 220, 570, 400);
 
             //Footer
             Stream footerStream = new MemoryStream(laboratorio.ImagemFooter);
