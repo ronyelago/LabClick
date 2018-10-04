@@ -67,11 +67,11 @@ namespace LabClick.Services.Services
 
             Stream str = new MemoryStream(testeImagem.Imagem);
             XImage xImage = XImage.FromStream(str);
-            gfx.DrawImage(xImage, 100, 290, 130, 130);
+            gfx.DrawImage(xImage, 100, 290, 150, 150);
 
             if (laudo.Resultado == "Positivo")
             {
-                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\positivo.PNG"), 120, 470, 150, 30);
+                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\positivo.PNG"), 110, 470, 130, 30);
             }
             else
             {
