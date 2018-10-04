@@ -125,6 +125,7 @@
     <Content Include="Content\styles\images\bg-bottom.jpg" />
     <Content Include="Content\styles\images\bg_cadastro.jpg" />
     <Content Include="Content\styles\images\bg_login.jpg" />
+    <Content Include="Content\styles\images\body.PNG" />
     <Content Include="Content\styles\images\header.PNG" />
     <Content Include="Content\styles\images\ico-1.png" />
     <Content Include="Content\styles\images\ico-2.png" />

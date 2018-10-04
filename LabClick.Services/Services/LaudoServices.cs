@@ -61,10 +61,14 @@ namespace LabClick.Services.Services
             Stream logoStream = new MemoryStream(laboratorio.ImagemLogo);
             XImage logoImage = XImage.FromStream(logoStream);
             gfx.DrawImage(logoImage, 20, 10, 210, 80);
+
+            //Body
+            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\body.PNG"), 20, 220, 570, 450);
+
             //Footer
             Stream footerStream = new MemoryStream(laboratorio.ImagemFooter);
             XImage footerImage = XImage.FromStream(footerStream);
-            gfx.DrawImage(footerImage, 30, 680, 500, 110);
+            gfx.DrawImage(footerImage, 30, 650, 530, 130);
 
             gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 40);
 
@@ -92,16 +96,16 @@ namespace LabClick.Services.Services
 
             //Resultado e Imagem do Teste
 
-            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\Resultado.PNG"), 40, 220, 75, 17);
+            //gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\Resultado.PNG"), 40, 220, 75, 17);
 
-            Stream str = new MemoryStream(testeImagem.Imagem);
-            XImage xImage = XImage.FromStream(str);
-            gfx.DrawImage(xImage, 40, 250, 200, 200);
+            //Stream str = new MemoryStream(testeImagem.Imagem);
+            //XImage xImage = XImage.FromStream(str);
+            //gfx.DrawImage(xImage, 40, 250, 200, 200);
 
-            gfx.DrawString($"{laudo.Resultado}", font,
-                XBrushes.Black, 40, 500);
-            gfx.DrawString($"{laudo.ResultadoDetalhes}", font,
-                XBrushes.Black, 40, 520);
+            //gfx.DrawString($"{laudo.Resultado}", font,
+            //    XBrushes.Black, 40, 500);
+            //gfx.DrawString($"{laudo.ResultadoDetalhes}", font,
+            //    XBrushes.Black, 40, 520);
 
             #endregion
 
