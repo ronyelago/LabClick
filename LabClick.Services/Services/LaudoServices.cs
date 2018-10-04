@@ -65,6 +65,19 @@ namespace LabClick.Services.Services
             //Body
             gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\body.PNG"), 20, 220, 570, 380);
 
+            Stream str = new MemoryStream(testeImagem.Imagem);
+            XImage xImage = XImage.FromStream(str);
+            gfx.DrawImage(xImage, 100, 290, 130, 130);
+
+            if (laudo.Resultado == "Positivo")
+            {
+                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\positivo.PNG"), 100, 500, 150, 30);
+            }
+            else
+            {
+                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\negativo.PNG"), 100, 500, 150, 30);
+            }
+
             //Footer
             Stream footerStream = new MemoryStream(laboratorio.ImagemFooter);
             XImage footerImage = XImage.FromStream(footerStream);
@@ -89,18 +102,8 @@ namespace LabClick.Services.Services
                 XBrushes.Black, 244, 130, XStringFormats.Default);
             gfx.DrawString($"UF: {teste.Paciente.Endereco.UF}", font,
                 XBrushes.Black, 244, 140, XStringFormats.Default);
-
-            //Dados do Teste
             gfx.DrawString($"Data do Teste: {teste.DataCadastro}", font,
                 XBrushes.Black, 410, 120, XStringFormats.Default);
-
-            //Resultado e Imagem do Teste
-
-            //gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\Imagens\Resultado.PNG"), 40, 220, 75, 17);
-
-            //Stream str = new MemoryStream(testeImagem.Imagem);
-            //XImage xImage = XImage.FromStream(str);
-            //gfx.DrawImage(xImage, 40, 250, 200, 200);
 
             //gfx.DrawString($"{laudo.Resultado}", font,
             //    XBrushes.Black, 40, 500);
