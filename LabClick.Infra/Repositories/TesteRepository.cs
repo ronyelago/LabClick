@@ -55,7 +55,7 @@ namespace LabClick.Infra.Repositories
         /// <returns></returns>
         public ICollection<Teste> GetAllByUserId(int userId)
         {
-            var testes = (from user in Db.Usuario
+            var testes = (from user in Db.UsuarioLaboratorio
                           join lab in Db.Laboratorio on user.LaboratorioId equals lab.Id
                           join clinica in Db.Clinica on lab.Id equals clinica.LaboratorioId
                           join teste in Db.Teste on clinica.Id equals teste.ClinicaId

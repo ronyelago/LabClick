@@ -8,7 +8,9 @@ namespace LabClick.Infra.Repositories
     {
         public Usuario GetByEmail(string email)
         {
-            return Db.Usuario.FirstOrDefault(u => u.Email == email);
+            var user = Db.Usuario.FirstOrDefault(u => u.Email == email);
+
+            return user;
         }
     }
 }

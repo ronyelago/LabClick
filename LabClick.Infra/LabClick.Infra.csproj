@@ -56,15 +56,12 @@
     <Compile Include="Data\Mappings\LaudoMap.cs" />
     <Compile Include="Data\Mappings\TesteImagemMap.cs" />
     <Compile Include="Data\Mappings\TesteMap.cs" />
+    <Compile Include="Data\Mappings\UsuarioClinicaMap.cs" />
     <Compile Include="Data\Mappings\UsuarioLaboratorioMap.cs" />
     <Compile Include="Data\Mappings\UsuarioMap.cs" />
-    <Compile Include="Migrations\201809192017492_TesteImagem.cs" />
-    <Compile Include="Migrations\201809192017492_TesteImagem.Designer.cs">
-      <DependentUpon>201809192017492_TesteImagem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810022047025_LabFields.cs" />
-    <Compile Include="Migrations\201810022047025_LabFields.Designer.cs">
-      <DependentUpon>201810022047025_LabFields.cs</DependentUpon>
+    <Compile Include="Migrations\201810051525072_Inheriterance.cs" />
+    <Compile Include="Migrations\201810051525072_Inheriterance.Designer.cs">
+      <DependentUpon>201810051525072_Inheriterance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,11 +87,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809192017492_TesteImagem.resx">
-      <DependentUpon>201809192017492_TesteImagem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810022047025_LabFields.resx">
-      <DependentUpon>201810022047025_LabFields.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810051525072_Inheriterance.resx">
+      <DependentUpon>201810051525072_Inheriterance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

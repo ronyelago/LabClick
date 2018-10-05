@@ -29,11 +29,8 @@ namespace LabClick.Controllers
             {
                 var user = _repository.GetByEmail(usuario.Email);
 
-                /*Verificar se a variavel vLogin está vazia. Isso pode ocorrer caso o usuário não existe. 
-                Caso não exista ele vai cair na condição else.*/
                 if (user != null)
-                {      /*Código abaixo verifica se a senha digitada no site é igual a senha que está sendo retornada 
-                            do banco. Caso não cai direto no else*/
+                {      
                     if (Equals(user.Senha, usuario.Senha))
                     {
                         FormsAuthentication.SetAuthCookie(user.Email, false);
@@ -45,52 +42,46 @@ namespace LabClick.Controllers
                         {
                             return Redirect(returnUrl);
                         }
-                        /*código abaixo cria uma session para armazenar o nome do usuário*/
+
                         Session["Nome"] = user.Nome;
-                        /*código abaixo cria uma session para armazenar o id do usuário*/
                         Session["Id"] = user.Id;
-                        //código abaixo cria uma session para armazenar o laboratório do usuário
-                        Session["LaboratorioId"] = user.LaboratorioId;
-                        //código abaixo cria uma session para armazenar o perfil do usuário
                         Session["Perfil"] = user.Perfil;
 
-                        /*retorna para a tela inicial do Home*/
-                        if (user.Perfil == "Administrador")
-
-                            return RedirectToAction("Index", "Dashboard");
-
-                        else if (user.Perfil == "Laboratorio")
+                        if (user is UsuarioLaboratorio)
                         {
+                            UsuarioLaboratorio userLab = user as UsuarioLaboratorio;
+                            Session["LaboratorioId"] = userLab.LaboratorioId;
+
                             ViewBag.usuario = "Laboratorio";
-                            return RedirectToAction("IndexLab", "Paciente");
+                            return RedirectToAction("Testes", "Teste");
                         }
-                        else if (user.Perfil == "Clinica")
+                        else if (user is UsuarioClinica)
                         {
+                            UsuarioClinica userClinica = user as UsuarioClinica;
+                            Session["ClinicaId"] = userClinica.ClinicaId;
+
                             ViewBag.usuario = "Clinica";
                             return RedirectToAction("Index", "Dashboard");
                         }
-                        return RedirectToAction("Index", "Login");
+                        else
+                        {
+                            return RedirectToAction("Index", "Dashboard");
+                        }
                     }
-                    /*Else responsável da validação da senha*/
                     else
                     {
-                        /*Escreve na tela a mensagem de erro informada*/
-                        ModelState.AddModelError("", "Senha informada Inválida!!!");
-                        /*Retorna a tela de login*/
+                        ModelState.AddModelError("", "Senha informada Inválida.");
                         return View(new Usuario());
                     }
                 }
-                /*Else responsável por verificar se o usuário existe*/
                 else
                 {
-                    /*Escreve na tela a mensagem de erro informada*/
-                    ModelState.AddModelError("", "E-mail informado inválido!!!");
-                    /*Retorna a tela de login*/
+                    ModelState.AddModelError("", "E-mail informado inválido.");
                     return View(new Usuario());
                 }
                 
             }
-            /*Caso os campos não esteja de acordo com a solicitação retorna a tela de login com as mensagem dos campos*/
+            
             return View(usuario);
         }
     }
