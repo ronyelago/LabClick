@@ -18,6 +18,8 @@ namespace LabClick.Infra.Data
         public DbSet<Laboratorio> Laboratorio { get; set; }
         public DbSet<Paciente> Paciente { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<UsuarioLaboratorio> UsuarioLaboratorio {get; set;}
+        public DbSet<UsuarioClinica> UsuarioClinica { get; set; }
         public DbSet<Exame> Exame { get; set; }
         public DbSet<Teste> Teste { get; set; }
         public DbSet<TesteImagem> TesteImagem { get; set; }
@@ -30,6 +32,8 @@ namespace LabClick.Infra.Data
             modelBuilder.Configurations.Add(new LaboratorioMap());
             modelBuilder.Configurations.Add(new PacienteMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
+            modelBuilder.Configurations.Add(new UsuarioLaboratorioMap());
+            modelBuilder.Configurations.Add(new UsuarioClinicaMap());
             modelBuilder.Configurations.Add(new ExameMap());
             modelBuilder.Configurations.Add(new TesteMap());
             modelBuilder.Configurations.Add(new TesteImagemMap());

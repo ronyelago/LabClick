@@ -10,21 +10,21 @@ namespace LabClick.Infra.Repositories
     {
         public List<Paciente> GetByLabId(int id)
         {
-            var pacientes = (from user in Db.Usuario
+            var pacientes = (from user in Db.UsuarioLaboratorio
                              join lab in Db.Laboratorio on user.LaboratorioId equals lab.Id
                              join clinica in Db.Clinica on lab.Id equals clinica.LaboratorioId
                              join pac in Db.Paciente on clinica.Id equals pac.ClinicaId
                              where user.Id == id && pac.Testes.All(t => t.Status == "Em análise")
-                             select pac).
-                             ToList();
+                             select pac)
+                             .ToList();
 
             return pacientes;
         }
 
         public List<Paciente> GetByName(string name)
         {
-            var pacientes = Db.Paciente.Where(p => p.Nome.Contains(name)).
-                Include(p => p.Endereco).
+            var pacientes = Db.Paciente.Where(p => p.Nome.Contains(name))
+                .Include(p => p.Endereco).
                 ToList();
 
             return pacientes;
