@@ -3,7 +3,7 @@ namespace LabClick.Infra.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Inheriterance : DbMigration
+    public partial class NewTables : DbMigration
     {
         public override void Up()
         {

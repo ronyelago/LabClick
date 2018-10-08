@@ -67,13 +67,20 @@ namespace LabClick.Services.Services
             XImage xImage = XImage.FromStream(str);
             gfx.DrawImage(xImage, 100, 290, 150, 150);
 
+            gfx.DrawString(laudo.ResultadoDetalhes + laudo.Observacoes, font,
+              XBrushes.Black, 150, 450, XStringFormats.Default);
+
             if (laudo.Resultado == "Positivo")
             {
                 gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\positivo.PNG"), 110, 470, 130, 30);
             }
-            else
+            else if (laudo.Resultado == "Negativo")
             {
                 gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\negativo.PNG"), 120, 470, 120, 30);
+            }
+            else
+            {
+                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\indeterminado.PNG"), 120, 470, 120, 30);
             }
 
             //Footer
@@ -100,6 +107,8 @@ namespace LabClick.Services.Services
                 XBrushes.Black, 244, 140, XStringFormats.Default);
             gfx.DrawString($"Data do Teste: {teste.DataCadastro}", font,
                 XBrushes.Black, 410, 120, XStringFormats.Default);
+            gfx.DrawString($"QR Code do Teste: {teste.Code}", font,
+                XBrushes.Black, 410, 130, XStringFormats.Default);
 
             return document;
         }

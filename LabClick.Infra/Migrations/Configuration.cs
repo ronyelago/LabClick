@@ -104,27 +104,27 @@ namespace LabClick.Infra.Migrations
             context.Endereco.Add(endereco8);
             context.SaveChanges();
 
-            Laboratorio lab1 = new Laboratorio
-            {
-                EnderecoId = 1,
-                Nome = "Laboratório 1",
-                Email = "lab1@email.com.br",
-                DataCadastro = DateTime.Now,
-                DataModificado = DateTime.Now
-            };
+            //Laboratorio lab1 = new Laboratorio
+            //{
+            //    EnderecoId = 1,
+            //    Nome = "Laboratório 1",
+            //    Email = "lab1@email.com.br",
+            //    DataCadastro = DateTime.Now,
+            //    DataModificado = DateTime.Now
+            //};
 
-            Laboratorio lab2 = new Laboratorio
-            {
-                EnderecoId = 2,
-                Nome = "Laboratório 2",
-                Email = "lab2@email.com.br",
-                DataCadastro = DateTime.Now,
-                DataModificado = DateTime.Now
-            };
+            //Laboratorio lab2 = new Laboratorio
+            //{
+            //    EnderecoId = 2,
+            //    Nome = "Laboratório 2",
+            //    Email = "lab2@email.com.br",
+            //    DataCadastro = DateTime.Now,
+            //    DataModificado = DateTime.Now
+            //};
 
-            context.Laboratorio.Add(lab1);
-            context.Laboratorio.Add(lab2);
-            context.SaveChanges();
+            //context.Laboratorio.Add(lab1);
+            //context.Laboratorio.Add(lab2);
+            //context.SaveChanges();
 
             Clinica clinica1 = new Clinica
             {

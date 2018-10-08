@@ -59,9 +59,9 @@
     <Compile Include="Data\Mappings\UsuarioClinicaMap.cs" />
     <Compile Include="Data\Mappings\UsuarioLaboratorioMap.cs" />
     <Compile Include="Data\Mappings\UsuarioMap.cs" />
-    <Compile Include="Migrations\201810051525072_Inheriterance.cs" />
-    <Compile Include="Migrations\201810051525072_Inheriterance.Designer.cs">
-      <DependentUpon>201810051525072_Inheriterance.cs</DependentUpon>
+    <Compile Include="Migrations\201810051944172_NewTables.cs" />
+    <Compile Include="Migrations\201810051944172_NewTables.Designer.cs">
+      <DependentUpon>201810051944172_NewTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,8 +87,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810051525072_Inheriterance.resx">
-      <DependentUpon>201810051525072_Inheriterance.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810051944172_NewTables.resx">
+      <DependentUpon>201810051944172_NewTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

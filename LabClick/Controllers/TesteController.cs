@@ -20,7 +20,7 @@ namespace LabClick.Controllers
         //Listagem de todos os testes ordenados por data de cadastro
         public ActionResult Testes()
         {
-            var testes = repository.GetAllByUserId((int)(Session["Id"]));
+            var testes = repository.GetAllByUserClinicaId((int)(Session["ClinicaId"]));
             List<TesteViewModel> testesViewModel = Mapper.Map<List<TesteViewModel>>(testes);
 
             return View(testesViewModel);
@@ -63,14 +63,14 @@ namespace LabClick.Controllers
             laudo.DataCadastro = DateTime.Now;
             laudo.ResultadoDetalhes = testeViewModel.ResultadoDetalhes;
 
-            if (testeViewModel.Laudo.Resultado == "Indeterminado")
-            {
-                teste.Status = "Pendente";
-                teste.Laudo = laudo;
-                repository.Update(teste);
+            //if (testeViewModel.Laudo.Resultado == "Indeterminado")
+            //{
+            //    teste.Status = "Pendente";
+            //    teste.Laudo = laudo;
+            //    repository.Update(teste);
 
-                return RedirectToAction("Testes");
-            }
+            //    return RedirectToAction("Testes");
+            //}
 
             var document = laudoService.GerarLaudoPdf(laboratorio, teste, testeImagem, laudo);
 

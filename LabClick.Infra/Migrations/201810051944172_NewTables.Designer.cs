@@ -7,13 +7,13 @@ namespace LabClick.Infra.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Inheriterance : IMigrationMetadata
+    public sealed partial class NewTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Inheriterance));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810051525072_Inheriterance"; }
+            get { return "201810051944172_NewTables"; }
         }
         
         string IMigrationMetadata.Source

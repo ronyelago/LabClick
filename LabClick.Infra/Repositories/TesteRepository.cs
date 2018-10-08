@@ -71,6 +71,19 @@ namespace LabClick.Infra.Repositories
             return testes;
         }
 
+        public ICollection<Teste> GetAllByUserClinicaId(int clinicaId)
+        {
+            var testeList = (from testes in Db.Teste
+                             where testes.ClinicaId == clinicaId
+                             select testes)
+                             .Include(t => t.Exame)
+                             .Include(t => t.Paciente)
+                             .Include(t => t.Clinica)
+                             .ToList();
+
+            return testeList;
+        }
+
         /// <summary>
         /// Obtem pelo Id e retorna um único teste.
         /// Inclui as propriedades de navegação Paciente
