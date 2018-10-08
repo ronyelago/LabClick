@@ -6,6 +6,7 @@ using LabClick.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace LabClick.Controllers
@@ -20,7 +21,17 @@ namespace LabClick.Controllers
         //Listagem de todos os testes ordenados por data de cadastro
         public ActionResult Testes()
         {
-            var testes = repository.GetAllByUserClinicaId((int)(Session["ClinicaId"]));
+            List<Teste> testes = new List<Teste>();
+
+            if (Session["LaboratorioId"] != null)
+            {
+                testes = repository.GetAllByUserClinicaId((int)(Session["LaboratorioId"])).ToList();
+            }
+            else if (Session["ClinicaId"] != null)
+            {
+                testes = repository.GetAllByUserClinicaId((int)(Session["ClinicaId"])).ToList();
+            }
+
             List<TesteViewModel> testesViewModel = Mapper.Map<List<TesteViewModel>>(testes);
 
             return View(testesViewModel);

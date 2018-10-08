@@ -48,29 +48,32 @@ namespace LabClick.Infra.Repositories
         /// <summary>
         /// Obtem pelo Id de um usuário [de um laboratório] todos os testes
         /// pelo qual o laboratório é responsável. Inclui as propriedades
-        /// de navegação Clinica, Paciente, Exame, Laudo. Ordena o retorno pela
+        /// de navegação Clinica, Paciente, Exame. Ordena o retorno pela
         /// Data de Cadastro do Teste.
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public ICollection<Teste> GetAllByUserId(int userId)
+        public ICollection<Teste> GetAllByUserLabId(int userId)
         {
-            var testes = (from user in Db.UsuarioLaboratorio
-                          join lab in Db.Laboratorio on user.LaboratorioId equals lab.Id
-                          join clinica in Db.Clinica on lab.Id equals clinica.LaboratorioId
-                          join teste in Db.Teste on clinica.Id equals teste.ClinicaId
-                          where user.Id == userId
-                          select teste)
-                          .Include(t => t.Clinica)
-                          .Include(t => t.Paciente)
-                          .Include(t => t.Exame)
-                          .Include(t => t.Laudo)
-                          .OrderBy(t => t.DataCadastro)
-                          .ToList();
+            var testList = (from testes in Db.Teste
+                            join clinica in Db.Clinica on testes.ClinicaId equals clinica.Id
+                            join lab in Db.Laboratorio on clinica.LaboratorioId equals lab.Id
+                            where lab.Id == userId
+                            select testes)
+                            .Include(t => t.Clinica)
+                            .Include(t => t.Exame)
+                            .Include(t => t.Paciente)
+                            .ToList();
 
-            return testes;
+            return testList;
         }
 
+        /// <summary>
+        /// Obtem pelo Id de uma clínica todos os respectiovos testes.
+        /// Inclui as propriedades de navegação Exame, Paciente, Clínica.
+        /// </summary>
+        /// <param name="clinicaId"></param>
+        /// <returns></returns>
         public ICollection<Teste> GetAllByUserClinicaId(int clinicaId)
         {
             var testeList = (from testes in Db.Teste
