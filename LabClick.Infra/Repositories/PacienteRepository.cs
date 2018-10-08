@@ -21,6 +21,16 @@ namespace LabClick.Infra.Repositories
             return pacientes;
         }
 
+        public List<Paciente> GetByClinicaId(int clinicaId)
+        {
+            var listaPacientes = (from pacientes in Db.Paciente
+                                  where pacientes.ClinicaId == clinicaId
+                                  select pacientes)
+                                  .ToList();
+
+            return listaPacientes;
+        }
+
         public List<Paciente> GetByName(string name)
         {
             var pacientes = Db.Paciente.Where(p => p.Nome.Contains(name))

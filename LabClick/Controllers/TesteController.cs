@@ -27,9 +27,15 @@ namespace LabClick.Controllers
             {
                 testes = repository.GetAllByUserClinicaId((int)(Session["LaboratorioId"])).ToList();
             }
+
             else if (Session["ClinicaId"] != null)
             {
                 testes = repository.GetAllByUserClinicaId((int)(Session["ClinicaId"])).ToList();
+            }
+
+            else
+            {
+                testes = repository.GetAll().ToList();
             }
 
             List<TesteViewModel> testesViewModel = Mapper.Map<List<TesteViewModel>>(testes);

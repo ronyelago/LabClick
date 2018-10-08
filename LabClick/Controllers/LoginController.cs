@@ -55,14 +55,16 @@ namespace LabClick.Controllers
                             ViewBag.usuario = "Laboratorio";
                             return RedirectToAction("Testes", "Teste");
                         }
+
                         else if (user is UsuarioClinica)
                         {
                             UsuarioClinica userClinica = user as UsuarioClinica;
                             Session["ClinicaId"] = userClinica.ClinicaId;
 
                             ViewBag.usuario = "Clinica";
-                            return RedirectToAction("Index", "Dashboard");
+                            return RedirectToAction("Index", "Paciente");
                         }
+
                         else
                         {
                             return RedirectToAction("Index", "Dashboard");

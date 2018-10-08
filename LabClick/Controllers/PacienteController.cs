@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
 using LabClick.ViewModel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 
@@ -14,7 +16,22 @@ namespace LabClick.Controllers
         // GET: Paciente
         public ActionResult Index()
         {
-            var pacientes = repository.GetByLabId((int)(Session["LaboratorioId"]));
+            List<Paciente> pacientes = new List<Paciente>();
+
+            if (Session["LaboratorioId"] != null)
+            {
+                pacientes = repository.GetByLabId((int)(Session["LaboratorioId"]));
+            }
+
+            else if (Session["ClinicaId"] != null)
+            {
+                pacientes = repository.GetByClinicaId((int)(Session["ClinicaId"]));
+            }
+
+            else
+            {
+                pacientes = repository.GetAll().ToList();
+            }
 
             var pacientesViewModel = Mapper.Map<List<PacienteViewModel>>(pacientes);
 

@@ -17,17 +17,13 @@
         <td>@teste.Clinica.Nome</td>
         <td>@teste.Status</td>
         <td>@teste.DataCadastro</td>
-        @if (teste.Laudo == null)
+        @if (teste.LaudoOk)
         {
-            <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Avaliar</a></td>
-        }
-        else if (teste.Laudo != null && !teste.LaudoOk)
-        {
-            <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Reavaliar</a></td>
+            <td><a target="_blank" href="@Url.Action("ViewPdf", "Teste", new { id = teste.Id })">Visualizar</a></td>
         }
         else
         {
-            <td><a target="_blank" href="@Url.Action("ViewPdf", "Teste", new { id = teste.Id })">Visualizar</a></td>
+            <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Avaliar</a></td>
         }
     </tr>
     }
