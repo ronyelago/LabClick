@@ -19,7 +19,7 @@ namespace LabClick.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, enderecos);
         }
 
-        [Route("getById")]
+        [Route("getById={id}")]
         public HttpResponseMessage GetById(int id)
         {
             var endereco = _repository.GetById(id);

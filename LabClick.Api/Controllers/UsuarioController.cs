@@ -5,12 +5,13 @@ using System.Web.Http;
 
 namespace LabClick.Api.Controllers
 {
-    [RoutePrefix("usuario")]
+    [RoutePrefix("user")]
     public class UsuarioController : ApiController
     {
         private UsuarioRepository repository = new UsuarioRepository();
 
-        [Route("getByEmail")]
+        [HttpGet]
+        [Route("GetByEmail={email}")]
         public HttpResponseMessage GetByEmail(string email)
         {
             var usuario = repository.GetByEmail(email);
