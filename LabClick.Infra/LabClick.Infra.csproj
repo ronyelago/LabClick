@@ -74,6 +74,7 @@
     <Compile Include="Repositories\LaudoRepository.cs" />
     <Compile Include="Repositories\TesteImagemRepository.cs" />
     <Compile Include="Repositories\TesteRepository.cs" />
+    <Compile Include="Repositories\UsuarioClinicaRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>
