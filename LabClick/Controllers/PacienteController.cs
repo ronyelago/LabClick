@@ -13,6 +13,7 @@ namespace LabClick.Controllers
     {
         private readonly PacienteRepository repository = new PacienteRepository();
         private readonly TesteRepository testeRepository = new TesteRepository();
+        private readonly LaudoRepository laudoRepository = new LaudoRepository();
 
         // GET: Paciente
         public ActionResult Index()
@@ -44,6 +45,13 @@ namespace LabClick.Controllers
             var exames = testeRepository.GetAllByPacienteId(pacienteId);
 
             return View(exames);
+        }
+
+        public ActionResult VerExame(int testeId)
+        {
+            var pdf = laudoRepository.GetById(testeId);
+
+            return File(pdf.Documento, "application/pdf");
         }
 
         // GET: Paciente/Criar

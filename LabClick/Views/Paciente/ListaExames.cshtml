@@ -8,7 +8,6 @@
 
 <table class="table">
     <tr>
-        <th>Clínica</th>
         <th>Exame</th>
         <th>QR Code</th>
         <th>Status</th>
@@ -19,10 +18,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Clinica.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Paciente.Nome)
+            @Html.DisplayFor(modelItem => item.Exame.Nome)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Code)
@@ -33,9 +29,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.DataCadastro)
         </td>
-        <td>
-            @Html.ActionLink("Ver Laudo", "Edit", new { id=item.Id })
-        </td>
+        @if (item.LaudoOk)
+        {
+            <td>
+                @Html.ActionLink("Ver Laudo", "VerExame", new { testeId = item.Id }, new { target = "_blank" })
+            </td>
+        }
+        else
+        {
+            <td>Laudo Indisponível</td>
+        }
     </tr>
 }
 
