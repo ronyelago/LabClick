@@ -1,0 +1,42 @@
+﻿@model ICollection<LabClick.Domain.Entities.Teste>
+
+@{
+    ViewBag.Title = "Lista de Exames";
+}
+
+<h2>Lista de Exames</h2>
+
+<table class="table">
+    <tr>
+        <th>Clínica</th>
+        <th>Exame</th>
+        <th>QR Code</th>
+        <th>Status</th>
+        <th>Data do Exame</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clinica.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paciente.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCadastro)
+        </td>
+        <td>
+            @Html.ActionLink("Ver Laudo", "Edit", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

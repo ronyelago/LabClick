@@ -1,7 +1,9 @@
 ﻿using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
+using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 
 namespace LabClick.Api.Controllers
@@ -30,6 +32,19 @@ namespace LabClick.Api.Controllers
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, endereco);
+        }
+
+        [HttpGet]
+        [Route("loop")]
+        public void Loop()
+        {
+            while (true)
+            {
+                Thread.Sleep(30000);
+
+                var client = new HttpClient() { Timeout = TimeSpan.FromSeconds(180) };
+                var result = client.GetAsync(@"http://apilabclick.mflogic.com.br/endereco/getbyid=1");
+            }
         }
 
         [HttpPost]

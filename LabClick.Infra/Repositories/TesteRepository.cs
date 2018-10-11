@@ -18,7 +18,7 @@ namespace LabClick.Infra.Repositories
         {
             var testes = Db.Teste.Where(t => t.PacienteId == pacienteId)
                     .Include(t => t.Exame)
-                    .Include(t => t.Laudo)
+                    .Include(t => t.Clinica)
                     .Include(t => t.Paciente)
                     .ToList();
 
