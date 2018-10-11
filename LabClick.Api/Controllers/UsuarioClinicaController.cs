@@ -10,8 +10,8 @@ namespace LabClick.Api.Controllers
     {
         private readonly UsuarioClinicaRepository repository = new UsuarioClinicaRepository();
 
-        [Route("GetByUserEmail={email}")]
-        public HttpResponseMessage GetByUserEmail(string email)
+        [Route("GetByEmail={email}")]
+        public HttpResponseMessage GetByEmail(string email)
         {
             var user = repository.GetByEmail(email);
 
