@@ -45,8 +45,10 @@ namespace LabClick.Controllers
 
         public ActionResult PesquisarPaciente(string nome)
         {
-            var viewModel = new PacienteViewModel();
-            viewModel.Pacientes = repository.GetByName(nome);
+            var viewModel = new PacienteViewModel
+            {
+                Pacientes = repository.GetByName(nome)
+            };
 
             return PartialView("PacientesPartial", viewModel);
         }
