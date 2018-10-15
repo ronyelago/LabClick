@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web.Hosting;
 
 namespace LabClick.Services.Services
 {
@@ -61,26 +62,35 @@ namespace LabClick.Services.Services
             gfx.DrawImage(logoImage, 20, 10, 210, 80);
 
             //Body
-            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\body.PNG"), 20, 220, 570, 380);
+            gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\body.PNG")), 20, 220, 570, 380);
 
             Stream str = new MemoryStream(testeImagem.Imagem);
             XImage xImage = XImage.FromStream(str);
             gfx.DrawImage(xImage, 100, 290, 150, 150);
 
-            gfx.DrawString(laudo.ResultadoDetalhes + laudo.Observacoes, font,
-              XBrushes.Black, 150, 450, XStringFormats.Default);
+            if (laudo.ResultadoDetalhes != null)
+            {
+                gfx.DrawString(laudo.ResultadoDetalhes, font,
+                XBrushes.Black, 145, 520, XStringFormats.Default);
+            }
+
+            if (laudo.Observacoes != null)
+            {
+                gfx.DrawString(laudo.Observacoes, font,
+                XBrushes.Black, 130, 530, XStringFormats.Default);
+            }
 
             if (laudo.Resultado == "Positivo")
             {
-                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\positivo.PNG"), 110, 470, 130, 30);
+                gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\positivo.PNG")), 110, 470, 130, 30);
             }
             else if (laudo.Resultado == "Negativo")
             {
-                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\negativo.PNG"), 120, 470, 120, 30);
+                gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\negativo.PNG")), 120, 470, 120, 30);
             }
             else
             {
-                gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\indeterminado.PNG"), 120, 470, 120, 30);
+                gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\indeterminado.PNG")), 120, 470, 120, 30);
             }
 
             //Footer
@@ -88,7 +98,7 @@ namespace LabClick.Services.Services
             XImage footerImage = XImage.FromStream(footerStream);
             gfx.DrawImage(footerImage, 30, 630, 550, 130);
             gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 40);
-            gfx.DrawImage(XImage.FromFile(@"C:\Jobs\labclick\LabClick\Content\styles\images\header.PNG"), 20, 100, 570, 70);
+            gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\header.PNG")), 20, 100, 570, 70);
 
             //Dados do Paciente
             gfx.DrawString($"Nome: {teste.Paciente.Nome}", font,

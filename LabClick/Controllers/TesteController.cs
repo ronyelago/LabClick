@@ -25,7 +25,7 @@ namespace LabClick.Controllers
 
             if (Session["LaboratorioId"] != null)
             {
-                testes = repository.GetAllByUserClinicaId((int)(Session["LaboratorioId"])).ToList();
+                testes = repository.GetAllByUserLabId((int)(Session["LaboratorioId"])).ToList();
             }
 
             else if (Session["ClinicaId"] != null)
@@ -78,16 +78,15 @@ namespace LabClick.Controllers
             Laudo laudo = testeViewModel.Laudo;
             laudo.Id = teste.Id;
             laudo.DataCadastro = DateTime.Now;
-            laudo.ResultadoDetalhes = testeViewModel.ResultadoDetalhes;
 
-            //if (testeViewModel.Laudo.Resultado == "Indeterminado")
-            //{
-            //    teste.Status = "Pendente";
-            //    teste.Laudo = laudo;
-            //    repository.Update(teste);
-
-            //    return RedirectToAction("Testes");
-            //}
+            if (testeViewModel.Laudo.Resultado == "Positivo")
+            {
+                laudo.ResultadoDetalhes = testeViewModel.PositivoDetalhes;
+            }
+            else if (testeViewModel.Laudo.Resultado == "Indeterminado")
+            {
+                laudo.ResultadoDetalhes = testeViewModel.NegativoDetalhes;
+            }
 
             var document = laudoService.GerarLaudoPdf(laboratorio, teste, testeImagem, laudo);
 
