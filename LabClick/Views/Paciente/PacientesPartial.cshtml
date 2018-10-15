@@ -1,0 +1,34 @@
+﻿@model IEnumerable<LabClick.ViewModel.PacienteViewModel>
+
+<table class="table">
+    <tr>
+        <th>Nome do Paciente</th>
+        <th>E-Mail</th>
+        <th>Telefone</th>
+        <th>CPF</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+                @Html.HiddenFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.ActionLink("Ver Exames", "ListaExames", new { pacienteId = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

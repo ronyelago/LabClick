@@ -251,6 +251,7 @@
     <Content Include="Views\Teste\Testes.cshtml" />
     <Content Include="Views\Teste\AnalisarTeste.cshtml" />
     <Content Include="Views\Paciente\ListaExames.cshtml" />
+    <Content Include="Views\Paciente\PacientesPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
