@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LabClick.ViewModel.PacienteViewModel>
+﻿@model LabClick.ViewModel.PacienteViewModel
 
 <table class="table">
     <tr>
@@ -9,7 +9,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Pacientes)
     {
         <tr>
             <td>

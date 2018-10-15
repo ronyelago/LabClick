@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LabClick.ViewModel.PacienteViewModel>
+﻿@model LabClick.ViewModel.PacienteViewModel
 
 <div>
     <div class="container">
@@ -6,7 +6,7 @@
             <div class="col-sm-6 col-sm-offset-3">
                 <div id="imaginary_container">
                     <div class="input-group stylish-input-group">
-                        <input id="searchBar" type="text" class="form-control" placeholder="Nome do Paciente">
+                        @Html.TextBoxFor(m => m.SearchName, new { id = "searchBar", placeholder = "Nome do Paciente", type ="text", @class = "form-control" })
                         <span class="input-group-addon">
                             <button id="btnSearch">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -18,14 +18,22 @@
         </div>
     </div>
     <br /><br />
-    <div>
+    <div id="divPacientes">
         @{Html.RenderPartial("PacientesPartial", Model);}
     </div>
 </div>
 @section Scripts
 {
     <script>
+        $(document).ready(function () {
 
+            $("#btnSearch").click(function () {
+                if ($("#searchBar").val() != "") {
+                    var nome = $("#searchBar").val();
+                    $("#divPacientes").load('@(Url.Action("PesquisarPaciente", "Paciente", null, Request.Url.Scheme))?nome=' + nome)
+                }
+            });
+        });
     </script>
 }
 

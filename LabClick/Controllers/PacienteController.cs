@@ -35,9 +35,20 @@ namespace LabClick.Controllers
                 pacientes = repository.GetAll().ToList();
             }
 
-            var pacientesViewModel = Mapper.Map<List<PacienteViewModel>>(pacientes);
+            PacienteViewModel pacientesViewModel = new PacienteViewModel
+            {
+                Pacientes = pacientes
+            };
 
             return View(pacientesViewModel);
+        }
+
+        public ActionResult PesquisarPaciente(string nome)
+        {
+            var viewModel = new PacienteViewModel();
+            viewModel.Pacientes = repository.GetByName(nome);
+
+            return PartialView("PacientesPartial", viewModel);
         }
 
         public ActionResult ListaExames(int pacienteId)
