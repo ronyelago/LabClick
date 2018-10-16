@@ -1,39 +1,6 @@
 ﻿@model LabClick.ViewModel.PacienteViewModel
 
-<style>
-    .stylish-input-group .input-group-addon {
-        background: white !important;
-    }
-
-    .stylish-input-group .form-control {
-        border-right: 0;
-        box-shadow: 0 0 0;
-        border-color: #ccc;
-    }
-
-    .stylish-input-group button {
-        border: 0;
-        background: transparent;
-    }
-</style>
-
 <div>
-    @*<div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div id="imaginary_container">
-                        <div class="input-group stylish-input-group">
-                            @Html.TextBoxFor(m => m.SearchName, new { id = "searchBar", placeholder = "Nome do Paciente", type ="text", @class = "form-control" })
-                            <span class="input-group-addon">
-                                <button id="btnSearch">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
     <br /><br />
     <div id="divPacientes">
         @{Html.RenderPartial("PacientesPartial", Model);}
