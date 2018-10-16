@@ -18,6 +18,7 @@ namespace LabClick.Controllers
         {
             ViewBag.ReturnUrl = returnURL;
             Session.Abandon();
+            Session["Id"] = null;
             return View();
         }
 
