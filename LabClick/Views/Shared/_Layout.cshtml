@@ -18,7 +18,8 @@
     <div class="navbar navbar-default navbar-fixed-top">
         @if (Session["Id"] != null)
         {
-            <input type="button" class="btn btn-success" value="Sair" onclick="location.href='@Url.Action("Index","Login")'" />
+            <input type="button" class="btn btn-success" value="Sair" onclick="location.href='@Url.Action("Index","Login")'"
+                   style="position: absolute; right: 320px; top: 5px"/>
         }
         <div class="container">
             <div class="navbar-header">
