@@ -85,7 +85,7 @@ namespace LabClick.Services.Services
             {
                 XTextFormatter tf = new XTextFormatter(gfx);
                 XRect rect = new XRect(80, 530, 200, 30);
-                gfx.DrawRectangle(XBrushes.SeaShell, rect);
+                gfx.DrawRectangle(XBrushes.Transparent, rect);
                 tf.DrawString(laudo.Observacoes, font, XBrushes.Black, rect, XStringFormats.TopLeft);
             }
 
@@ -106,7 +106,7 @@ namespace LabClick.Services.Services
             Stream footerStream = new MemoryStream(laboratorio.ImagemFooter);
             XImage footerImage = XImage.FromStream(footerStream);
             gfx.DrawImage(footerImage, 30, 630, 550, 130);
-            gfx.DrawString("WWW.LABORLABIS.COM.BR", new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 40);
+            gfx.DrawString(laboratorio.Email, new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 40);
             gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\header.PNG")), 20, 100, 570, 70);
 
             //Dados do Paciente
