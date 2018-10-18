@@ -174,9 +174,11 @@
 
         $(document).ready(function () {
 
+            //Oculta os dropdowns (positivo e indeterminado)
             $("#PositivoDetalhes").hide();
             $("#IndeterminadoDetalhes").hide();
 
+            //controla a exibição e ocultação dos dropdowns de acordo com a seleção
             $("input[type='radio']").change(function () {
 
                 if ($(this).val() == "Positivo") {
@@ -196,12 +198,16 @@
                 }
             })
 
+            //botão que ao clicado exibe o modal com preview do laudo
             $('#btnGerarLaudo').click(function () {
-                
+
+                //verifica se o usuário selecionou algum radioButton
                 if ($("#Laudo_Resultado:checked").val() != null) {
 
+                    //verificações de qual radiobutton foi selecionado
                     if ($("input[type='radio']:checked").val() == "Positivo") {
 
+                        //verifica se foi selecionado uma opção válida no dropdown PositivoDetalhes
                         if ($("#PositivoDetalhes").val() != "Selecione...") {
 
                             $('#erro').remove();
@@ -216,6 +222,7 @@
                     }
                     else if ($("input[type='radio']:checked").val() == "Indeterminado") {
 
+                        //verifica se foi selecionado uma opção válida no dropdown IndeterminadoDetalhes
                         if ($("#IndeterminadoDetalhes").val() != "Selecione...") {
 
                             $('#erro').remove();
@@ -225,7 +232,7 @@
                         else {
 
                             $("#IndeterminadoDetalhes").css('border-color', 'red');
-                            alert("Favor especificar o procedimento.");
+                            alert("Favor especificar o procedimento para exame inválido.");
                         }
                     }
                     else {
@@ -235,6 +242,7 @@
                         $("form").attr("target", "_blank");
                     }
                 }
+                //insere uma div com mensagem de erro caso nenhum radiobutton tenha sido selecionado
                 else {
                     $('#erro').remove();
                     $('#divResultado').prepend($('<div id="erro" style="color: red;"><strong>Favor analisar o Teste</strong></div>'))
@@ -242,6 +250,7 @@
                 }
             });
 
+            //Remove a borda vermelha dos dropdowns
             $("#PositivoDetalhes").click(function () {
                 $(this).css("border-color", "black");
             })
@@ -249,6 +258,7 @@
                 $(this).css("border-color", "black");
             })
 
+            //fecha o modal
             $('#btnConcluir').click(function () {
 
                 $('#formModal').modal('toggle');
