@@ -199,10 +199,41 @@
             $('#btnGerarLaudo').click(function () {
                 
                 if ($("#Laudo_Resultado:checked").val() != null) {
-                    $('#erro').remove();
-                    $('#formModal').modal('toggle');
 
-                    $("form").attr("target", "_blank");
+                    if ($("input[type='radio']:checked").val() == "Positivo") {
+
+                        if ($("#PositivoDetalhes").val() != "Selecione...") {
+
+                            $('#erro').remove();
+                            $('#formModal').modal('toggle');
+                            $("form").attr("target", "_blank");
+                        }
+                        else {
+
+                            $("#PositivoDetalhes").css('border-color', 'red');
+                            alert("Favor selecionar os anticorpos reagentes.");
+                        }
+                    }
+                    else if ($("input[type='radio']:checked").val() == "Indeterminado") {
+
+                        if ($("#IndeterminadoDetalhes").val() != "Selecione...") {
+
+                            $('#erro').remove();
+                            $('#formModal').modal('toggle');
+                            $("form").attr("target", "_blank");
+                        }
+                        else {
+
+                            $("#IndeterminadoDetalhes").css('border-color', 'red');
+                            alert("Favor especificar o procedimento.");
+                        }
+                    }
+                    else {
+
+                        $('#erro').remove();
+                        $('#formModal').modal('toggle');
+                        $("form").attr("target", "_blank");
+                    }
                 }
                 else {
                     $('#erro').remove();
@@ -210,6 +241,13 @@
                     $('#divResultado').css('border-color', 'red')
                 }
             });
+
+            $("#PositivoDetalhes").click(function () {
+                $(this).css("border-color", "black");
+            })
+            $("#IndeterminadoDetalhes").click(function () {
+                $(this).css("border-color", "black");
+            })
 
             $('#btnConcluir').click(function () {
 
