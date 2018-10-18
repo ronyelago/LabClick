@@ -91,7 +91,7 @@
                 <div class="radio">
                     @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
                     <label>Indeterminado/Inválido   </label>
-                    @Html.DropDownList("NegativoDetalhes", Options)
+                    @Html.DropDownList("IndeterminadoDetalhes", Options)
                 </div>
             </div>
         </div>
@@ -101,7 +101,7 @@
                 <label>Observações</label>
             </div>
             <div>
-                @Html.TextAreaFor(m => m.Laudo.Observacoes)
+                @Html.TextAreaFor(m => m.Laudo.Observacoes, new { rows = "4", cols = "150", maxlength = "150" })
             </div>
         </div>
 
@@ -174,8 +174,32 @@
 
         $(document).ready(function () {
 
-            $('#btnGerarLaudo').click(function () {
+            $("#PositivoDetalhes").hide();
+            $("#IndeterminadoDetalhes").hide();
 
+            $("input[type='radio']").change(function () {
+
+                if ($(this).val() == "Positivo") {
+
+                    $("#IndeterminadoDetalhes").hide();
+                    $("#PositivoDetalhes").show();
+                }
+                else if ($(this).val() == "Negativo") {
+
+                    $("#PositivoDetalhes").hide();
+                    $("#IndeterminadoDetalhes").hide();
+                }
+                else {
+
+                    $("#PositivoDetalhes").hide();
+                    $("#IndeterminadoDetalhes").show();
+                }
+            })
+
+
+
+            $('#btnGerarLaudo').click(function () {
+                
                 if ($("#Laudo_Resultado:checked").val() != null) {
                     $('#erro').remove();
                     $('#formModal').modal('toggle');

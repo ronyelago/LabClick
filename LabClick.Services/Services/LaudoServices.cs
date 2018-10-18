@@ -1,6 +1,7 @@
 ﻿using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
 using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
@@ -70,14 +71,18 @@ namespace LabClick.Services.Services
 
             if (laudo.ResultadoDetalhes != null)
             {
+                
+
                 gfx.DrawString(laudo.ResultadoDetalhes, font,
                 XBrushes.Black, 145, 520, XStringFormats.Default);
             }
 
             if (laudo.Observacoes != null)
             {
-                gfx.DrawString(laudo.Observacoes, font,
-                XBrushes.Black, 130, 530, XStringFormats.Default);
+                XTextFormatter tf = new XTextFormatter(gfx);
+                XRect rect = new XRect(80, 530, 200, 30);
+                gfx.DrawRectangle(XBrushes.SeaShell, rect);
+                tf.DrawString(laudo.Observacoes, font, XBrushes.Black, rect, XStringFormats.TopLeft);
             }
 
             if (laudo.Resultado == "Positivo")
