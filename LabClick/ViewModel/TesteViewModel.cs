@@ -16,7 +16,7 @@ namespace LabClick.ViewModel
         public string DataTeste => DataCadastro.ToShortDateString();
         public string HoraTeste => DataCadastro.ToShortTimeString();
         public string PositivoDetalhes { get; set; }
-        public string NegativoDetalhes { get; set; }
+        public string IndeterminadoDetalhes { get; set; }
         public Clinica  Clinica { get; set; }
         public Paciente Paciente { get; set; }
         public Exame Exame { get; set; }

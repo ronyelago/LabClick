@@ -101,7 +101,7 @@
                 <label>Observações</label>
             </div>
             <div>
-                @Html.TextAreaFor(m => m.Laudo.Observacoes, new { rows = "4", cols = "150", maxlength = "150" })
+                @Html.TextAreaFor(m => m.Laudo.Observacoes, new { rows = "4", cols = "150", maxlength = "180" })
             </div>
         </div>
 
@@ -196,20 +196,13 @@
                 }
             })
 
-
-
             $('#btnGerarLaudo').click(function () {
                 
                 if ($("#Laudo_Resultado:checked").val() != null) {
                     $('#erro').remove();
                     $('#formModal').modal('toggle');
 
-                    if ($("#Laudo_Resultado:checked").val() == 'Indeterminado') {
-                        $("form").attr("target", "_self");
-                    }
-                    else {
-                        $("form").attr("target", "_blank");
-                    }
+                    $("form").attr("target", "_blank");
                 }
                 else {
                     $('#erro').remove();

@@ -85,7 +85,7 @@ namespace LabClick.Controllers
             }
             else if (testeViewModel.Laudo.Resultado == "Indeterminado")
             {
-                laudo.ResultadoDetalhes = testeViewModel.NegativoDetalhes;
+                laudo.ResultadoDetalhes = testeViewModel.IndeterminadoDetalhes;
             }
 
             var document = laudoService.GerarLaudoPdf(laboratorio, teste, testeImagem, laudo);

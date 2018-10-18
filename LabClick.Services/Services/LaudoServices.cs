@@ -71,10 +71,14 @@ namespace LabClick.Services.Services
 
             if (laudo.ResultadoDetalhes != null)
             {
-                
-
-                gfx.DrawString(laudo.ResultadoDetalhes, font,
-                XBrushes.Black, 145, 520, XStringFormats.Default);
+                if (laudo.Resultado == "Indeterminado")
+                {
+                    gfx.DrawString(laudo.ResultadoDetalhes, font, XBrushes.Black, 70, 520, XStringFormats.Default);
+                }
+                else
+                {
+                    gfx.DrawString(laudo.ResultadoDetalhes, font, XBrushes.Black, 145, 520, XStringFormats.Default);
+                }
             }
 
             if (laudo.Observacoes != null)
@@ -95,7 +99,7 @@ namespace LabClick.Services.Services
             }
             else
             {
-                gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\indeterminado.PNG")), 120, 470, 120, 30);
+                gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\indeterminado.PNG")), 120, 470, 120, 20);
             }
 
             //Footer
