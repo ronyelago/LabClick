@@ -105,7 +105,7 @@ namespace LabClick.Services.Services
             //Footer
             Stream footerStream = new MemoryStream(laboratorio.ImagemFooter);
             XImage footerImage = XImage.FromStream(footerStream);
-            gfx.DrawImage(footerImage, 30, 630, 550, 130);
+            gfx.DrawImage(footerImage, 30, 700, 550, 130);
             gfx.DrawString(laboratorio.Email, new XFont("Comic Sans", 10), XBrushes.MidnightBlue, 450, 40);
             gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\header.PNG")), 20, 100, 570, 70);
 
