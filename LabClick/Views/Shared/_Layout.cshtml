@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - LabClick // O Seu laboratório em um click</title>
+    <title>@ViewBag.Title - LabyClick // O Seu laboratório em um click</title>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -13,13 +13,52 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link href="~/Content/DataTable/css/jquery.dataTables.css" rel="stylesheet" />
     <script src="~/Scripts/DataTable/jquery.dataTables.js"></script>
+    <style type="text/css">
+
+        .btn-salvar {
+            background-color: #1f5c59 !important;
+            color: #fff !important;
+        }
+
+        .btn {
+            width: 180px;
+            border-radius: 0px;
+            background-color: #1f5c59;
+            text-align: center;
+            padding: 13px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1;
+            text-transform: lowercase;
+            border-radius: 7px;
+            box-shadow: 8px 8px 5px -5px rgba(0,0,0,0.25);
+            border: 0
+        }
+
+        hr {
+            border: solid #b4d3cd 1px !important;
+            width: 100%;
+        }
+        .block-gradient {
+            background: #0f4961; /* Old browsers */
+            background: -moz-linear-gradient(top, #0f4961 0%, #089159 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, #0f4961 0%,#089159 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, #0f4961 0%,#089159 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f4961', endColorstr='#089159',GradientType=0 ); /* IE6-9 */
+            font-size:2rem;
+            padding:5%;
+            color:#fff;
+
+        }
+    </style>
 </head>
+
 <body style="background-image: url('/Content/styles/images/bg_cadastro.jpg'); background-repeat: no-repeat;background-position: top center; background-size: cover">
     <div class="navbar navbar-default navbar-fixed-top">
         @if (Session["Id"] != null)
         {
-            <input type="button" class="btn btn-success" value="Sair" onclick="location.href='@Url.Action("Index","Login")'"
-                   style="position: absolute; right: 320px; top: 5px"/>
+            <input type="button" class="btn btn-success" value="Sair" onclick="location.href='/'" style="position: absolute; right: 320px; top: 5px">
         }
         <div class="container">
             <div class="navbar-header">
@@ -28,9 +67,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#">
-                    <img src="~/Content/styles/images/logolabclick.png" class="navbar-brand" style="width:7%;position:absolute;">
-                </a>
+
             </div>
             <div class="navbar-collapse collapse">
                 @if (User.IsInRole("Clinica"))
@@ -53,16 +90,27 @@
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4 text-center">
+                <img src="~/Content/styles/images/logolabclick.png" class="img-responsive" style="width:60%;" alt="Logo Lab By a Click"/>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+    </div>
     <div class="container body-content">
         <br />
         <br />
         <br />
         <br />
+        
         <br />
         <br />
         @RenderBody()
-        <hr />
+        
 
     </div>
 </body>
