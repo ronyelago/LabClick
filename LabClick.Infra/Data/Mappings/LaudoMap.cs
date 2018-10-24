@@ -16,11 +16,6 @@ namespace LabClick.Infra.Data.Mappings
             Property(p => p.Id)
                 .HasColumnName("TesteId")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
-            Property(p => p.Observacoes)
-                .HasMaxLength(200);
-
-            Property(p => p.ResultadoDetalhes).IsOptional();
         }
     }
 }

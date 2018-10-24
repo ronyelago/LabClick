@@ -24,6 +24,10 @@ namespace LabClick.Infra.Data.Mappings
             Property(p => p.Code).HasMaxLength(100);
 
             Property(p => p.Status).IsRequired().HasMaxLength(50);
+
+            Property(p => p.Observacoes).HasMaxLength(200);
+
+            Property(p => p.ResultadoDetalhes).IsOptional();
         }
     }
 }
