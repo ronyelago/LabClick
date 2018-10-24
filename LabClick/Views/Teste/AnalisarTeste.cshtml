@@ -22,9 +22,21 @@ new SelectListItem { Text = "IgG/IgM Reagente" }
 }
 
 <div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-8">
+            <p class="block-gradient text-center">Testes Nº xyz</p>
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
     @using (Html.BeginForm("GerarLaudo", "Teste", FormMethod.Post, new { @target = "_blank" }))
     {
         @Html.AntiForgeryToken()
+
         <div class="row">
             <div class="col-lg-2">
 
@@ -195,7 +207,7 @@ new SelectListItem { Text = "IgG/IgM Reagente" }
     }
 
 </div>
-</div>
+    </div>
 
 @section Scripts
 {

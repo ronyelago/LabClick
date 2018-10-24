@@ -27,11 +27,30 @@ namespace LabClick.Infra.Repositories
 
         /// <summary>
         /// Obtem  e retorna todos os testes dos pacientes pelo nome ou trecho do nome.
-        /// Inclui as propriedades de navegação Paciente, Exame e Laudo.
+        /// Inclui as propriedades de navegação Paciente, Exame.
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         public ICollection<Teste> GetAllByPacienteName(string name)
+        {
+            var testes = (from test in Db.Teste
+                          join pac in Db.Paciente on test.PacienteId equals pac.Id
+                          where pac.Nome.Contains(name)
+                          select test)
+                          .Include(t => t.Paciente)
+                          .Include(t => t.Exame)
+                          .ToList();
+
+            return testes;
+        }
+
+        /// <summary>
+        /// Obtem  e retorna todos os testes dos pacientes pelo nome ou trecho do nome.
+        /// Inclui as propriedades de navegação Paciente, Exame e Laudo.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public ICollection<Teste> GetAllByPacienteNameWithLaudo(string name)
         {
             var testes = (from test in Db.Teste
                           join pac in Db.Paciente on test.PacienteId equals pac.Id
