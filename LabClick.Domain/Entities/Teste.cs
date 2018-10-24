@@ -16,6 +16,9 @@ namespace LabClick.Domain.Entities
         public int PacienteId { get; set; }
         public string Code { get; set; }
         public string Status { get; set; }
+        public string Resultado { get; set; }
+        public string ResultadoDetalhes { get; set; }
+        public string Observacoes { get; set; }
         public bool LaudoOk { get; set; }
         public DateTime DataCadastro { get; set; }
         public virtual Exame Exame { get; set; }
