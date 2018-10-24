@@ -69,31 +69,31 @@ namespace LabClick.Services.Services
             XImage xImage = XImage.FromStream(str);
             gfx.DrawImage(xImage, 100, 290, 150, 150);
 
-            if (laudo.ResultadoDetalhes != null)
+            if (teste.ResultadoDetalhes != null)
             {
-                if (laudo.Resultado == "Indeterminado")
+                if (teste.Resultado == "Indeterminado")
                 {
-                    gfx.DrawString(laudo.ResultadoDetalhes, font, XBrushes.Black, 70, 520, XStringFormats.Default);
+                    gfx.DrawString(teste.ResultadoDetalhes, font, XBrushes.Black, 70, 520, XStringFormats.Default);
                 }
                 else
                 {
-                    gfx.DrawString(laudo.ResultadoDetalhes, font, XBrushes.Black, 145, 520, XStringFormats.Default);
+                    gfx.DrawString(teste.ResultadoDetalhes, font, XBrushes.Black, 145, 520, XStringFormats.Default);
                 }
             }
 
-            if (laudo.Observacoes != null)
+            if (teste.Observacoes != null)
             {
                 XTextFormatter tf = new XTextFormatter(gfx);
                 XRect rect = new XRect(80, 530, 200, 30);
                 gfx.DrawRectangle(XBrushes.Transparent, rect);
-                tf.DrawString(laudo.Observacoes, font, XBrushes.Black, rect, XStringFormats.TopLeft);
+                tf.DrawString(teste.Observacoes, font, XBrushes.Black, rect, XStringFormats.TopLeft);
             }
 
-            if (laudo.Resultado == "Positivo")
+            if (teste.Resultado == "Positivo")
             {
                 gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\positivo.PNG")), 110, 470, 130, 30);
             }
-            else if (laudo.Resultado == "Negativo")
+            else if (teste.Resultado == "Negativo")
             {
                 gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\negativo.PNG")), 120, 470, 120, 30);
             }
