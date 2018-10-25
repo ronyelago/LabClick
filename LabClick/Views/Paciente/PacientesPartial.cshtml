@@ -1,5 +1,9 @@
 ﻿@model LabClick.ViewModel.PacienteViewModel
-
+<div class="row">
+    <div class="col-lg-12">
+        <p class="block-gradient text-center">Pacientes</p>
+    </div>
+</div>
 <table class="table table-hover" style="width:100%; border: none" id="dtPacientes">
     <thead>
         <tr>
@@ -14,7 +18,7 @@
         @foreach (var item in Model.Pacientes)
         {
             <tr>
-                <td>
+                <td id="name">
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
                 <td>

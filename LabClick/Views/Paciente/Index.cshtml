@@ -1,5 +1,21 @@
 ﻿@model LabClick.ViewModel.PacienteViewModel
 
+<style type="text/css">
+    th {
+        background-color: transparent;
+        color: grey;
+    }
+
+    #name {
+        color: #1f5c59;
+        font-weight: 700;
+    }
+
+    td {
+        color: #1f5c59;
+    }
+</style>
+
 <div>
     <br /><br />
     <div id="divPacientes">
@@ -13,7 +29,7 @@
 
             $("#dtPacientes").DataTable({
                 language: {
-                    
+
                     searchPlaceholder: "Nome, e-mail, CPF",
                     "sEmptyTable": "Nenhum paciente encontrado",
                     "sInfo": "Exibindo de _START_ até _END_ de _TOTAL_ pacientes",
@@ -36,7 +52,7 @@
                     "oAria": {
                         "sSortAscending": ": Ordenar colunas de forma ascendente",
                         "sSortDescending": ": Ordenar colunas de forma descendente"
-                    
+
                     }
                 }
             });
