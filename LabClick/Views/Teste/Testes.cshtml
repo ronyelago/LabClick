@@ -1,7 +1,17 @@
 ﻿@model List<LabClick.ViewModel.TesteViewModel>
 
-<h2>Testes</h2>
-<table class="table">
+<div class="row">
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-8">
+        <p class="block-gradient text-center">Testes</p>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<table class="table table-hover" style="width:100%; border: none" id="tbTestes">
     <tr>
         <th>Tipo</th>
         <th>Paciente</th>
@@ -11,20 +21,20 @@
     </tr>
     @foreach (var teste in Model)
     {
-    <tr>
-        <td>@teste.Exame.Nome</td>
-        <td>@teste.Paciente.Nome</td>
-        <td>@teste.Clinica.Nome</td>
-        <td>@teste.Status</td>
-        <td>@teste.DataCadastro</td>
-        @if (teste.LaudoOk)
-        {
-            <td><a target="_blank" href="@Url.Action("ViewPdf", "Teste", new { id = teste.Id })">Visualizar</a></td>
-        }
-        else
-        {
-            <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Avaliar</a></td>
-        }
-    </tr>
+        <tr>
+            <td>@teste.Exame.Nome</td>
+            <td>@teste.Paciente.Nome</td>
+            <td>@teste.Clinica.Nome</td>
+            <td>@teste.Status</td>
+            <td>@teste.DataCadastro</td>
+            @if (teste.LaudoOk)
+            {
+                <td><a target="_blank" href="@Url.Action("ViewPdf", "Teste", new { id = teste.Id })">Visualizar</a></td>
+            }
+            else
+            {
+                <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Avaliar</a></td>
+            }
+        </tr>
     }
-    </table>
+</table>
