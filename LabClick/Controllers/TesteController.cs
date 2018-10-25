@@ -13,10 +13,11 @@ namespace LabClick.Controllers
 {
     public class TesteController : Controller
     {
-        private readonly TesteRepository repository = new TesteRepository();
+        private readonly TesteRepository testeRepository = new TesteRepository();
         private readonly LaudoServices laudoService = new LaudoServices();
         private readonly TesteImagemRepository testeImagemRepository = new TesteImagemRepository();
         private readonly LaboratorioRepository laboratorioRepository = new LaboratorioRepository();
+        private readonly PacienteRepository pacienteRepository = new PacienteRepository();
 
         //Listagem de todos os testes ordenados por data de cadastro
         public ActionResult Testes()
@@ -25,17 +26,17 @@ namespace LabClick.Controllers
 
             if (Session["LaboratorioId"] != null)
             {
-                testes = repository.GetAllByUserLabId((int)(Session["LaboratorioId"])).ToList();
+                testes = testeRepository.GetAllByUserLabId((int)(Session["LaboratorioId"])).ToList();
             }
 
             else if (Session["ClinicaId"] != null)
             {
-                testes = repository.GetAllByUserClinicaId((int)(Session["ClinicaId"])).ToList();
+                testes = testeRepository.GetAllByUserClinicaId((int)(Session["ClinicaId"])).ToList();
             }
 
             else
             {
-                testes = repository.GetAll().ToList();
+                testes = testeRepository.GetAll().ToList();
             }
 
             List<TesteViewModel> testesViewModel = Mapper.Map<List<TesteViewModel>>(testes);
@@ -46,7 +47,7 @@ namespace LabClick.Controllers
         //Exibe o teste selecionado para análise
         public ActionResult AnalisarTeste(int id)
         {
-            Teste teste = repository.GetById(id);
+            Teste teste = testeRepository.GetById(id);
             var testeImagem = testeImagemRepository.GetByTesteId(id);
 
             if (teste == null)
@@ -58,7 +59,7 @@ namespace LabClick.Controllers
             if (teste.Status == "Aguardando análise")
             {
                 teste.Status = "Em análise";
-                repository.Update(teste);
+                testeRepository.Update(teste);
             }
 
             var testeViewModel = Mapper.Map<TesteViewModel>(teste);
@@ -70,13 +71,17 @@ namespace LabClick.Controllers
         [HttpPost]
         public ActionResult GerarLaudo(TesteViewModel testeViewModel)
         {
-            Teste teste = Mapper.Map<Teste>(testeViewModel);
+            Teste teste = testeRepository.GetById(testeViewModel.Id);
             TesteImagem testeImagem = testeImagemRepository.GetByTesteId(testeViewModel.Id);
             Laboratorio laboratorio = laboratorioRepository.GetById((int)(Session["LaboratorioId"]));
+            Paciente paciente = pacienteRepository.GetByIdWithAddress(testeViewModel.PacienteId);
 
             //Geração do Laudo
             Laudo laudo = new Laudo { Id = teste.Id };
             laudo.DataCadastro = DateTime.Now;
+
+            teste.Resultado = testeViewModel.Resultado;
+            teste.Observacoes = testeViewModel.Observacoes;
 
             if (testeViewModel.Resultado == "Positivo")
             {
@@ -87,7 +92,7 @@ namespace LabClick.Controllers
                 teste.ResultadoDetalhes = testeViewModel.IndeterminadoDetalhes;
             }
 
-            var document = laudoService.GerarLaudoPdf(laboratorio, teste, testeImagem, laudo);
+            var document = laudoService.GerarLaudoPdf(laboratorio, teste, testeImagem, paciente);
 
             //PdfDocument to byte array--
             using (MemoryStream stream = new MemoryStream())
@@ -99,7 +104,7 @@ namespace LabClick.Controllers
                 teste.Status = "Concluído";
                 teste.LaudoOk = true;
 
-                repository.Update(teste);
+                testeRepository.Update(teste);
 
                 return File(stream.ToArray(), "application/pdf");
             }
@@ -107,7 +112,7 @@ namespace LabClick.Controllers
 
         public ActionResult ViewPdf(int id)
         {
-            var pdf = repository.GetById(id).Laudo.Documento;
+            var pdf = testeRepository.GetById(id).Laudo.Documento;
 
             return File(pdf, "application/pdf");
         }
@@ -116,7 +121,7 @@ namespace LabClick.Controllers
         {
             if (disposing)
             {
-                repository.Dispose();
+                testeRepository.Dispose();
             }
 
             base.Dispose(disposing);

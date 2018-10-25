@@ -46,7 +46,7 @@ namespace LabClick.Services.Services
             repository.Remove(laudo);
         }
 
-        public PdfDocument GerarLaudoPdf(Laboratorio laboratorio, Teste teste, TesteImagem testeImagem, Laudo laudo)
+        public PdfDocument GerarLaudoPdf(Laboratorio laboratorio, Teste teste, TesteImagem testeImagem, Paciente paciente)
         {
             PdfDocument document = new PdfDocument();
 
@@ -110,19 +110,19 @@ namespace LabClick.Services.Services
             gfx.DrawImage(XImage.FromFile(HostingEnvironment.MapPath(@"~\Content\styles\images\header.PNG")), 20, 100, 570, 70);
 
             //Dados do Paciente
-            gfx.DrawString($"Nome: {teste.Paciente.Nome}", font,
+            gfx.DrawString($"Nome: {paciente.Nome}", font,
               XBrushes.Black, 35, 120, XStringFormats.Default);
-            gfx.DrawString($"Idade: {DateTimeToAge(teste.Paciente.DataNascimento)} anos", font,
+            gfx.DrawString($"Idade: {DateTimeToAge(paciente.DataNascimento)} anos", font,
                 XBrushes.Black, 35, 130, XStringFormats.Default);
-            gfx.DrawString($"Cidade: {teste.Paciente.Endereco.Cidade}", font,
+            gfx.DrawString($"Cidade: {paciente.Endereco.Cidade}", font,
                 XBrushes.Black, 35, 140, XStringFormats.Default);
-            gfx.DrawString($"CEP: {teste.Paciente.Endereco.Cep}", font,
+            gfx.DrawString($"CEP: {paciente.Endereco.Cep}", font,
                 XBrushes.Black, 35, 150, XStringFormats.Default);
-            gfx.DrawString($"CPF: {teste.Paciente.Cpf}", font,
+            gfx.DrawString($"CPF: {paciente.Cpf}", font,
                 XBrushes.Black, 244, 120, XStringFormats.Default);
-            gfx.DrawString($"Sexo: {teste.Paciente.Sexo}", font,
+            gfx.DrawString($"Sexo: {paciente.Sexo}", font,
                 XBrushes.Black, 244, 130, XStringFormats.Default);
-            gfx.DrawString($"UF: {teste.Paciente.Endereco.UF}", font,
+            gfx.DrawString($"UF: {paciente.Endereco.UF}", font,
                 XBrushes.Black, 244, 140, XStringFormats.Default);
             gfx.DrawString($"Data do Teste: {teste.DataCadastro}", font,
                 XBrushes.Black, 410, 120, XStringFormats.Default);

@@ -51,5 +51,13 @@ namespace LabClick.Infra.Repositories
 
             return pacientesLista;
         }
+
+        public Paciente GetByIdWithAddress(int id)
+        {
+            Paciente paciente = Db.Paciente.Include(p => p.Endereco)
+                        .FirstOrDefault(pac => pac.Id == id);
+
+            return paciente;
+        }
     }
 }
