@@ -3,7 +3,7 @@ namespace LabClick.Infra.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NewTables : DbMigration
+    public partial class Fresh : DbMigration
     {
         public override void Up()
         {
@@ -78,10 +78,7 @@ namespace LabClick.Infra.Migrations
                 c => new
                     {
                         TesteId = c.Int(nullable: false),
-                        Resultado = c.String(maxLength: 500, unicode: false),
-                        ResultadoDetalhes = c.String(maxLength: 500, unicode: false),
                         Documento = c.Binary(),
-                        Observacoes = c.String(maxLength: 200, unicode: false),
                         DataCadastro = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.TesteId)
@@ -98,6 +95,9 @@ namespace LabClick.Infra.Migrations
                         PacienteId = c.Int(nullable: false),
                         Code = c.String(maxLength: 100, unicode: false),
                         Status = c.String(nullable: false, maxLength: 50, unicode: false),
+                        Resultado = c.String(maxLength: 500, unicode: false),
+                        ResultadoDetalhes = c.String(maxLength: 500, unicode: false),
+                        Observacoes = c.String(maxLength: 200, unicode: false),
                         LaudoOk = c.Boolean(nullable: false),
                         DataCadastro = c.DateTime(),
                     })

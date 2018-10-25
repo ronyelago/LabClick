@@ -70,22 +70,21 @@ namespace LabClick.Controllers
         [HttpPost]
         public ActionResult GerarLaudo(TesteViewModel testeViewModel)
         {
-            Teste teste = repository.GetById(testeViewModel.Id);
+            Teste teste = Mapper.Map<Teste>(testeViewModel);
             TesteImagem testeImagem = testeImagemRepository.GetByTesteId(testeViewModel.Id);
             Laboratorio laboratorio = laboratorioRepository.GetById((int)(Session["LaboratorioId"]));
-            
+
             //Geração do Laudo
-            Laudo laudo = testeViewModel.Laudo;
-            laudo.Id = teste.Id;
+            Laudo laudo = new Laudo { Id = teste.Id };
             laudo.DataCadastro = DateTime.Now;
 
-            if (testeViewModel.Laudo.Resultado == "Positivo")
+            if (testeViewModel.Resultado == "Positivo")
             {
-                laudo.ResultadoDetalhes = testeViewModel.PositivoDetalhes;
+                teste.ResultadoDetalhes = testeViewModel.PositivoDetalhes;
             }
-            else if (testeViewModel.Laudo.Resultado == "Indeterminado")
+            else if (testeViewModel.Resultado == "Indeterminado")
             {
-                laudo.ResultadoDetalhes = testeViewModel.IndeterminadoDetalhes;
+                teste.ResultadoDetalhes = testeViewModel.IndeterminadoDetalhes;
             }
 
             var document = laudoService.GerarLaudoPdf(laboratorio, teste, testeImagem, laudo);

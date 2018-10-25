@@ -108,18 +108,18 @@ new SelectListItem { Text = "IgG/IgM Reagente" }
                     </div>
                     <div>
                         <div class="radio">
-                            @Html.RadioButtonFor(m => m.Laudo.Resultado, "Positivo")
+                            @Html.RadioButtonFor(m => m.Resultado, "Positivo")
                             <label>Positivo</label>
                             @Html.DropDownList("PositivoDetalhes", Details)
                         </div>
                         <div class="radio">
-                            @Html.RadioButtonFor(m => m.Laudo.Resultado, "Negativo")
+                            @Html.RadioButtonFor(m => m.Resultado, "Negativo")
                             <label>Negativo</label>
                         </div>
                     </div>
                     <div>
                         <div class="radio">
-                            @Html.RadioButtonFor(m => m.Laudo.Resultado, "Indeterminado")
+                            @Html.RadioButtonFor(m => m.Resultado, "Indeterminado")
                             <label>Indeterminado/Inválido   </label>
                             @Html.DropDownList("IndeterminadoDetalhes", Options)
                         </div>
@@ -130,7 +130,7 @@ new SelectListItem { Text = "IgG/IgM Reagente" }
                         <label>Observações</label>
                     </div>
                     <div>
-                        @Html.TextAreaFor(m => m.Laudo.Observacoes, new { rows = "4", cols = "150", maxlength = "180" })
+                        @Html.TextAreaFor(m => m.Observacoes, new { rows = "4", cols = "150", maxlength = "180" })
                     </div>
                 </div>
             </div>
@@ -200,6 +200,12 @@ new SelectListItem { Text = "IgG/IgM Reagente" }
         <!--Fim Modal-->
 
         @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.ClinicaId)
+        @Html.HiddenFor(m => m.ExameId)
+        @Html.HiddenFor(m => m.HoraTeste)
+        @Html.HiddenFor(m => m.DataCadastro)
+        @Html.HiddenFor(m => m.DataTeste)
+        @Html.HiddenFor(m => m.PacienteId)
         @Html.HiddenFor(m => m.Paciente.Nome)
         @Html.HiddenFor(m => m.Paciente.Cpf)
         @Html.HiddenFor(m => m.Exame.Nome)
@@ -243,7 +249,7 @@ new SelectListItem { Text = "IgG/IgM Reagente" }
             $('#btnGerarLaudo').click(function () {
 
                 //verifica se o usuário selecionou algum radioButton
-                if ($("#Laudo_Resultado:checked").val() != null) {
+                if ($("#Resultado:checked").val() != null) {
 
                     //verificações de qual radiobutton foi selecionado
                     if ($("input[type='radio']:checked").val() == "Positivo") {
@@ -309,7 +315,7 @@ new SelectListItem { Text = "IgG/IgM Reagente" }
         function getResult() {
 
             $("#lblResultado").text("")
-            var result = $("#Laudo_Resultado:checked").val()
+            var result = $("#Resultado:checked").val()
             $("#lblResultado").append(result)
         }
 

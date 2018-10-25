@@ -107,8 +107,8 @@ namespace LabClick.Infra.Migrations
             //Laboratorio lab1 = new Laboratorio
             //{
             //    EnderecoId = 1,
-            //    Nome = "Laboratório 1",
-            //    Email = "lab1@email.com.br",
+            //    Nome = "Labor Labs",
+            //    Email = "laborlabs@laborlabs.com.br",
             //    DataCadastro = DateTime.Now,
             //    DataModificado = DateTime.Now
             //};
@@ -116,7 +116,7 @@ namespace LabClick.Infra.Migrations
             //Laboratorio lab2 = new Laboratorio
             //{
             //    EnderecoId = 2,
-            //    Nome = "Laboratório 2",
+            //    Nome = "Lab 2",
             //    Email = "lab2@email.com.br",
             //    DataCadastro = DateTime.Now,
             //    DataModificado = DateTime.Now
@@ -152,33 +152,33 @@ namespace LabClick.Infra.Migrations
             context.Clinica.Add(clinica2);
             context.SaveChanges();
 
-            //        Usuario u1 = new Usuario
-            //        {
-            //            LaboratorioId = 1,
-            //            ClinicaId = 1,
-            //            Nome = "Ronye do Lago",
-            //            Email = "ronye.rocha@gmail.com",
-            //            Senha = "759310",
-            //            Perfil = "Administrador",
-            //            DataCadastro = DateTime.Now,
-            //            DataModificado = DateTime.Now
-            //        };
+            ////        Usuario u1 = new Usuario
+            ////        {
+            ////            LaboratorioId = 1,
+            ////            ClinicaId = 1,
+            ////            Nome = "Ronye do Lago",
+            ////            Email = "ronye.rocha@gmail.com",
+            ////            Senha = "759310",
+            ////            Perfil = "Administrador",
+            ////            DataCadastro = DateTime.Now,
+            ////            DataModificado = DateTime.Now
+            ////        };
 
-            //        Usuario u2 = new Usuario
-            //        {
-            //            LaboratorioId = 2,
-            //            ClinicaId = 2,
-            //            Nome = "Olis do Lago",
-            //            Email = "olis@gmail.com",
-            //            Senha = "759310",
-            //            Perfil = "Administrador",
-            //            DataCadastro = DateTime.Now,
-            //            DataModificado = DateTime.Now
-            //        };
+            ////        Usuario u2 = new Usuario
+            ////        {
+            ////            LaboratorioId = 2,
+            ////            ClinicaId = 2,
+            ////            Nome = "Olis do Lago",
+            ////            Email = "olis@gmail.com",
+            ////            Senha = "759310",
+            ////            Perfil = "Administrador",
+            ////            DataCadastro = DateTime.Now,
+            ////            DataModificado = DateTime.Now
+            ////        };
 
-            //        context.Usuario.Add(u1);
-            //        context.Usuario.Add(u2);
-            //        context.SaveChanges();
+            ////        context.Usuario.Add(u1);
+            ////        context.Usuario.Add(u2);
+            ////        context.SaveChanges();
 
             Paciente p1 = new Paciente
             {
@@ -244,7 +244,7 @@ namespace LabClick.Infra.Migrations
 
             Exame exame1 = new Exame
             {
-                Nome = "Zika",
+                Nome = "Zika IgM/IgG",
                 ClinicaId = 1,
                 Descricao = "Exame de Zika",
                 DataCadastro = DateTime.Now,
@@ -253,7 +253,7 @@ namespace LabClick.Infra.Migrations
 
             Exame exame2 = new Exame
             {
-                Nome = "Zika",
+                Nome = "Zika IgM/IgG",
                 ClinicaId = 2,
                 Descricao = "Exame de Zika",
                 DataCadastro = DateTime.Now,
@@ -264,93 +264,6 @@ namespace LabClick.Infra.Migrations
             context.Exame.Add(exame2);
             context.SaveChanges();
 
-            //        //Teste t1 = new Teste
-            //        //{
-            //        //    ExameId = 1,
-            //        //    ClinicaId = 1,
-            //        //    PacienteId = 1,
-            //        //    Imagem = null,
-            //        //    Status = "Aguardando análise",
-            //        //    DataCadastro = DateTime.Now
-            //        //};
-
-            //        //Teste t2 = new Teste
-            //        //{
-            //        //    ExameId = 1,
-            //        //    ClinicaId = 1,
-            //        //    PacienteId = 2,
-            //        //    Imagem = null,
-            //        //    Status = "Aguardando análise",
-            //        //    DataCadastro = DateTime.Now
-            //        //};
-
-            //        //Teste t3 = new Teste
-            //        //{
-            //        //    ExameId = 2,
-            //        //    ClinicaId = 2,
-            //        //    PacienteId = 3,
-            //        //    Imagem = null,
-            //        //    Status = "Aguardando análise",
-            //        //    DataCadastro = DateTime.Now
-            //        //};
-
-            //        //Teste t4 = new Teste
-            //        //{
-            //        //    ExameId = 2,
-            //        //    ClinicaId = 2,
-            //        //    PacienteId = 4,
-            //        //    Imagem = null,
-            //        //    Status = "Aguardando análise",
-            //        //    DataCadastro = DateTime.Now
-            //        //};
-
-            //        //context.Teste.Add(t1);
-            //        //context.Teste.Add(t2);
-            //        //context.Teste.Add(t3);
-            //        //context.Teste.Add(t4);
-            //        //context.SaveChanges();
-
-            //        //Laudo r1 = new Laudo
-            //        //{
-            //        //    Id = 1,
-            //        //    Resultado = "",
-            //        //    Observacoes = "Nenhuma",
-            //        //    Documento = null,
-            //        //    DataCadastro = DateTime.Now
-            //        //};
-
-            //        //Laudo r2 = new Laudo
-            //        //{
-            //        //    Id = 2,
-            //        //    Resultado = "",
-            //        //    Observacoes = "Nenhuma",
-            //        //    Documento = null,
-            //        //    DataCadastro = DateTime.Now
-            //        //};
-
-            //        //Laudo r3 = new Laudo
-            //        //{
-            //        //    Id = 3,
-            //        //    Resultado = "",
-            //        //    Observacoes = "Nenhuma",
-            //        //    Documento = null,
-            //        //    DataCadastro = DateTime.Now
-            //        //};
-
-            //        //Laudo r4 = new Laudo
-            //        //{
-            //        //    Id = 4,
-            //        //    Resultado = "",
-            //        //    Observacoes = "Nenhuma",
-            //        //    Documento = null,
-            //        //    DataCadastro = DateTime.Now
-            //        //};
-
-            //        //context.Laudo.Add(r1);
-            //        //context.Laudo.Add(r2);
-            //        //context.Laudo.Add(r3);
-            //        //context.Laudo.Add(r4);
-            //        //context.SaveChanges();
-               }
         }
+    }
 }
