@@ -19,21 +19,27 @@
         <tbody>
             @foreach (var teste in Model)
             {
-                <tr>
-                    <td id="exame">@teste.Exame.Nome</td>
-                    <td>@teste.Paciente.Nome</td>
-                    <td>@teste.Clinica.Nome</td>
-                    <td>@teste.Status</td>
-                    <td>@teste.DataCadastro</td>
-                    @if (teste.LaudoOk)
-                    {
-                        <td><a target="_blank" href="@Url.Action("ViewPdf", "Teste", new { id = teste.Id })">Visualizar</a></td>
-                    }
-                    else
-                    {
-                        <td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Avaliar</a></td>
-                    }
-                </tr>
+            <tr>
+                <td id="exame">@teste.Exame.Nome</td>
+                <td>@teste.Paciente.Nome</td>
+                <td>@teste.Clinica.Nome</td>
+                <td>@teste.Status</td>
+                <td>@teste.DataCadastro</td>
+                @if (teste.LaudoOk)
+                {
+                    <td>
+                        <button class="btn btn-success">@Html.ActionLink("Ver PDF", "ViewPdf", "Teste", new { id = teste.Id }, new { target = "_blank", style = "text-decoration: none; color: white;" })</button>
+                    </td>
+                }
+                else
+                {
+                    @*<td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Avaliar</a></td>*@
+
+                    <td>
+                        <button class="btn btn-success">@Html.ActionLink("Analisar", "AnalisarTeste", "Teste", new { id = teste.Id }, new { style = "text-decoration: none; color: white;" })</button>
+                    </td>
+                }
+            </tr>
             }
         </tbody>
     </table>
