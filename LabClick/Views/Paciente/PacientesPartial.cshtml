@@ -17,24 +17,33 @@
     <tbody>
         @foreach (var item in Model.Pacientes)
         {
-            <tr>
-                <td id="name">
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
+        <tr>
+            <td id="name">
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+                @Html.HiddenFor(modelItem => item.Id)
+            </td>
+            @if (item.Testes.Any())
+            {
+            <td>
+                <button class="btn btn-success">@Html.ActionLink("Ver Exames", "ListaExames", new { pacienteId = item.Id }, new { style = "text-decoration: none; color: white;" })</button>
+            </td>
+            }
+            else
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                    <button class="btn btn-success" disabled>@Html.ActionLink("Ver Exames", null, new { pacienteId = item.Id }, new { style = "text-decoration: none; color: white;" })</button>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cpf)
-                    @Html.HiddenFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.ActionLink("Ver Exames", "ListaExames", new { pacienteId = item.Id })
-                </td>
-            </tr>
+            }
+        </tr>
         }
     </tbody>
 </table>

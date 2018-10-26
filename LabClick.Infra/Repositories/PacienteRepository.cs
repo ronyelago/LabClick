@@ -26,6 +26,7 @@ namespace LabClick.Infra.Repositories
             var listaPacientes = (from pacientes in Db.Paciente
                                   where pacientes.ClinicaId == clinicaId
                                   select pacientes)
+                                  .Include(p => p.Testes)
                                   .ToList();
 
             return listaPacientes;
