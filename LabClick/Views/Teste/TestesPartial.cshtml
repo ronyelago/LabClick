@@ -28,15 +28,14 @@
                 @if (teste.LaudoOk)
                 {
                     <td>
-                        <button class="btn btn-success">@Html.ActionLink("Ver PDF", "ViewPdf", "Teste", new { id = teste.Id }, new { target = "_blank", style = "text-decoration: none; color: white;" })</button>
+                        @Html.ActionLink("Ver PDF", "ViewPdf", "Teste", new { id = teste.Id }, new { target = "_blank", style = "text-decoration: none; color: white;", @class = "btn btn-success" })
                     </td>
                 }
                 else
                 {
-                    @*<td><a href="@Url.Action("AnalisarTeste", "Teste", new { id = teste.Id })">Avaliar</a></td>*@
 
                     <td>
-                        <button class="btn btn-success">@Html.ActionLink("Analisar", "AnalisarTeste", "Teste", new { id = teste.Id }, new { style = "text-decoration: none; color: white;" })</button>
+                        @Html.ActionLink("Analisar", "AnalisarTeste", "Teste", new { id = teste.Id }, new { style = "text-decoration: none; color: white;", @class = "btn btn-success" })
                     </td>
                 }
             </tr>
