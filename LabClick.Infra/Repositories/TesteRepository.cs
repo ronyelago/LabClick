@@ -98,6 +98,7 @@ namespace LabClick.Infra.Repositories
             var testeList = (from testes in Db.Teste
                              where testes.ClinicaId == clinicaId
                              select testes)
+                             .OrderByDescending(t => t.DataCadastro)
                              .Include(t => t.Exame)
                              .Include(t => t.Paciente)
                              .Include(t => t.Clinica)
