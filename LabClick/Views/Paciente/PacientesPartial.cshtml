@@ -34,13 +34,13 @@
             @if (item.Testes.Any())
             {
             <td>
-                <button class="btn btn-success">@Html.ActionLink("Ver Exames", "ListaExames", new { pacienteId = item.Id }, new { style = "text-decoration: none; color: white;" })</button>
+                @Html.ActionLink("Ver Exames", "ListaExames", new { pacienteId = item.Id }, new { style = "text-decoration: none; color: white;", @class = "btn btn-success" })
             </td>
             }
             else
             {
                 <td>
-                    <button class="btn btn-success" disabled>@Html.ActionLink("Ver Exames", null, new { pacienteId = item.Id }, new { style = "text-decoration: none; color: white;" })</button>
+                    @Html.ActionLink("Ver Exames", null, new { pacienteId = item.Id }, new { style = "text-decoration: none; color: white;", @class = "btn btn-success disabled"})
                 </td>
             }
         </tr>
