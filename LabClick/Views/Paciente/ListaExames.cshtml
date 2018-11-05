@@ -39,7 +39,7 @@
                 @if (item.LaudoOk)
                 {
                     <td>
-                        <button class="btn btn-success">@Html.ActionLink("Ver Laudo", "VerExame", new { testeId = item.Id }, new { target = "_blank", style = "text-decoration: none; color: white;" })</button>
+                        @Html.ActionLink("Ver Laudo", "VerExame", new { testeId = item.Id }, new { target = "_blank", style = "text-decoration: none; color: white;", @class = "btn btn-success" })
                     </td>
                 }
                 else

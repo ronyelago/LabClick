@@ -265,13 +265,9 @@
     <Content Include="Views\Exame\Deletar.cshtml" />
     <Content Include="Views\Clinica\Deletar.cshtml" />
     <Content Include="Views\Laboratorio\Deletar.cshtml" />
-    <Content Include="Views\Paciente\Criar.cshtml" />
-    <Content Include="Views\Paciente\Editar.cshtml" />
-    <Content Include="Views\Paciente\Deletar.cshtml" />
     <Content Include="Views\Login\App.cshtml" />
     <Content Include="Views\Shared\_LayoutApp.cshtml" />
     <Content Include="Views\Shared\_LayoutCad.cshtml" />
-    <Content Include="Views\Paciente\Criado.cshtml" />
     <Content Include="Views\Resultado\Detalhes.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutLab.cshtml" />
