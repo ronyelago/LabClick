@@ -1,0 +1,19 @@
+﻿@model LabClick.ViewModel.NovoPacienteViewModel
+
+@{
+    ViewBag.Title = "Novo Paciente";
+}
+
+<div>
+    @using (Html.BeginForm("Novo", "Paciente", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div>
+
+            </div>
+        </div>
+    }
+</div>
+
