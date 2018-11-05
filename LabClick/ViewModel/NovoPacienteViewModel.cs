@@ -10,5 +10,6 @@ namespace LabClick.ViewModel
         public string Telefone { get; set; }
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }
+        public EnderecoViewModel EnderecoViewModel { get; set; }
     }
 }
