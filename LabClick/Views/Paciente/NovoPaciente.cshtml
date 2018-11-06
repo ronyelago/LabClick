@@ -20,8 +20,17 @@
 <script>
     $(document).ready(function () {
         $("#btnAvancar").click(function () {
-            $.getJSON
-        })
-    })
+
+            var cpf = $("#Cpf").val();
+
+            $.ajax({
+                url: "http://localhost:52434/paciente/getByCpf/" + cpf,
+                success: function (data) {
+                    alert(data);
+                },
+                dataType: "json"
+            });
+        });
+    });
 </script>
 
