@@ -72,9 +72,11 @@ namespace LabClick.Controllers
             return View();
         }
 
-        public JsonResult PesquisarPaciente(string cpf)
+        public JsonResult FindByCpf(string cpf)
         {
             Paciente paciente = repository.GetByCpf(cpf);
+
+            return Json(paciente);
         }
 
         protected override void Dispose(bool disposing)
