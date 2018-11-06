@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace LabClick.Api.Controllers
 {
@@ -57,6 +58,14 @@ namespace LabClick.Api.Controllers
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, pacientes);
+        }
+
+        [Route("getByCpf/{cpf}")]
+        public HttpResponseMessage GetByCpf(string cpf)
+        {
+            Paciente paciente = _repository.GetByCpf(cpf);
+
+            return Request.CreateResponse(HttpStatusCode.OK, paciente);
         }
 
         [HttpPost]
