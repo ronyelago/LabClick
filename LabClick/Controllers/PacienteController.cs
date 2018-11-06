@@ -67,10 +67,14 @@ namespace LabClick.Controllers
             return File(pdf.Documento, "application/pdf");
         }
 
-        // GET: Paciente/Criar
-        public ActionResult Criar()
+        public ActionResult NovoPaciente()
         {
             return View();
+        }
+
+        public JsonResult PesquisarPaciente(string cpf)
+        {
+            Paciente paciente = repository.GetByCpf(cpf);
         }
 
         protected override void Dispose(bool disposing)

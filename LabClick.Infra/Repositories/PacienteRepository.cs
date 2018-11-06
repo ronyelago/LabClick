@@ -60,5 +60,12 @@ namespace LabClick.Infra.Repositories
 
             return paciente;
         }
+
+        public Paciente GetByCpf(string cpf)
+        {
+            Paciente paciente = Db.Paciente.FirstOrDefault(p => p.Cpf == cpf);
+
+            return paciente;
+        }
     }
 }

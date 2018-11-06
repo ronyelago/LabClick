@@ -9,11 +9,19 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="row">
-            <div>
-
-            </div>
+        <div class="form-group">
+            <label>CPF:</label>
+            @Html.TextBoxFor(m => m.Cpf)
         </div>
+        <a class="btn btn-primary" id="btnAvancar">Avançar</a>
     }
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnAvancar").click(function () {
+            $.ajax
+        })
+    })
+</script>
 
