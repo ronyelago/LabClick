@@ -5,7 +5,7 @@
 }
 
 <div>
-    @using (Html.BeginForm("Novo", "Paciente", FormMethod.Post))
+    @using (Html.BeginForm("NovoPaciente", "Paciente", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -23,7 +23,8 @@
         </div>
         <div class="form-group">
             <label>CPF</label>
-            @Html.TextBoxFor(m => m.Cpf)
+            @Html.TextBoxFor(m => m.Cpf, htmlAttributes: new { })
+            <label hidden id="cpfError">CPF já cadastrado!</label>
         </div>
         <div class="form-group">
             <label>E-mail</label>
@@ -33,8 +34,32 @@
             <label>Telefone</label>
             @Html.TextBoxFor(m => m.Telefone)
         </div>
-
-        <a class="btn btn-primary" id="btnAvancar">Avançar</a>
+        <div class="form-group">
+            <label>CEP</label>
+            @Html.TextBoxFor(m => m.EnderecoViewModel.Cep)
+        </div>
+        <div class="form-group">
+            <label>UF</label>
+            @Html.TextBoxFor(m => m.EnderecoViewModel.UF)
+        </div>
+        <div class="form-group">
+            <label>Cidade</label>
+            @Html.TextBoxFor(m => m.EnderecoViewModel.Cidade)
+        </div>
+        <div class="form-group">
+            <label>Bairro</label>
+            @Html.TextBoxFor(m => m.EnderecoViewModel.Bairro)
+        </div>
+        <div class="form-group">
+            <label>Rua</label>
+            @Html.TextBoxFor(m => m.EnderecoViewModel.Logradouro)
+        </div>
+        <div class="form-group">
+            <label>Número</label>
+            @Html.TextBoxFor(m => m.EnderecoViewModel.Numero)
+        </div>
+        @Html.ActionLink("Cancelar", "", "", htmlAttributes: new { @class = "btn btn-default" })
+        <button class="btn btn-primary" id="btnSalvar" type="submit">Salvar</button>
     }
 </div>
 
@@ -68,7 +93,7 @@
 <script>
     $(document).ready(function () {
 
-        $("#btnAvancar").click(function () {
+        $("#Cpf").focusout(function () {
 
             var cpf = $("#Cpf").val();
 
@@ -78,17 +103,11 @@
                 success: function (data) {
 
                     if (data != null) {
-                        $('#modalOptions').modal('show');
-                        $("#mensagem").text("O CPF digitado já pertence ao paciente " + data.nome
-                                          + ". Para prosseguir, escolha uma das opções abaixo:");
+                        $("#cpfError").removeAttr("hidden");
                     }
                     else {
-                        window.location.replace("http://stackoverflow.com");
+                        $("#cpfError").attr("hidden", true);
                     }
-
-                },
-                error: function () {
-                    alert("Erro");
                 }
             });
         });

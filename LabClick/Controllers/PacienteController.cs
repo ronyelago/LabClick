@@ -72,6 +72,12 @@ namespace LabClick.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult NovoPaciente(PacienteViewModel model)
+        {
+            Paciente paciente = Mapper.Map<Paciente>(model);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
