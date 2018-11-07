@@ -14,6 +14,7 @@ namespace LabClick.Controllers
         private readonly PacienteRepository repository = new PacienteRepository();
         private readonly TesteRepository testeRepository = new TesteRepository();
         private readonly LaudoRepository laudoRepository = new LaudoRepository();
+        private readonly EnderecoRepository enderecoRepository = new EnderecoRepository();
 
         // GET: Paciente
         public ActionResult Index()
@@ -73,9 +74,17 @@ namespace LabClick.Controllers
         }
 
         [HttpPost]
-        public ActionResult NovoPaciente(PacienteViewModel model)
+        public ActionResult NovoPaciente(NovoPacienteViewModel model)
         {
             Paciente paciente = Mapper.Map<Paciente>(model);
+            //Endereco endereco = Mapper.Map<Endereco>(model.EnderecoViewModel);
+
+            paciente.ClinicaId = (int)Session["clinicaId"];
+            //paciente.Endereco = endereco;
+
+            repository.Add(paciente);
+
+            return View();
         }
 
         protected override void Dispose(bool disposing)
