@@ -77,10 +77,7 @@ namespace LabClick.Controllers
         public ActionResult NovoPaciente(NovoPacienteViewModel model)
         {
             Paciente paciente = Mapper.Map<Paciente>(model);
-            //Endereco endereco = Mapper.Map<Endereco>(model.EnderecoViewModel);
-
             paciente.ClinicaId = (int)Session["clinicaId"];
-            //paciente.Endereco = endereco;
 
             repository.Add(paciente);
 
