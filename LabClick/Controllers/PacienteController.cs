@@ -76,10 +76,13 @@ namespace LabClick.Controllers
         [HttpPost]
         public ActionResult NovoPaciente(NovoPacienteViewModel model)
         {
-            Paciente paciente = Mapper.Map<Paciente>(model);
-            paciente.ClinicaId = (int)Session["clinicaId"];
+            if (ModelState.IsValid)
+            {
+                Paciente paciente = Mapper.Map<Paciente>(model);
+                paciente.ClinicaId = (int)Session["clinicaId"];
 
-            repository.Add(paciente);
+                repository.Add(paciente);
+            }
 
             return View();
         }
