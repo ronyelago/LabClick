@@ -10,6 +10,7 @@ namespace LabClick.Mappings
         {
             CreateMap<PacienteViewModel, Paciente>();
             CreateMap<TesteViewModel, Teste>();
+            CreateMap<EnderecoViewModel, Endereco>();
         }
     }
 }
