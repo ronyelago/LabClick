@@ -78,10 +78,17 @@ namespace LabClick.Controllers
         {
             if (ModelState.IsValid)
             {
-                Paciente paciente = Mapper.Map<Paciente>(model);
-                paciente.ClinicaId = (int)Session["clinicaId"];
+                try
+                {
+                    Paciente paciente = Mapper.Map<Paciente>(model);
+                    paciente.ClinicaId = (int)Session["clinicaId"];
 
-                repository.Add(paciente);
+                    repository.Add(paciente);
+                }
+                catch (System.Exception)
+                {
+                    return View();
+                }
             }
 
             return View();

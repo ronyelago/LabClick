@@ -106,6 +106,7 @@
 <script>
     $(document).ready(function () {
 
+        // checa se o cpf digitado já está cadastrado
         $("#Cpf").focusout(function () {
 
             var cpf = $("#Cpf").val();
@@ -124,6 +125,36 @@
                 }
             });
         });
+
+        // busca os dados do endereço pelo cep digitado
+        $("#EnderecoViewModel_Cep").focusout(function () {
+
+            var cep = $("#EnderecoViewModel_Cep").val();
+
+            if (cep != "") {
+
+                $.ajax({
+                    url: "https://viacep.com.br/ws/" + cep + "/json/",
+                    dataType: "json",
+                    success: function (data) {
+                        if (!("erro" in data)) {
+                            $("#EnderecoViewModel_UF").val(data.uf);
+                            $("#EnderecoViewModel_Cidade").val(data.localidade);
+                            $("#EnderecoViewModel_Bairro").val(data.bairro);
+                            $("#EnderecoViewModel_Logradouro").val(data.logradouro);
+                            $("#EnderecoViewModel_Numero").focus();
+                        }
+                        else {
+                            alert("CEP não encontrado :(")
+                        }
+                    },
+                    error: function () {
+                        alert("CEP em formato inválido.");
+                    }
+                });
+            }
+        });
+
     });
 </script>
 
