@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201810242248519_Fresh.Designer.cs">
       <DependentUpon>201810242248519_Fresh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811081355361_Notification.cs" />
+    <Compile Include="Migrations\201811081355361_Notification.Designer.cs">
+      <DependentUpon>201811081355361_Notification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClinicaRepository.cs" />
@@ -90,6 +94,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810242248519_Fresh.resx">
       <DependentUpon>201810242248519_Fresh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811081355361_Notification.resx">
+      <DependentUpon>201811081355361_Notification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
