@@ -5,106 +5,97 @@
 }
 
 <div>
-    @using (Html.BeginForm("NovoPaciente", "Paciente", FormMethod.Post))
+    @using (Html.BeginForm("NovoPaciente", "Paciente", FormMethod.Post, htmlAttributes: new { @class = "form-inline" }))
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            <label>Nome</label>
-            @Html.TextBoxFor(m => m.Nome)
-            @Html.ValidationMessageFor(m => m.Nome)
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <label>Nome</label>
+                    @Html.TextBoxFor(m => m.Nome)
+                    @Html.ValidationMessageFor(m => m.Nome)
+                </div>
+                <div class="form-group">
+                    <label>Gênero</label>
+                    @Html.RadioButtonFor(m => m.Sexo, "Feminino")
+                    <label>Feminino</label>
+                    @Html.RadioButtonFor(m => m.Sexo, "Masculino")
+                    <label>Masculino</label>
+                    @Html.ValidationMessageFor(m => m.Sexo)
+                </div>
+                <div class="form-group">
+                    <label>Data de Nascimento</label>
+                    @Html.TextBoxFor(m => m.DataNascimento, htmlAttributes: new { @class = "datepicker", type = "date" })
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Gênero</label>
-            @Html.RadioButtonFor(m => m.Sexo, "Feminino")
-            <label>Feminino</label>
-            @Html.RadioButtonFor(m => m.Sexo, "Masculino")
-            <label>Masculino</label>
-            @Html.ValidationMessageFor(m => m.Sexo)
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <label>CPF</label>
+                    @Html.TextBoxFor(m => m.Cpf)
+                    <label hidden id="cpfError">CPF já cadastrado!</label>
+                    @Html.ValidationMessageFor(m => m.Cpf)
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    @Html.TextBoxFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    @Html.TextBoxFor(m => m.Telefone)
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Data de Nascimento</label>
-            @Html.TextBoxFor(m => m.DataNascimento, htmlAttributes: new { @class = "datepicker", type = "date" })
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <label>CEP</label>
+                    @Html.TextBoxFor(m => m.EnderecoViewModel.Cep)
+                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Cep)
+                </div>
+                <div class="form-group">
+                    <label>UF</label>
+                    @Html.TextBoxFor(m => m.EnderecoViewModel.UF)
+                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.UF)
+                </div>
+                <div class="form-group">
+                    <label>Cidade</label>
+                    @Html.TextBoxFor(m => m.EnderecoViewModel.Cidade)
+                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Cidade)
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>CPF</label>
-            @Html.TextBoxFor(m => m.Cpf)
-            <label hidden id="cpfError">CPF já cadastrado!</label>
-            @Html.ValidationMessageFor(m => m.Cpf)
-        </div>
-        <div class="form-group">
-            <label>E-mail</label>
-            @Html.TextBoxFor(m => m.Email)
-            @Html.ValidationMessageFor(m => m.Email)
-        </div>
-        <div class="form-group">
-            <label>Telefone</label>
-            @Html.TextBoxFor(m => m.Telefone)
-        </div>
-        <div class="form-group">
-            <label>CEP</label>
-            @Html.TextBoxFor(m => m.EnderecoViewModel.Cep)
-            @Html.ValidationMessageFor(m => m.EnderecoViewModel.Cep)
-        </div>
-        <div class="form-group">
-            <label>UF</label>
-            @Html.TextBoxFor(m => m.EnderecoViewModel.UF)
-            @Html.ValidationMessageFor(m => m.EnderecoViewModel.UF)
-        </div>
-        <div class="form-group">
-            <label>Cidade</label>
-            @Html.TextBoxFor(m => m.EnderecoViewModel.Cidade)
-            @Html.ValidationMessageFor(m => m.EnderecoViewModel.Cidade)
-        </div>
-        <div class="form-group">
-            <label>Bairro</label>
-            @Html.TextBoxFor(m => m.EnderecoViewModel.Bairro)
-            @Html.ValidationMessageFor(m => m.EnderecoViewModel.Bairro)
-        </div>
-        <div class="form-group">
-            <label>Rua</label>
-            @Html.TextBoxFor(m => m.EnderecoViewModel.Logradouro)
-            @Html.ValidationMessageFor(m => m.EnderecoViewModel.Logradouro)
-        </div>
-        <div class="form-group">
-            <label>Número</label>
-            @Html.TextBoxFor(m => m.EnderecoViewModel.Numero)
-            @Html.ValidationMessageFor(m => m.EnderecoViewModel.Numero)
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <label>Bairro</label>
+                    @Html.TextBoxFor(m => m.EnderecoViewModel.Bairro)
+                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Bairro)
+                </div>
+                <div class="form-group">
+                    <label>Rua</label>
+                    @Html.TextBoxFor(m => m.EnderecoViewModel.Logradouro)
+                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Logradouro)
+                </div>
+                <div class="form-group">
+                    <label>Número</label>
+                    @Html.TextBoxFor(m => m.EnderecoViewModel.Numero)
+                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Numero)
+                </div>
+            </div>
         </div>
         @Html.ActionLink("Cancelar", "Index", "", htmlAttributes: new { @class = "btn btn-default" })
         <button class="btn btn-primary" id="btnSalvar" type="submit">Salvar</button>
     }
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="modalOptions" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Paciente já cadastrado</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="mensagem">
-                ...
-            </div>
-            <div class="modal-footer">
-                <div class="container">
-                    <div class="row">
-                        @Html.ActionLink("Novo Teste", "", null,  new { @class = "btn btn-success" })
-                    </div>
-                    <div class="row">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
     $(document).ready(function () {
+
+        $("#Cpf").mask('000.000.000-00', { reverse: true });
 
         // checa se o cpf digitado já está cadastrado
         $("#Cpf").focusout(function () {
