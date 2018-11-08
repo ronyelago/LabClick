@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <a href="~/Paciente">
+            <a href="@Url.Action("Index", "Paciente")">
                 <div class="panel-footer announcement-bottom">
                     <div class="row">
                         <div class="col-xs-6">
@@ -40,15 +40,15 @@
                         <i class="fa fa-address-card-o fa-5x"></i>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <p class="announcement-text">Testes</p>
+                        <p class="announcement-text">Novo Paciente</p>
                     </div>
                 </div>
             </div>
-            <a href="@Url.Action("Testes", "Teste")">
+            <a href="@Url.Action("NovoPaciente", "Paciente")">
                 <div class="panel-footer announcement-bottom">
                     <div class="row">
                         <div class="col-xs-6">
-                            Visualizar
+                            Cadastrar
                         </div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>

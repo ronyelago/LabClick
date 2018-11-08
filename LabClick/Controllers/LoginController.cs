@@ -63,7 +63,7 @@ namespace LabClick.Controllers
                             Session["ClinicaId"] = userClinica.ClinicaId;
 
                             ViewBag.usuario = "Clinica";
-                            return RedirectToAction("Index", "Paciente");
+                            return RedirectToAction("Index", "Dashboard");
                         }
 
                         else
