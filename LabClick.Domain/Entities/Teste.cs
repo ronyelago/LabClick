@@ -20,6 +20,8 @@ namespace LabClick.Domain.Entities
         public string ResultadoDetalhes { get; set; }
         public string Observacoes { get; set; }
         public bool LaudoOk { get; set; }
+        public bool VistoClinica { get; set; }
+        public bool VistoLab { get; set; }
         public DateTime DataCadastro { get; set; }
         public virtual Exame Exame { get; set; }
         public virtual Clinica Clinica { get; set; }
