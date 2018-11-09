@@ -73,6 +73,11 @@ namespace LabClick.Controllers
             return View();
         }
 
+        public ActionResult New()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult NovoPaciente(NovoPacienteViewModel model)
         {

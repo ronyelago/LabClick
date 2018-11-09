@@ -9,27 +9,42 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="container">
-            <div class="row">
-                <div class="form-group">
-                    <label>Nome</label>
-                    @Html.TextBoxFor(m => m.Nome)
-                    @Html.ValidationMessageFor(m => m.Nome)
-                </div>
-                <div class="form-group">
-                    <label>Gênero</label>
-                    @Html.RadioButtonFor(m => m.Sexo, "Feminino")
-                    <label>Feminino</label>
-                    @Html.RadioButtonFor(m => m.Sexo, "Masculino")
-                    <label>Masculino</label>
-                    @Html.ValidationMessageFor(m => m.Sexo)
-                </div>
-                <div class="form-group">
-                    <label>Data de Nascimento</label>
-                    @Html.TextBoxFor(m => m.DataNascimento, htmlAttributes: new { @class = "datepicker", type = "date" })
-                </div>
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control datepicker", type = "date" } })
+                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <label>Gênero</label>
+                <div class="radio">
+                    @Html.RadioButtonFor(m => m.Sexo, "Feminino")
+                    <label>Feminino</label>
+                </div>
+                <div class="radio">
+                    @Html.RadioButtonFor(m => m.Sexo, "Masculino")
+                    <label>Masculino</label>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(m => m.Sexo)
+        </div>
+
+
+
+    </div>
         <div class="container">
             <div class="row">
                 <div class="form-group">
@@ -96,6 +111,8 @@
     $(document).ready(function () {
 
         $("#Cpf").mask('000.000.000-00', { reverse: true });
+        $("#Telefone").mask('(00)00000-0000')
+        $("#EnderecoViewModel_Cep").mask('00000-000')
 
         // checa se o cpf digitado já está cadastrado
         $("#Cpf").focusout(function () {
@@ -146,7 +163,6 @@
                 });
             }
         });
-
     });
 </script>
 

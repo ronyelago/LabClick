@@ -283,6 +283,7 @@
     <Content Include="Views\Paciente\PacientesPartial.cshtml" />
     <Content Include="Views\Teste\TestesPartial.cshtml" />
     <Content Include="Views\Paciente\NovoPaciente.cshtml" />
+    <Content Include="Views\Paciente\New.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
