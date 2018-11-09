@@ -25,6 +25,8 @@ namespace LabClick.ViewModel
         [MaxLength(30, ErrorMessage = "Máximo de 30 caracteres")]
         public string Telefone { get; set; }
 
+        [RegularExpression(@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})", 
+            ErrorMessage ="CPF inválido")]
         [MaxLength(20, ErrorMessage = "Máximo de 20 caracteres")]
         [DisplayName("CPF")]
         [Required(ErrorMessage = "Este campo é obrigatório")]
