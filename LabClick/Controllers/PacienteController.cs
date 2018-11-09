@@ -92,7 +92,7 @@ namespace LabClick.Controllers
                 }
                 catch (System.Exception)
                 {
-                    return View();
+                    return RedirectToAction("Index", "Dashboard");
                 }
             }
 

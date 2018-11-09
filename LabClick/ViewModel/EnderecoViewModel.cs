@@ -8,24 +8,24 @@ namespace LabClick.ViewModel
         public int Id { get; set; }
 
         [DisplayName("CEP")]
-        [Required(ErrorMessage = "O CEP é obrigatório.")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         public string Cep { get; set; }
 
-        [Required(ErrorMessage = "Favor preencher a Cidade.")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         public string Cidade { get; set; }
 
-        [Required(ErrorMessage = "Favor preencher o Estado.")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         public string UF { get; set; }
 
         [DisplayName("Número")]
-        [Required(ErrorMessage = "Favor preencher o Número da residência.")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         public int Numero { get; set; }
 
-        [Required(ErrorMessage = "Favor preencher o Bairro.")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         public string Bairro { get; set; }
 
         [DisplayName("Rua")]
-        [Required(ErrorMessage = "Favor preencher o nome da rua.")]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
         public string Logradouro { get; set; }
     }
 }
