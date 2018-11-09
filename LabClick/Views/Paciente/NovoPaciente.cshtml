@@ -5,11 +5,12 @@
 }
 
 <div>
-    @using (Html.BeginForm("NovoPaciente", "Paciente", FormMethod.Post, htmlAttributes: new { @class = "form-inline" }))
+    @using (Html.BeginForm("NovoPaciente", "Paciente", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
+        <hr />
 
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -27,83 +28,96 @@
             </div>
         </div>
 
-        <div class="row">
-            <div>
-                <label>Gênero</label>
-                <div class="radio">
-                    @Html.RadioButtonFor(m => m.Sexo, "Feminino")
-                    <label>Feminino</label>
-                </div>
-                <div class="radio">
-                    @Html.RadioButtonFor(m => m.Sexo, "Masculino")
-                    <label>Masculino</label>
-                </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Gênero</label>
+            <div class="col-sm-8">
+                <label class="radio-inline">@Html.RadioButtonFor(m => m.Sexo, "Feminino") Feminino</label>
+                <label class="radio-inline">@Html.RadioButtonFor(m => m.Sexo, "Masculino") Masculino</label>
             </div>
             @Html.ValidationMessageFor(m => m.Sexo)
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+                <label hidden id="cpfError">CPF já cadastrado!</label>
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EnderecoViewModel.Cep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EnderecoViewModel.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EnderecoViewModel.Cep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EnderecoViewModel.UF, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EnderecoViewModel.UF, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EnderecoViewModel.UF, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EnderecoViewModel.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EnderecoViewModel.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EnderecoViewModel.Cidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EnderecoViewModel.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EnderecoViewModel.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EnderecoViewModel.Bairro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EnderecoViewModel.Logradouro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EnderecoViewModel.Logradouro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EnderecoViewModel.Logradouro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EnderecoViewModel.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EnderecoViewModel.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EnderecoViewModel.Numero, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Cancelar", "Index", "Dashboard", null, new { @class = "btn btn-default" })
+                <button class="btn btn-primary" id="btnSalvar" type="submit">Salvar</button>
+            </div>
+        </div>
 
     </div>
-        <div class="container">
-            <div class="row">
-                <div class="form-group">
-                    <label>CPF</label>
-                    @Html.TextBoxFor(m => m.Cpf)
-                    <label hidden id="cpfError">CPF já cadastrado!</label>
-                    @Html.ValidationMessageFor(m => m.Cpf)
-                </div>
-                <div class="form-group">
-                    <label>E-mail</label>
-                    @Html.TextBoxFor(m => m.Email)
-                    @Html.ValidationMessageFor(m => m.Email)
-                </div>
-                <div class="form-group">
-                    <label>Telefone</label>
-                    @Html.TextBoxFor(m => m.Telefone)
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="form-group">
-                    <label>CEP</label>
-                    @Html.TextBoxFor(m => m.EnderecoViewModel.Cep)
-                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Cep)
-                </div>
-                <div class="form-group">
-                    <label>UF</label>
-                    @Html.TextBoxFor(m => m.EnderecoViewModel.UF)
-                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.UF)
-                </div>
-                <div class="form-group">
-                    <label>Cidade</label>
-                    @Html.TextBoxFor(m => m.EnderecoViewModel.Cidade)
-                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Cidade)
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="form-group">
-                    <label>Bairro</label>
-                    @Html.TextBoxFor(m => m.EnderecoViewModel.Bairro)
-                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Bairro)
-                </div>
-                <div class="form-group">
-                    <label>Rua</label>
-                    @Html.TextBoxFor(m => m.EnderecoViewModel.Logradouro)
-                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Logradouro)
-                </div>
-                <div class="form-group">
-                    <label>Número</label>
-                    @Html.TextBoxFor(m => m.EnderecoViewModel.Numero)
-                    @Html.ValidationMessageFor(m => m.EnderecoViewModel.Numero)
-                </div>
-            </div>
-        </div>
-        @Html.ActionLink("Cancelar", "Index", "Dashboard", null, new { @class = "btn btn-default" })
-        <button class="btn btn-primary" id="btnSalvar" type="submit">Salvar</button>
     }
 </div>
 
