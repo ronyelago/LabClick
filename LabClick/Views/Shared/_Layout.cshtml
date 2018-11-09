@@ -105,6 +105,10 @@
     <div class="container body-content">
         <br />
         @RenderBody()
+        @if (!String.IsNullOrEmpty(TempData["Message"] as String))
+        {
+            Html.RenderPartial("ModalMessage");
+        }
     </div>
 </body>
 </html>

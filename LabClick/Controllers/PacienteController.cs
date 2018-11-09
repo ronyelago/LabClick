@@ -2,6 +2,7 @@
 using LabClick.Domain.Entities;
 using LabClick.Infra.Repositories;
 using LabClick.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -90,13 +91,19 @@ namespace LabClick.Controllers
 
                     repository.Add(paciente);
                 }
-                catch (System.Exception)
+                catch (Exception ex)
                 {
+                    TempData["Title"] = "Erro";
+                    TempData["Message"] = $"Ocorreu um erro ao tentar cadastrar o paciente. {ex.Message}";
+
                     return RedirectToAction("Index", "Dashboard");
                 }
             }
 
-            return View();
+            TempData["Title"] = "Sucesso";
+            TempData["Message"] = "Paciente cadastrado com sucesso.";
+
+            return RedirectToAction("Index", "Dashboard");
         }
 
         protected override void Dispose(bool disposing)
