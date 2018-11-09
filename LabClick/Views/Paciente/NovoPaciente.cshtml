@@ -128,12 +128,6 @@
                 </div>
             </div>
         </div>
-
-        
-
-
-       
-
     </div>
     }
 </div>
@@ -144,6 +138,8 @@
         $("#Cpf").mask('000.000.000-00', { reverse: true });
         $("#Telefone").mask('(00)00000-0000')
         $("#EnderecoViewModel_Cep").mask('00000-000')
+        $("#EnderecoViewModel_UF").mask('AA');
+        $("#EnderecoViewModel_Numero").mask('000000');
 
         // checa se o cpf digitado já está cadastrado
         $("#Cpf").focusout(function () {

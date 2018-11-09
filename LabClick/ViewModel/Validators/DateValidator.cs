@@ -16,9 +16,14 @@ namespace LabClick.ViewModel.Validators
 
         public override bool IsValid(object value)
         {
-            DateTime date = (DateTime)value;
+            if (value != null)
+            {
+                DateTime date = (DateTime)value;
 
-            return date >= Minimum && date <= Maximum;
+                return (date >= Minimum && date <= Maximum);
+            }
+
+            return false;
         }
     }
 }
