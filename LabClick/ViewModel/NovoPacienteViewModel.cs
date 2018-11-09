@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LabClick.ViewModel.Validators;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -25,6 +26,7 @@ namespace LabClick.ViewModel
         [Required(ErrorMessage = "Este campo é obrigatório")]
         public string Cpf { get; set; }
 
+        [DateValidator(ErrorMessage = "Data inválida")]
         [DisplayName("Data de Nascimento")]
         [Required(ErrorMessage = "Este campo é obrigatório")]
         public DateTime DataNascimento { get; set; }

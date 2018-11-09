@@ -32,7 +32,7 @@
 
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Gênero</label>
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <label class="radio-inline">@Html.RadioButtonFor(m => m.Sexo, "Feminino", htmlAttributes: new { @class = "" }) Feminino</label>
                         <label class="radio-inline">@Html.RadioButtonFor(m => m.Sexo, "Masculino", htmlAttributes: new { @class = "" }) Masculino</label>
                         @Html.ValidationMessageFor(m => m.Sexo, "", new { @class = "text-danger" })

@@ -90,20 +90,22 @@ namespace LabClick.Controllers
                     paciente.ClinicaId = (int)Session["clinicaId"];
 
                     repository.Add(paciente);
+
+                    TempData["Title"] = "Sucesso";
+                    TempData["Message"] = "Paciente cadastrado com sucesso.";
+
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 catch (Exception ex)
                 {
                     TempData["Title"] = "Erro";
                     TempData["Message"] = $"Ocorreu um erro ao tentar cadastrar o paciente. {ex.Message}";
 
-                    return RedirectToAction("Index", "Dashboard");
+                    return View();
                 }
             }
 
-            TempData["Title"] = "Sucesso";
-            TempData["Message"] = "Paciente cadastrado com sucesso.";
-
-            return RedirectToAction("Index", "Dashboard");
+            return View();
         }
 
         protected override void Dispose(bool disposing)
