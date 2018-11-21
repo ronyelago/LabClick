@@ -154,12 +154,14 @@
     <Content Include="Content\styles\images\ico-8.png" />
     <Content Include="Content\styles\images\ico-hold.png" />
     <Content Include="Content\styles\images\ico-mail.png" />
+    <Content Include="Content\styles\images\ico-pessoas.png" />
     <Content Include="Content\styles\images\indeterminado.png" />
     <Content Include="Content\styles\images\LaborLabisLogo.png" />
     <Content Include="Content\styles\images\logo-labclick.png" />
     <Content Include="Content\styles\images\logo-labclick2.png" />
     <Content Include="Content\styles\images\logolabclick.png" />
     <Content Include="Content\styles\images\negativo.PNG" />
+    <Content Include="Content\styles\images\novopaciente.png" />
     <Content Include="Content\styles\images\positivo.PNG" />
     <Content Include="Content\styles\images\Resultado.png" />
     <Content Include="Content\styles\images\titulo.png" />

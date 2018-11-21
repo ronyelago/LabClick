@@ -2,63 +2,35 @@
 @{
                 /**/
 
-                ViewBag.Title = "Index";
+                ViewBag.Title = "Dashboard";
                 Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<h2>Dashboard</h2>
 <div class="row">
-    <div class="col-lg-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <i class="fa fa-address-card-o fa-5x"></i>
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <p class="announcement-text">Pacientes</p>
-                    </div>
-                </div>
+    
+    <div class="col-lg-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/Content/styles/images/ico-pessoas.png" />
+
+            <div class="card-body">
+                <h5 class="card-title">Pacientes, Testes e Laudos</h5>
+                <p class="card-text"></p>
+                <a href="@Url.Action("Index", "Paciente")" class="btn btn-primary">Ver Pacientes</a>
             </div>
-            <a href="@Url.Action("Index", "Paciente")">
-                <div class="panel-footer announcement-bottom">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Visualizar
-                        </div>
-                        <div class="col-xs-6 text-right">
-                            <i class="fa fa-arrow-circle-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
         </div>
     </div>
-    <div class="col-lg-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <i class="fa fa-address-card-o fa-5x"></i>
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <p class="announcement-text">Novo Paciente</p>
-                    </div>
-                </div>
+        
+    <div class="col-lg-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/Content/styles/images/novopaciente.png" />
+
+            <div class="card-body">
+                <h5 class="card-title">Cadastrar novo paciente</h5>
+                <p class="card-text"></p>
+                <a href="@Url.Action("NovoPaciente", "Paciente")" class="btn btn-primary">Novo Paciente</a>
             </div>
-            <a href="@Url.Action("NovoPaciente", "Paciente")">
-                <div class="panel-footer announcement-bottom">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Cadastrar
-                        </div>
-                        <div class="col-xs-6 text-right">
-                            <i class="fa fa-arrow-circle-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
         </div>
     </div>
+        
 </div>
 
