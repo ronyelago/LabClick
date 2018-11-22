@@ -137,7 +137,7 @@
 
         $("#Cpf").mask('000.000.000-00', { reverse: true });
         $("#Telefone").mask('(00)00000-0000')
-        $("#EnderecoViewModel_Cep").mask('00000-000')
+        $("#EnderecoViewModel_Cep").mask('00000-000');
         $("#EnderecoViewModel_UF").mask('AA');
         $("#EnderecoViewModel_Numero").mask('000000');
 
@@ -181,7 +181,7 @@
                             $("#EnderecoViewModel_Numero").focus();
                         }
                         else {
-                            alert("CEP não encontrado :(")
+                            alert("CEP não encontrado. Tente novamente ou preencha o endereço manualmente.")
                         }
                     },
                     error: function () {

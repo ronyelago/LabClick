@@ -1,40 +1,40 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<br />
 <div class="container">
-    <div class="row">
-        <div class="col-md-offset-4">
-            <div class="block-gradient col-md-6" style="width:10px; height:70px;"></div>
-            <h2 class="col-md-6">Bem-Vindo, @Session["nome"].ToString()</h2>
+    <div class="col-md-offset-1">
+        <div class="row">
+            <div class="col-md-offset-4">
+                <div class="block-gradient col-md-6" style="width:10px; height:70px;"></div>
+                <h2 class="col-md-6">Bem-Vindo, @Session["nome"].ToString()</h2>
+            </div>
         </div>
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="row">
-        <div class=" col-md-offset-2">
-            <div class="col-md-6">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="~/Content/styles/images/ico-pessoas.png" />
-                    <div class="card-body">
-                        <h5 class="card-title">Pacientes, Testes e Laudos</h5>
-                        <p class="card-text"></p>
-                        <a href="@Url.Action("Index", "Paciente")" class="btn btn-primary">Ver Pacientes</a>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class=" col-md-offset-2">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img class="card-img-top" src="~/Content/styles/images/ico-pessoas.png" />
+                        <div class="card-body">
+                            <h5 class="card-title">Pacientes, Testes e Laudos</h5>
+                            <p class="card-text"></p>
+                            <a href="@Url.Action("Index", "Paciente")" class="btn btn-primary">Ver Pacientes</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="~/Content/styles/images/novopaciente.png" />
-                    <div class="card-body">
-                        <h5 class="card-title">Cadastrar novo paciente</h5>
-                        <p class="card-text"></p>
-                        <a href="@Url.Action("NovoPaciente", "Paciente")" class="btn btn-primary">Novo Paciente</a>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img class="card-img-top" src="~/Content/styles/images/novopaciente.png" />
+                        <div class="card-body">
+                            <h5 class="card-title">Cadastrar novo paciente</h5>
+                            <p class="card-text"></p>
+                            <a href="@Url.Action("NovoPaciente", "Paciente")" class="btn btn-primary">Novo Paciente</a>
+                        </div>
                     </div>
                 </div>
             </div>
